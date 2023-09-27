@@ -37,6 +37,10 @@ public class KrysStats : CharStats
         position = 1;
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,11 +48,11 @@ public class KrysStats : CharStats
     }
 
     
-    public void Attack()
+    public void Attack()//Attacks will have a 2% randomization
     {
         target = GameObject.FindGameObjectWithTag("Enemy");
         if (target == null) return;
-        target.GetComponent<SeaWoolStats>().HP-= ((int)(PhysAtk * 0.5 + (0.01 * Level)));
+        target.GetComponent<SeaWoolStats>().HP-= (int)((PhysAtk * 0.5 + (0.01 * Level))+Random.Range(-0.02f,0.02f)* (PhysAtk * 0.5 + (0.01 * Level)));
     }
 
     public void ChangeState()
