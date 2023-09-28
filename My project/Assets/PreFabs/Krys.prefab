@@ -138,4 +138,4 @@ MonoBehaviour:
   EXPMax: 100
   CharName: name
   position: 0
-  animate: {fileID: 6357471437217529368}
+  anim: {fileID: 6357471437217529368}

@@ -20,9 +20,9 @@ public class CharStats : MonoBehaviour
     public int Crit;
     public int CritDmg;
     public const int CritMax = 100;
-    public int Level = 1;
-    public int EXP = 0;
-    public int EXPMax = 100;
-    public string CharName = "name";
+    public int Level;
+    public int EXP;
+    public int EXPMax;
+    public string CharName;
     public int position;
 }

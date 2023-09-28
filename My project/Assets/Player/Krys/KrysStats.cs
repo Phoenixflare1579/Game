@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KrysStats : CharStats
 {
-    public Animator animate;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +39,9 @@ public class KrysStats : CharStats
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        anim.SetBool("Martial", true);
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -57,7 +58,6 @@ public class KrysStats : CharStats
 
     public void ChangeState()
     {
-        animate.SetBool("Martial", false);
-        animate.SetBool("Eldritch", true);
+        anim.SetInteger("Phase", 0);
     }
 }
