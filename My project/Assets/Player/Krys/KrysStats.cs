@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KrysStats : CharStats
 {
     public Animator anim;
+    public int Form = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,29 +37,77 @@ public class KrysStats : CharStats
         EXPMax = 100+(200*Level);
         CharName = "Krys";
         position = 1;
+        target = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     private void Awake()
     {
+        anim.SetInteger("Phase", 1);
         anim.SetBool("Martial", true);
+        Form = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (target == null)
+        {
+            ChangeState();
+        }
+
     }
 
     
-    public void Attack()//Attacks will have a 2% randomization
+    public void Attack(InputAction.CallbackContext c)//Attacks will have a 2% randomization
     {
-        target = GameObject.FindGameObjectWithTag("Enemy");
         if (target == null) return;
-        target.GetComponent<SeaWoolStats>().HP-= (int)((PhysAtk * 0.5 + (0.01 * Level))+Random.Range(-0.02f,0.02f)* (PhysAtk * 0.5 + (0.01 * Level)));
+        if (c.started)
+        {
+            if (Form == 1)
+            {
+                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))));
+            }
+            else if (Form == 2)
+            {
+                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.3 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))));
+            }
+            else
+            {
+                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))));
+            }
+        }
     }
 
     public void ChangeState()
     {
+        anim.SetBool("Eldritch", false);
+        anim.SetBool("Martial", false);
+        anim.SetBool("Mage", false);
         anim.SetInteger("Phase", 0);
     }
+
+    public void Eldritch()
+    {
+        anim.SetBool("Eldritch", true);
+        anim.SetBool("Martial", false);
+        anim.SetBool("Mage", false);
+        Form = 3;
+    }
+
+    public void Martial()
+    {
+        anim.SetBool("Eldritch", false);
+        anim.SetBool("Martial", true);
+        anim.SetBool("Mage", false);
+        Form=1;
+    }
+
+    public void Mage()
+    {
+        anim.SetBool("Eldritch", false);
+        anim.SetBool("Martial", false);
+        anim.SetBool("Mage", true);
+        Form=2;
+    }
+
 }

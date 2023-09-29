@@ -27,6 +27,9 @@ public class SeaWoolStats : CharStats
     // Update is called once per frame
     void Update()
     {
-        
+        if (HP < 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
