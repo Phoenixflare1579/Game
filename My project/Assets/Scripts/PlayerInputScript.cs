@@ -10,12 +10,14 @@ public class ExampleClass : MonoBehaviour
     public Rigidbody rb;
     public float speed = 3.0f;
     public Vector2 lastDirection;
+    public Animator animator;
 
     void Start()
     {
         
         MyInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         if (MyInput != null )
         {
             MyMap = MyInput.actions;
@@ -35,13 +37,25 @@ public class ExampleClass : MonoBehaviour
     {
         if(c.performed)
         {
+            if (c.ReadValue<Vector2>().x < 0)
+            {
+                if (GetComponent<SpriteRenderer>() != null)
+                    GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                if (GetComponent<SpriteRenderer>() != null)
+                    GetComponent<SpriteRenderer>().flipX = false;
+            }
             Debug.Log("Walk");
             lastDirection = c.ReadValue<Vector2>();
+            animator.SetBool("Walk", true);
         }
         else if(c.canceled)
         {
             Debug.Log("Stop Walk");
             lastDirection = Vector2.zero;
+            animator.SetBool("Walk", false);
         }
     } 
 
@@ -51,7 +65,7 @@ public class ExampleClass : MonoBehaviour
        {
             Debug.Log("Sprint");
             speed *= 2.0f;
-       }
+        }
        else if (c.canceled)
         {
             Debug.Log("Stop Sprint");
