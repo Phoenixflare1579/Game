@@ -40,6 +40,7 @@ public class Battle : MonoBehaviour
             {
                 Movement = 0;
                 SceneManager.LoadScene("Combat");
+                this.gameObject.GetComponent<Animator>().SetInteger("Weapon", 1);
                 BattleCounter = 10 + Random.Range(0, 10);
             }
             nextTime += interval;
