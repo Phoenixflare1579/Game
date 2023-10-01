@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
@@ -39,8 +40,10 @@ public class Battle : MonoBehaviour
             if (Movement >= BattleCounter)
             {
                 Movement = 0;
+                GetComponent<Animator>().SetInteger("Weapon", 1);
+                GetComponent<Rigidbody>().useGravity = false;
+                GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
-                this.gameObject.GetComponent<Animator>().SetInteger("Weapon", 1);
                 BattleCounter = 10 + Random.Range(0, 10);
             }
             nextTime += interval;
