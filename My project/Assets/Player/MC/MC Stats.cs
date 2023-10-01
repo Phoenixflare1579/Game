@@ -38,6 +38,7 @@ public class MCStats : CharStats
         CharName = "???";
         position = 1;
         target = GameObject.FindGameObjectWithTag("Enemy");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
