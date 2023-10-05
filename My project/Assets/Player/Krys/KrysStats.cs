@@ -65,15 +65,15 @@ public class KrysStats : CharStats
         {
             if (Form == 1)
             {
-                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))));
+                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))));
             }
             else if (Form == 2)
             {
-                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.3 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))));
+                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.3 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))));
             }
             else
             {
-                target.GetComponent<SeaWoolStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))));
+                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))));
             }
         }
     }
