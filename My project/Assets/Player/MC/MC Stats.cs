@@ -37,13 +37,16 @@ public class MCStats : CharStats
         EXPMax = 100 + (200 * Level);
         CharName = "???";
         position = 1;
-        target = GameObject.FindGameObjectWithTag("Enemy");
         DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (logic != null)
+        logic = GameObject.FindGameObjectWithTag("Logic");
+        if (target != null)
+        target = GameObject.FindGameObjectWithTag("Enemy");
         if (target == null)
         {
             ChangeState();
@@ -68,6 +71,7 @@ public class MCStats : CharStats
                 target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<EnemyStats>().Def * 0.25);
             }
         }
+        logic.GetComponent<BattleStartup>().order++;
     }
     public void ChangeState()
     {

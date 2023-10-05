@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 537914407}
   m_Layer: 0
   m_Name: Battle
-  m_TagString: Untagged
+  m_TagString: Logic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,6 +250,8 @@ MonoBehaviour:
   - {fileID: 4325471154946701609, guid: 60e1412ada535574f9ca13d211c85318, type: 3}
   enemyP:
   - {fileID: 1516542488240181328, guid: 36e79cd89b405dc47979790786df4da8, type: 3}
+  Turn: []
+  order: 0
 --- !u!4 &537914408
 Transform:
   m_ObjectHideFlags: 0

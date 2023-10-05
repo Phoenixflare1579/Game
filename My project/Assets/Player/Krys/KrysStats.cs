@@ -11,6 +11,7 @@ public class KrysStats : CharStats
     // Start is called before the first frame update
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic");
         MaxHP = 120 + (5 * Level);
         HP = MaxHP;
         MaxMana = 80 + (15 * Level);
@@ -50,6 +51,10 @@ public class KrysStats : CharStats
     // Update is called once per frame
     void Update()
     {
+        if (logic != null)
+            logic = GameObject.FindGameObjectWithTag("Logic");
+        if (target != null)
+            target = GameObject.FindGameObjectWithTag("Enemy");
         if (target == null)
         {
             ChangeState();
@@ -76,6 +81,7 @@ public class KrysStats : CharStats
                 target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))));
             }
         }
+        logic.GetComponent<BattleStartup>().order++;
     }
 
     public void ChangeState()
@@ -109,5 +115,4 @@ public class KrysStats : CharStats
         anim.SetBool("Mage", true);
         Form=2;
     }
-
 }

@@ -25,4 +25,5 @@ public class CharStats : MonoBehaviour
     public int EXPMax;
     public string CharName;
     public int position;
+    public GameObject logic;
 }

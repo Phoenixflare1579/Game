@@ -10,6 +10,7 @@ public class EnemyStats : CharStats
     // Start is called before the first frame update
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic");
         if (gameObject.name.Contains("SeaWool"))
         {
             MaxHP = UnityEngine.Random.Range(100, 150) + (5 * Level);
@@ -47,14 +48,19 @@ public class EnemyStats : CharStats
     }
     private void FixedUpdate()
     {
-        Action = UnityEngine.Random.Range(0, 5);
-        if (Action == 0)
+        if (logic.GetComponent<BattleStartup>().Turn[logic.GetComponent<BattleStartup>().order] == gameObject.name)
         {
-            Attack();
-        }
-        else if (Action >=1)
-        {
-            Ability();
+            Action = UnityEngine.Random.Range(0, 5);
+            if (Action == 0)
+            {
+                Attack();
+                logic.GetComponent<BattleStartup>().order++;
+            }
+            else if (Action >= 1)
+            {
+                Ability();
+                logic.GetComponent<BattleStartup>().order++;
+            }
         }
     }
     public void Attack()
