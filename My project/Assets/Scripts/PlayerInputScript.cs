@@ -78,7 +78,8 @@ public class ExampleClass : MonoBehaviour
        if (c.started)
         {
             Debug.Log("Pause");
-            SceneManager.LoadScene("Main Menu");
+            this.gameObject.SetActive(false);
+            SceneManager.LoadScene("Pause Menu");
         }
     
     
