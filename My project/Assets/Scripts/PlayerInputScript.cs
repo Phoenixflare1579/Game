@@ -8,7 +8,7 @@ public class ExampleClass : MonoBehaviour
     public PlayerInput MyInput;
     public InputActionAsset MyMap;
     public Rigidbody rb;
-    public float speed = 3.0f;
+    public float speed = 100f;
     public Vector2 lastDirection;
     public Animator animator;
 

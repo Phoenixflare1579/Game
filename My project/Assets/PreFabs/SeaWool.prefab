@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516542488240181328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97, y: 2.293, z: 0}
-  m_LocalScale: {x: 0.9396, y: 0.9361, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -210, y: 2.2, z: 0}
+  m_LocalScale: {x: 84.563995, y: 84.249, z: 90}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -119,3 +119,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4774c38436e796046b48100b18393bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  HP: 0
+  MaxHP: 0
+  Speed: 0
+  Def: 0
+  PhysAtk: 0
+  MagicAtk: 0
+  MagicDef: 0
+  MaxMana: 0
+  Mana: 0
+  Evasion: 0
+  Accuracy: 0
+  Crit: 0
+  CritDmg: 0
+  Level: 0
+  EXP: 0
+  EXPMax: 0
+  CharName: 
+  position: 0
+  logic: {fileID: 0}

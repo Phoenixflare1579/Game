@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4325471154946701609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5702, y: 1.7587, z: 0}
-  m_LocalScale: {x: 0.5213985, y: 0.5192753, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 210, y: 2.2, z: 0}
+  m_LocalScale: {x: 46.925865, y: 46.73478, z: 90}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -138,5 +138,6 @@ MonoBehaviour:
   EXPMax: 100
   CharName: name
   position: 0
+  logic: {fileID: 0}
   anim: {fileID: 6357471437217529368}
   Form: 0
