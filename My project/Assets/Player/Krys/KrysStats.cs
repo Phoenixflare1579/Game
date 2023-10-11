@@ -11,34 +11,10 @@ public class KrysStats : CharStats
     // Start is called before the first frame update
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic");
-        MaxHP = 120 + (5 * Level);
-        HP = MaxHP;
-        MaxMana = 80 + (15 * Level);
-        Mana = MaxMana;
-        Speed = 120 + (5 * Level);
-        if (Speed > Max) Speed = Max;
-        Def = 55 + (3 * Level);
-        if (Def > Max) Def = Max;
-        PhysAtk = 100 + (4 * Level);
-        if (PhysAtk > Max) PhysAtk = Max;
-        MagicAtk = 130 + (6 * Level);
-        if (MagicAtk > Max) MagicAtk = Max;
-        MagicDef = 95 + (5 * Level);
-        if (MagicDef > Max) MagicDef = Max;
-        Evasion = 75 + (5 * Level);
-        if (Evasion > Max) Evasion = Max;
-        Accuracy = 85 + (5 * Level);
-        if(Accuracy > Max) Accuracy = Max;
-        Crit = 15;
-        if (Crit > CritMax) Crit = CritMax;
-        CritDmg = 25;
-        Level = 1;
-        EXP = 0;
-        EXPMax = 100+(200*Level);
         CharName = "Krys";
         position = 1;
         target = GameObject.FindGameObjectWithTag("Enemy");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Awake()
@@ -59,7 +35,30 @@ public class KrysStats : CharStats
         {
             ChangeState();
         }
-
+        MaxHP = 120 + (5 * Level);
+        HP = MaxHP;
+        MaxMana = 80 + (15 * Level);
+        Mana = MaxMana;
+        Speed = 120 + (5 * Level);
+        if (Speed > Max) Speed = Max;
+        Def = 55 + (3 * Level);
+        if (Def > Max) Def = Max;
+        PhysAtk = 100 + (4 * Level);
+        if (PhysAtk > Max) PhysAtk = Max;
+        MagicAtk = 130 + (6 * Level);
+        if (MagicAtk > Max) MagicAtk = Max;
+        MagicDef = 95 + (5 * Level);
+        if (MagicDef > Max) MagicDef = Max;
+        Evasion = 75 + (5 * Level);
+        if (Evasion > Max) Evasion = Max;
+        Accuracy = 85 + (5 * Level);
+        if (Accuracy > Max) Accuracy = Max;
+        Crit = 15;
+        if (Crit > CritMax) Crit = CritMax;
+        CritDmg = 25;
+        Level = 1;
+        EXP = 0;
+        EXPMax = 100 + (200 * Level);
     }
 
     
