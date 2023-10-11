@@ -11,6 +11,23 @@ public class MCStats : CharStats
     // Start is called before the first frame update
     void Start()
     {
+        
+        CharName = "???";
+        position = 1;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (logic != null)
+        logic = GameObject.FindGameObjectWithTag("Logic");
+        if (target != null)
+        target = GameObject.FindGameObjectWithTag("Enemy");
+        if (target == null)
+        {
+            ChangeState();
+        }
         MaxHP = 120;
         HP = MaxHP;
         MaxMana = 50;
@@ -35,22 +52,6 @@ public class MCStats : CharStats
         Level = 1;
         EXP = 0;
         EXPMax = 100 + (200 * Level);
-        CharName = "???";
-        position = 1;
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (logic != null)
-        logic = GameObject.FindGameObjectWithTag("Logic");
-        if (target != null)
-        target = GameObject.FindGameObjectWithTag("Enemy");
-        if (target == null)
-        {
-            ChangeState();
-        }
     }
 
     public void Attack(InputAction.CallbackContext c)//Attacks will have a 2% randomization

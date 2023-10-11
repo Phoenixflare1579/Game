@@ -18,7 +18,7 @@ public class Battle : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        BattleCounter = 10 + Random.Range(0, 10);
+        BattleCounter = 15 + Random.Range(0, 10);
     }
     private void Update()
     {
@@ -31,7 +31,7 @@ public class Battle : MonoBehaviour
                 {
                     Timer = 0;
                     Movement++;
-                    if (rb.velocity.magnitude >= 5)
+                    if (rb.velocity.magnitude >= 150)
                     {
                         Movement++;
                     }
@@ -44,7 +44,7 @@ public class Battle : MonoBehaviour
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
-                BattleCounter = 10 + Random.Range(0, 10);
+                BattleCounter = 15 + Random.Range(0, 10);
             }
             nextTime += interval;
         }
