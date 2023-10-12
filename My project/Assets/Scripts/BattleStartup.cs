@@ -9,6 +9,7 @@ public class BattleStartup : MonoBehaviour
     public GameObject[] enemyP;
     public string[] Turn;
     public int order = 0;
+    public int[] randomizer;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +27,21 @@ public class BattleStartup : MonoBehaviour
         }
         Turn = new string[GameObject.FindGameObjectsWithTag("Player").Length+ GameObject.FindGameObjectsWithTag("Enemy").Length];
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
-            Turn[i]=(GameObject.FindGameObjectsWithTag("Player")[i].name);
-        for(int i = GameObject.FindGameObjectsWithTag("Player").Length; i < GameObject.FindGameObjectsWithTag("Enemy").Length+GameObject.FindGameObjectsWithTag("Player").Length-1; i++)
-            Turn[i]=(GameObject.FindGameObjectsWithTag("Enemy")[i].name);
-        // for (int i = 0; i<Turn.Length; i++)//Victor do you know how to randomize the turn order array and have a bias based on speed?
         {
-            //int Randomize=Random.Range(0,Turn.Length);
-            //Turn[i]=
+            Turn[i] = (GameObject.FindGameObjectsWithTag("Player")[i].name);
+            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>() != null)
+                randomizer[i] = GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>().Speed + Random.Range(0, 100);
+            else if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>() != null)
+                randomizer[i] = GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>().Speed + Random.Range(0, 100);
+        }
+        for (int i = GameObject.FindGameObjectsWithTag("Player").Length; i < GameObject.FindGameObjectsWithTag("Enemy").Length + GameObject.FindGameObjectsWithTag("Player").Length - 1; i++)
+        {
+            Turn[i] = (GameObject.FindGameObjectsWithTag("Enemy")[i].name);
+            randomizer[i] = GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<EnemyStats>().Speed + Random.Range(0, 100);
+        }
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length + GameObject.FindGameObjectsWithTag("Player").Length - 1; i++)
+        {
+            //I got the speed saved but we have to organize the array in greatest to least and then order the turn array in that same order.
         }
     }
     private void Update()
