@@ -8,6 +8,7 @@ public class KrysStats : CharStats
 {
     public Animator anim;
     public int Form = 0;
+    int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,7 @@ public class KrysStats : CharStats
             ChangeState();
         }
         MaxHP = 120 + (5 * Level);
-        HP = MaxHP;
         MaxMana = 80 + (15 * Level);
-        Mana = MaxMana;
         Speed = 120 + (5 * Level);
         if (Speed > Max) Speed = Max;
         Def = 55 + (3 * Level);
@@ -59,6 +58,12 @@ public class KrysStats : CharStats
         Level = 1;
         EXP = 0;
         EXPMax = 100 + (200 * Level);
+        if (i == 0)
+        {
+            HP = MaxHP;
+            Mana = MaxMana;
+            i++;
+        }
     }
 
     

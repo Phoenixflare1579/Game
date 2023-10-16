@@ -12,6 +12,8 @@ public class BattleStartup : MonoBehaviour
     public string[] Turn;
     public string[][] inOrder;
     public int order = 0;
+    GameObject Holder;
+    public GameObject healthbar;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,12 @@ public class BattleStartup : MonoBehaviour
             {
                 Instantiate(playerP[i]);
             }
+        }
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
+            Holder.GetComponent<HealthBarS>().p = GameObject.FindGameObjectsWithTag("Player")[i];
         }
 
         for (int i = 0; i < enemyP.Length; i++)
