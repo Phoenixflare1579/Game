@@ -7,7 +7,6 @@ using UnityEngine;
 public class BattleStartup : MonoBehaviour
     
 {
-    public GameObject[] playerP;
     public GameObject[] enemyP;
     public string[] Turn;
     public string[][] inOrder;
@@ -17,15 +16,6 @@ public class BattleStartup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        if (GameObject.FindGameObjectsWithTag("Player").Length == 1)
-        {
-            for (int i = 0; i < playerP.Length; i++)
-            {
-                Instantiate(playerP[i]);
-            }
-        }
-
         for (int i = 0; i < enemyP.Length; i++)
         {
             Instantiate(enemyP[i]);
@@ -63,6 +53,16 @@ public class BattleStartup : MonoBehaviour
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
+            GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<SpriteRenderer>().enabled = true;
+            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>()!=null) 
+            {
+                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>().Martial();
+            }
+            else if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>() != null)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>().WeaponSwap();
+                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<SpriteRenderer>().flipX = true;
+            }
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
             Holder.GetComponent<HealthBarS>().p = GameObject.FindGameObjectsWithTag("Player")[i];
         }

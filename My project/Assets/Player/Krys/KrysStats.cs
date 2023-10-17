@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class KrysStats : CharStats
 {
@@ -32,10 +33,6 @@ public class KrysStats : CharStats
             logic = GameObject.FindGameObjectWithTag("Logic");
         if (target != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
-        if (target == null)
-        {
-            ChangeState();
-        }
         MaxHP = 120 + (5 * Level);
         MaxMana = 80 + (15 * Level);
         Speed = 120 + (5 * Level);
@@ -87,7 +84,7 @@ public class KrysStats : CharStats
         }
         logic.GetComponent<BattleStartup>().order++;
     }
-
+    
     public void ChangeState()
     {
         anim.SetBool("Eldritch", false);

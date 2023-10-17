@@ -49,6 +49,4 @@ public class Battle : MonoBehaviour
             nextTime += interval;
         }
     }
-    
-
 }

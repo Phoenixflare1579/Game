@@ -8,12 +8,13 @@ public class MCStats : CharStats
     public Animator anim;
     public int Form = 0;
     public int Weapon = 1;
+    int i = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeState();
         CharName = "???";
-        position = 1;
+        position = 0;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -24,14 +25,8 @@ public class MCStats : CharStats
         logic = GameObject.FindGameObjectWithTag("Logic");
         if (target != null)
         target = GameObject.FindGameObjectWithTag("Enemy");
-        if (target == null)
-        {
-            ChangeState();
-        }
         MaxHP = 120;
-        HP = MaxHP;
         MaxMana = 50;
-        Mana = MaxMana;
         Speed = 100 + (5 * Level);
         if (Speed > Max) Speed = Max;
         Def = 65 + (3 * Level);
@@ -52,6 +47,12 @@ public class MCStats : CharStats
         Level = 1;
         EXP = 0;
         EXPMax = 100 + (200 * Level);
+        if (i == 0)
+        {
+            HP = MaxHP;
+            Mana = MaxMana;
+            i++;
+        }
     }
 
     public void Attack(InputAction.CallbackContext c)//Attacks will have a 2% randomization
