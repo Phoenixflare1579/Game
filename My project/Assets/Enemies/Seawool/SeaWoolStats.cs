@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EnemyStats : CharStats
+public class SeaWoolStats : CharStats
 {
     int Action;
     // Start is called before the first frame update
@@ -27,23 +27,16 @@ public class EnemyStats : CharStats
             Level = UnityEngine.Random.Range(1, 5); ;
             CharName = "SeaWool";
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
+            Attack();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CharName != "Skeleton")
+        if (HP < 0)
         {
-            if (HP < 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-        else
-        {
-            HP = MaxHP / 2;
-            CharName = "Bones";
+            Destroy(this.gameObject);
         }
     }
     private void FixedUpdate()
@@ -65,27 +58,18 @@ public class EnemyStats : CharStats
     }
     public void Attack()
     {
-        if (CharName=="SeaWool")
-        {
-            if (target.GetComponent<KrysStats>() != null)
-                target.GetComponent<KrysStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<KrysStats>().Def * 0.25);
-            else if (target.GetComponent<MCStats>() != null)
-                target.GetComponent<MCStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) - target.GetComponent<MCStats>().Def * 0.25);
-            
-        }
+        if (target.GetComponent<CharStats>() != null)
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<CharStats>().Def * 0.25);
     }
 
     public void Ability()
     {
-        if (CharName=="SeaWool"&& Action<=2)
+        if (Action<=2)
         {
-            if (target.GetComponent<KrysStats>() != null)
-                target.GetComponent<KrysStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<KrysStats>().Def * 0.25);
-            else if (target.GetComponent<MCStats>() != null)
-                target.GetComponent<MCStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<MCStats>().Def * 0.25);
-            //HP -= (UnityEngine.Random.Range(5, 20));
+            if (target.GetComponent<CharStats>() != null)
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
         }
-        else if (CharName=="SeaWool" && Action>2)
+        else if (Action>2)
         {
             Speed += (int)(1.25 * Speed);
             if (Speed > Max*1.25)

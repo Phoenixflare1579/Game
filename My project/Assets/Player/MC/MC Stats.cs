@@ -25,8 +25,8 @@ public class MCStats : CharStats
         logic = GameObject.FindGameObjectWithTag("Logic");
         if (target != null)
         target = GameObject.FindGameObjectWithTag("Enemy");
-        MaxHP = 120;
-        MaxMana = 50;
+        MaxHP = 120 + (8 * Level);
+        MaxMana = 50 + (5 * Level);
         Speed = 100 + (5 * Level);
         if (Speed > Max) Speed = Max;
         Def = 65 + (3 * Level);
@@ -62,15 +62,15 @@ public class MCStats : CharStats
         {
             if (Form == 1)
             {
-                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<EnemyStats>().Def*0.25);
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<CharStats>().Def*0.25);
             }
             else if (Form == 2)
             {
-                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.7 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))) - target.GetComponent<EnemyStats>().Def * 0.25);
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.7 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
             }
             else
             {
-                target.GetComponent<EnemyStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<EnemyStats>().Def * 0.25);
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
             }
         }
         logic.GetComponent<BattleStartup>().order++;

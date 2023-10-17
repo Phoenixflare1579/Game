@@ -8,6 +8,9 @@ public class BattleStartup : MonoBehaviour
     
 {
     public GameObject[] enemyP;
+    public GameObject[] players;
+    public GameObject[] playerPos;
+    public GameObject[] enemyPos;
     public string[] Turn;
     public string[][] inOrder;
     public int order = 0;
@@ -16,21 +19,22 @@ public class BattleStartup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        players=GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < enemyP.Length; i++)
         {
             Instantiate(enemyP[i]);
         }
 
-        Turn = new string[GameObject.FindGameObjectsWithTag("Player").Length-1+ GameObject.FindGameObjectsWithTag("Enemy").Length];
+        Turn = new string[players.Length-1+ GameObject.FindGameObjectsWithTag("Enemy").Length];
 
-        inOrder = new string[GameObject.FindGameObjectsWithTag("Player").Length - 1 + GameObject.FindGameObjectsWithTag("Enemy").Length][];
+        inOrder = new string[players.Length - 1 + GameObject.FindGameObjectsWithTag("Enemy").Length][];
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            Turn[i] = (GameObject.FindGameObjectsWithTag("Player")[i].name);
+            Turn[i] = (players[i].name);
         }
             
-        for(int i = GameObject.FindGameObjectsWithTag("Player").Length; i < GameObject.FindGameObjectsWithTag("Enemy").Length+GameObject.FindGameObjectsWithTag("Player").Length-1; i++)
+        for(int i = players.Length; i < GameObject.FindGameObjectsWithTag("Enemy").Length+players.Length-1; i++)
         {
             Turn[i] = (GameObject.FindGameObjectsWithTag("Enemy")[i].name);
         }
@@ -51,20 +55,21 @@ public class BattleStartup : MonoBehaviour
             Debug.Log(inOrder[1]);
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<SpriteRenderer>().enabled = true;
-            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>()!=null) 
+            players[i].GetComponent<SpriteRenderer>().enabled = true;
+            if (players[i].GetComponent<KrysStats>()!=null) 
             {
-                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<KrysStats>().Martial();
+                players[i].GetComponent<KrysStats>().Martial();
             }
-            else if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>() != null)
+            else if (players[i].GetComponent<MCStats>() != null)
             {
-                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<MCStats>().WeaponSwap();
-                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<SpriteRenderer>().flipX = true;
+                players[i].GetComponent<MCStats>().WeaponSwap();
+                players[i].GetComponent<SpriteRenderer>().flipX = true;
             }
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<HealthBarS>().p = GameObject.FindGameObjectsWithTag("Player")[i];
+            Holder.GetComponent<HealthBarS>().p = players[i];
+            players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
     }
     private void Update()
