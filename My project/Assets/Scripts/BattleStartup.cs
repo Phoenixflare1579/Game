@@ -26,12 +26,6 @@ public class BattleStartup : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
-        {
-            Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<HealthBarS>().p = GameObject.FindGameObjectsWithTag("Player")[i];
-        }
-
         for (int i = 0; i < enemyP.Length; i++)
         {
             Instantiate(enemyP[i]);
@@ -67,6 +61,11 @@ public class BattleStartup : MonoBehaviour
             Debug.Log(inOrder[1]);
         }
 
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
+            Holder.GetComponent<HealthBarS>().p = GameObject.FindGameObjectsWithTag("Player")[i];
+        }
     }
     private void Update()
     {
