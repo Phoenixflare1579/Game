@@ -9,11 +9,11 @@ public class InputMenuS : MonoBehaviour
     {
         if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] == "Krys") 
         { 
-            this.gameObject.SetActive(true);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         else 
-        { 
-            this.gameObject.SetActive(false); 
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
     public void Attack()
