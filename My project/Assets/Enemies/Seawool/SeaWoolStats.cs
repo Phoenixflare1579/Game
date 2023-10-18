@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class SeaWoolStats : CharStats
 {
     int Action;
+    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,6 @@ public class SeaWoolStats : CharStats
             Level = UnityEngine.Random.Range(1, 5); ;
             CharName = "SeaWool";
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
-            Attack();
         }
     }
 
@@ -47,11 +47,13 @@ public class SeaWoolStats : CharStats
             {
                 Attack();
                 logic.GetComponent<BattleStartup>().order++;
+                TurnsPassed++;
             }
             else if (Action >= 1)
             {
                 Ability();
                 logic.GetComponent<BattleStartup>().order++;
+                TurnsPassed++;
             }
         }
     }
@@ -66,7 +68,11 @@ public class SeaWoolStats : CharStats
         if (Action<=2)
         {
             if (target.GetComponent<CharStats>() != null)
+            {
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+                HP -= 10;
+            }
+
         }
         else if (Action>2)
         {

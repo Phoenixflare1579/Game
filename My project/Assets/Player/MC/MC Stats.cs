@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MCStats : CharStats
 {
@@ -21,11 +22,13 @@ public class MCStats : CharStats
     // Update is called once per frame
     void Update()
     {
-        if (logic != null)
-        logic = GameObject.FindGameObjectWithTag("Logic");
-        if (target != null)
+        if (GameObject.FindGameObjectWithTag("Logic") != null)
+        {
+            logic = GameObject.FindGameObjectWithTag("Logic");
+        }
+        if (GameObject.FindGameObjectWithTag("Enemy") != null)
         target = GameObject.FindGameObjectWithTag("Enemy");
-        MaxHP = 120 + (8 * Level);
+        MaxHP = (120 + (8 * Level));
         MaxMana = 50 + (5 * Level);
         Speed = 100 + (5 * Level);
         if (Speed > Max) Speed = Max;
@@ -57,7 +60,6 @@ public class MCStats : CharStats
 
     public void Attack()//Attacks will have a 2% randomization
     {
-        if (target == null) return;
             if (Form == 1)
             {
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<CharStats>().Def*0.25);
@@ -72,6 +74,20 @@ public class MCStats : CharStats
             }
         logic.GetComponent<BattleStartup>().order++;
     }
+    public void Defend()
+    {
+        logic.GetComponent<BattleStartup>().order++;
+    }
+
+    public void Flee()
+    {
+        int run = Random.Range(0, 4);
+        if (run < 3)
+            logic.GetComponent<BattleStartup>().order++;
+        else
+            SceneManager.LoadScene("World");
+    }
+
     public void ChangeState()
     {
         anim.SetInteger("Weapon", 0);

@@ -10,6 +10,7 @@ public class KrysStats : CharStats
     public Animator anim;
     public int Form = 0;
     int i = 0;
+    int currentHP;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,11 @@ public class KrysStats : CharStats
     // Update is called once per frame
     void Update()
     {
-        if (logic != null)
+        if (GameObject.FindGameObjectWithTag("Logic") != null)
             logic = GameObject.FindGameObjectWithTag("Logic");
-        if (target != null)
+        if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
-        MaxHP = 120 + (5 * Level);
+        MaxHP = (120 + (5 * Level));
         MaxMana = 80 + (15 * Level);
         Speed = 120 + (5 * Level);
         if (Speed > Max) Speed = Max;
@@ -59,6 +60,7 @@ public class KrysStats : CharStats
         {
             HP = MaxHP;
             Mana = MaxMana;
+            currentHP = MaxHP;
             i++;
         }
     }
@@ -66,7 +68,6 @@ public class KrysStats : CharStats
     
     public void Attack()//Attacks will have a 2% randomization
     {
-        if (target == null) return;
             if (Form == 1)
             {
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
@@ -80,6 +81,20 @@ public class KrysStats : CharStats
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
             }
         logic.GetComponent<BattleStartup>().order++;
+    }
+
+    public void Defend()
+    {
+        logic.GetComponent<BattleStartup>().order++;
+    }
+
+    public void Flee()
+    {
+        int run = Random.Range(0, 4);
+        if (run < 3)
+            logic.GetComponent<BattleStartup>().order++;
+        else
+            SceneManager.LoadScene("World");
     }
     
     public void ChangeState()
