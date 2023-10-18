@@ -55,11 +55,9 @@ public class MCStats : CharStats
         }
     }
 
-    public void Attack(InputAction.CallbackContext c)//Attacks will have a 2% randomization
+    public void Attack()//Attacks will have a 2% randomization
     {
         if (target == null) return;
-        if (c.started)
-        {
             if (Form == 1)
             {
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<CharStats>().Def*0.25);
@@ -72,7 +70,6 @@ public class MCStats : CharStats
             {
                 target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
             }
-        }
         logic.GetComponent<BattleStartup>().order++;
     }
     public void ChangeState()
