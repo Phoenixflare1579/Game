@@ -11,7 +11,6 @@ public class SeaWoolStats : CharStats
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic");
-        if (gameObject.name.Contains("SeaWool"))
         {
             MaxHP = UnityEngine.Random.Range(100, 150) + (5 * Level);
             HP = MaxHP;
@@ -41,7 +40,7 @@ public class SeaWoolStats : CharStats
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().Turn[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] == gameObject.name)
         {
             Action = UnityEngine.Random.Range(0, 5);
             if (Action == 0)
