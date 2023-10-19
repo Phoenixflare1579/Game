@@ -11,7 +11,8 @@ public class ExampleClass : MonoBehaviour
     public float speed = 100f;
     public Vector2 lastDirection;
     public Animator animator;
-
+    public GameObject menu;
+    int i = 0;
     void Start()
     {
         
@@ -47,13 +48,11 @@ public class ExampleClass : MonoBehaviour
                 if (GetComponent<SpriteRenderer>() != null)
                     GetComponent<SpriteRenderer>().flipX = false;
             }
-            Debug.Log("Walk");
             lastDirection = c.ReadValue<Vector2>();
             animator.SetBool("Walk", true);
         }
         else if(c.canceled)
         {
-            Debug.Log("Stop Walk");
             lastDirection = Vector2.zero;
             animator.SetBool("Walk", false);
         }
@@ -63,12 +62,10 @@ public class ExampleClass : MonoBehaviour
     { 
        if (c.performed) 
        {
-            Debug.Log("Sprint");
             speed *= 2.0f;
         }
        else if (c.canceled)
         {
-            Debug.Log("Stop Sprint");
             speed /= 2.0f;
         }
     }
@@ -77,19 +74,16 @@ public class ExampleClass : MonoBehaviour
     { 
        if (c.started)
         {
-            Debug.Log("Pause");
-            this.gameObject.SetActive(false);
-            SceneManager.LoadScene("Pause Menu");
-        }
-    
-    
-    }
-    public void Mover(InputAction.CallbackContext c) 
-    { 
-     if(c.performed) 
-        { 
-          Debug.Log("New Vector 2 based on controls: " + c.action.ReadValue<Vector2>());
+            if (i == 0)
+            {
+                menu.gameObject.SetActive(true);
+                i++;
+            }
+            else
+            {
+                menu.gameObject.SetActive(false);
+                i--;
+            }
         }
     }
-    
 }
