@@ -26,4 +26,5 @@ public class CharStats : MonoBehaviour
     public string CharName;
     public int position;
     public GameObject logic;
+    public string[] weakness;
 }

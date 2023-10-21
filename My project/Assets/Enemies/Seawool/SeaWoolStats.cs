@@ -27,6 +27,7 @@ public class SeaWoolStats : CharStats
             Level = UnityEngine.Random.Range(1, 5); ;
             CharName = "SeaWool";
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
+            weakness = new string[4] {"Spear","Knife","Fire","Ice"};
         }
     }
 
@@ -60,7 +61,13 @@ public class SeaWoolStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level)))-target.GetComponent<CharStats>().Def * 0.25);
+            if (UnityEngine.Random.Range(0, 100) >= 100 - Crit)
+            {
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) * (1 + CritMax / 100) - target.GetComponent<CharStats>().Def * 0.25);
+            }
+            else
+                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+
     }
 
     public void Ability()
@@ -69,7 +76,13 @@ public class SeaWoolStats : CharStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+                if (UnityEngine.Random.Range(0, 100) >= 100 - Crit)
+                {
+                    target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) * (1 + CritMax / 100) - target.GetComponent<CharStats>().Def * 0.25);
+                    Debug.Log("Crit!");
+                }
+                else
+                    target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
                 HP -= 10;
             }
 
