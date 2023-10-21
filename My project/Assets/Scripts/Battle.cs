@@ -18,7 +18,7 @@ public class Battle : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        BattleCounter = 15 + Random.Range(0, 10);
+        BattleCounter = 3 + Random.Range(0, 10);
     }
     private void Update()
     {

@@ -11,10 +11,12 @@ public class BattleStartup : MonoBehaviour
     public GameObject[] players;
     public GameObject[] playerPos;
     public GameObject[] enemyPos;
+    int p=-1;
     public string[] Turn;
     public string[][] inOrder;
     public int order = 0;
     GameObject Holder;
+    GameObject E;
     public GameObject healthbar;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,11 @@ public class BattleStartup : MonoBehaviour
         players=GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < enemyP.Length; i++)
         {
-            Instantiate(enemyP[i]);
+            E=Instantiate(enemyP[i]);
+            if (p == E.GetComponent<CharStats>().position)
+                E.GetComponent<CharStats>().position++;
+            E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+            p = E.GetComponent<CharStats>().position;
         }
 
         Turn = new string[players.Length-1+ GameObject.FindGameObjectsWithTag("Enemy").Length];

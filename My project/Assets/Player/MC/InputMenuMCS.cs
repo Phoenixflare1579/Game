@@ -34,4 +34,8 @@ public class InputMenuMCS : MonoBehaviour
     {
         MC.GetComponent<MCStats>().Flee();
     }
+    public void WeaponSwap()
+    {
+        MC.GetComponent<MCStats>().WeaponSwap();
+    }
 }
