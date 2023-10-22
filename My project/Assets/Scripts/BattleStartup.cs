@@ -32,18 +32,18 @@ public class BattleStartup : MonoBehaviour
             p = E.GetComponent<CharStats>().position;
         }
 
-        Turn = new string[players.Length-1+ GameObject.FindGameObjectsWithTag("Enemy").Length];
+        Turn = new string[players.Length+ GameObject.FindGameObjectsWithTag("Enemy").Length];
 
-        inOrder = new string[players.Length - 1 + GameObject.FindGameObjectsWithTag("Enemy").Length][];
+        inOrder = new string[players.Length+ GameObject.FindGameObjectsWithTag("Enemy").Length][];
 
         for (int i = 0; i < players.Length; i++)
         {
             Turn[i] = (players[i].name);
         }
             
-        for(int i = players.Length; i < GameObject.FindGameObjectsWithTag("Enemy").Length+players.Length-1; i++)
+        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
         {
-            Turn[i] = (GameObject.FindGameObjectsWithTag("Enemy")[i].name);
+            Turn[i+players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
         }
 
         for (int i = 0; i< Turn.Length; i++)//Speed Random Bais

@@ -29,7 +29,7 @@ public class MCStats : CharStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
         else ChangeState();
-        MaxHP = (120 + (8 * Level));
+        MaxHP = 120 + (8 * Level);
         MaxMana = 50 + (5 * Level);
         Speed = 100 + (5 * Level);
         if (Speed > Max) Speed = Max;
