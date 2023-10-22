@@ -10,7 +10,7 @@ public class Battle : MonoBehaviour
 {
     public int Movement=0;
     public int Timer = 0;
-    public int BattleCounter;
+    public int BattleCounter=5;
     public Rigidbody rb;
     int interval = 1;
     float nextTime = 0;
@@ -40,11 +40,12 @@ public class Battle : MonoBehaviour
             if (Movement >= BattleCounter)
             {
                 Movement = 0;
+                Timer = 0;
+                BattleCounter = 15 + Random.Range(0, 10);
                 GetComponent<Animator>().SetInteger("Weapon", 1);
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
-                BattleCounter = 15 + Random.Range(0, 10);
             }
             nextTime += interval;
         }

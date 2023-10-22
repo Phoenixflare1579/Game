@@ -27,7 +27,8 @@ public class MCStats : CharStats
             logic = GameObject.FindGameObjectWithTag("Logic");
         }
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
-        target = GameObject.FindGameObjectWithTag("Enemy");
+            target = GameObject.FindGameObjectWithTag("Enemy");
+        else ChangeState();
         MaxHP = (120 + (8 * Level));
         MaxMana = 50 + (5 * Level);
         Speed = 100 + (5 * Level);

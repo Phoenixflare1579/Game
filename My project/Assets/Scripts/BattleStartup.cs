@@ -18,6 +18,7 @@ public class BattleStartup : MonoBehaviour
     GameObject Holder;
     GameObject E;
     public GameObject healthbar;
+    public GameObject End;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +84,14 @@ public class BattleStartup : MonoBehaviour
         if(order==Turn.Length)
         {
             order = 0;
+        }
+        if(GameObject.FindGameObjectWithTag("Enemy")!=null)
+        {
+            End.SetActive(false);
+        }
+        else
+        {
+            End.SetActive(true);
         }
     }
 }
