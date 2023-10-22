@@ -11,6 +11,7 @@ public class KrysStats : CharStats
     public int Form = 0;
     int i = 0;
     int currentHP;
+    int D;
     // Start is called before the first frame update
     void Start()
     {
@@ -128,5 +129,26 @@ public class KrysStats : CharStats
         anim.SetBool("Martial", false);
         anim.SetBool("Mage", true);
         Form=2;
+    }
+
+    public void FireBall()
+    {
+        target.GetComponent<CharStats>().HP -= (int)(50+(MagicAtk * (0.4 + (0.08 * Level))) + (Random.Range(-0.02f, 0.02f) * (MagicAtk * 0.4 + (0.08 * Level))) - target.GetComponent<CharStats>().MagicDef * 0.25);
+        Mana -= 10;
+        logic.GetComponent<BattleStartup>().order++;
+    }
+
+    public void Drain()
+    {
+        D = (int)(20 + (PhysAtk * (0.4 + (0.08 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.08 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+        target.GetComponent<CharStats>().HP -= D;
+        if (HP + D / 4 > MaxHP)
+        {
+            HP = MaxHP;
+        }
+        else
+        HP += D / 4;
+        Mana -= 7;
+        logic.GetComponent<BattleStartup>().order++;
     }
 }

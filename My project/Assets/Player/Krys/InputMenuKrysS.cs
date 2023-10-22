@@ -53,4 +53,12 @@ public class InputMenuKrysS : MonoBehaviour
     {
         Krys.GetComponent<KrysStats>().Martial();
     }
+    public void FireBall()
+    {
+        Krys.GetComponent<KrysStats>().FireBall();
+    }
+    public void Drain() 
+    {
+        Krys.GetComponent<KrysStats>().Drain();
+    }
 }
