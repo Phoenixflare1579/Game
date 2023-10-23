@@ -36,6 +36,7 @@ public class KrysStats : CharStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
         else ChangeState();
+        Level = 1;
         MaxHP = (120 + (5 * Level));
         MaxMana = 80 + (15 * Level);
         Speed = 120 + (5 * Level);
@@ -55,7 +56,6 @@ public class KrysStats : CharStats
         Crit = 15;
         if (Crit > CritMax) Crit = CritMax;
         CritDmg = 25;
-        Level = 1;
         EXP = 0;
         EXPMax = 100 + (200 * Level);
         if (i == 0)
@@ -72,16 +72,16 @@ public class KrysStats : CharStats
     {
             if (Form == 1)
             {
-                
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
             }
             else if (Form == 2)
             {
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.3 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.3 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, true);
             }
             else
             {
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.4 + (0.01 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, true);
             }
         logic.GetComponent<BattleStartup>().order++;
     }
@@ -134,14 +134,14 @@ public class KrysStats : CharStats
 
     public void FireBall()
     {
-        target.GetComponent<CharStats>().HP -= (int)(50+(MagicAtk * (0.4 + (0.08 * Level))) + (Random.Range(-0.02f, 0.02f) * (MagicAtk * 0.4 + (0.08 * Level))) - target.GetComponent<CharStats>().MagicDef * 0.25);
+        target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, false);
         Mana -= 10;
         logic.GetComponent<BattleStartup>().order++;
     }
 
     public void Drain()
     {
-        D = (int)(20 + (PhysAtk * (0.4 + (0.08 * Level))) + (Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.4 + (0.08 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+        D -= DamageDone(20, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, true);
         target.GetComponent<CharStats>().HP -= D;
         if (HP + D / 4 > MaxHP)
         {
@@ -151,5 +151,18 @@ public class KrysStats : CharStats
         HP += D / 4;
         Mana -= 7;
         logic.GetComponent<BattleStartup>().order++;
+    }
+
+    public int DamageDone(double BaseDmg, double DmgStat, double DefStat, double BaseDmgScale, double LevelDmgAmount, bool isNotMagic)
+    {
+        double normDmg = BaseDmg + (Random.Range(-0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
+        if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
+        {
+            return (int)(normDmg + normDmg * CritDmg);
+        }
+        else
+        {
+            return (int)normDmg;
+        }
     }
 }
