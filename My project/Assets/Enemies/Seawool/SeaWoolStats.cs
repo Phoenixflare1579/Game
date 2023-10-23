@@ -61,13 +61,7 @@ public class SeaWoolStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            if (UnityEngine.Random.Range(0, 100) >= 100 - Crit)
-            {
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) * (1 + CritMax / 100) - target.GetComponent<CharStats>().Def * 0.25);
-            }
-            else
-                target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.5 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.5 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
-
+        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
     }
 
     public void Ability()
@@ -76,13 +70,7 @@ public class SeaWoolStats : CharStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                if (UnityEngine.Random.Range(0, 100) >= 100 - Crit)
-                {
-                    target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) * (1 + CritMax / 100) - target.GetComponent<CharStats>().Def * 0.25);
-                    Debug.Log("Crit!");
-                }
-                else
-                    target.GetComponent<CharStats>().HP -= (int)((PhysAtk * (0.8 + (0.01 * Level))) + (UnityEngine.Random.Range(-0.02f, 0.02f) * (PhysAtk * 0.8 + (0.01 * Level))) - target.GetComponent<CharStats>().Def * 0.25);
+                target.GetComponent<CharStats>().HP -= DamageDone(10, PhysAtk, 0.6, 0.02, target.GetComponent<CharStats>().Def, true);
                 HP -= 10;
             }
 

@@ -27,4 +27,17 @@ public class CharStats : MonoBehaviour
     public int position;
     public GameObject logic;
     public string[] weakness;
+
+    public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, bool isNotMagic)
+    {
+        double normDmg = BaseDmg + (Random.Range(-0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
+        if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
+        {
+            return (int)(normDmg + normDmg * CritDmg);
+        }
+        else
+        {
+            return (int)normDmg;
+        }
+    }
 }

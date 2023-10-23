@@ -63,15 +63,15 @@ public class MCStats : CharStats
     {
             if (Form == 1)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, MagicAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
             }
             else if (Form == 2)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, MagicAtk, 0.7, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.7, 0.01, target.GetComponent<CharStats>().Def, true);
             }
             else
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, MagicAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, true);
             }
         logic.GetComponent<BattleStartup>().order++;
     }
@@ -91,7 +91,8 @@ public class MCStats : CharStats
 
     public void ChangeState()
     {
-        anim.SetInteger("Weapon", 0);
+        Weapon = 0;
+        anim.SetInteger("Weapon", Weapon);
     }
 
     public void WeaponSwap()
@@ -102,17 +103,5 @@ public class MCStats : CharStats
             Weapon = 1;
         }
         anim.SetInteger("Weapon", Weapon);
-    }
-    public int DamageDone(double BaseDmg, double DmgStat, double DefStat, double BaseDmgScale, double LevelDmgAmount, bool isNotMagic)
-    {
-        double normDmg = BaseDmg + (Random.Range(-0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
-        if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
-        {
-            return (int)(normDmg + normDmg * CritDmg);
-        }
-        else
-        {
-            return (int)normDmg;
-        }
     }
 }

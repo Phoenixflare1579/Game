@@ -152,17 +152,4 @@ public class KrysStats : CharStats
         Mana -= 7;
         logic.GetComponent<BattleStartup>().order++;
     }
-
-    public int DamageDone(double BaseDmg, double DmgStat, double DefStat, double BaseDmgScale, double LevelDmgAmount, bool isNotMagic)
-    {
-        double normDmg = BaseDmg + (Random.Range(-0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
-        if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
-        {
-            return (int)(normDmg + normDmg * CritDmg);
-        }
-        else
-        {
-            return (int)normDmg;
-        }
-    }
 }
