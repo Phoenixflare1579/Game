@@ -27,10 +27,10 @@ public class SeaWoolStats : CharStats
             CritDmg = 25;
             CharName = "SeaWool";
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
-            //weaknesses["Spear"] = true;
-            //weaknesses["Knife"] = true;
-            //weaknesses["Fire"] = true;
-            //weaknesses["Light"] = true;
+            weaknesses.Add("Spear", true);
+            weaknesses.Add("Knife", true);
+            weaknesses.Add("Fire", true);
+            weaknesses.Add("Light", true);
         }
     }
 

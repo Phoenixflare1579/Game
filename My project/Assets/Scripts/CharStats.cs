@@ -26,35 +26,27 @@ public class CharStats : MonoBehaviour
     public string CharName;
     public int position;
     public GameObject logic;
-    public Dictionary<string, bool> weaknesses;
+    public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
 
     private void Start()
     {
-        weaknesses.Add("Sword", false);
-        weaknesses.Add("Spear", false);
-        weaknesses.Add("Axe", false);
-        weaknesses.Add("Staff", false);
-        weaknesses.Add("Knife", false);
-        weaknesses.Add("Bow", false);
-        weaknesses.Add("Fire", false);
-        weaknesses.Add("Ice", false);
-        weaknesses.Add("Lightning", false);
-        weaknesses.Add("Light", false);
-        weaknesses.Add("Dark", false);
+
     }
 
-    public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic)
+    public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic/*, GameObject Object*/)
     {
+
         double normDmg = BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
         if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
         { 
             normDmg += normDmg * CritDmg/100;
         }
-        //if (target.GetComponent<CharStats>().weaknesses[type]==true)
-        //{
-        //    normDmg += normDmg * 0.2;
-        //    Debug.Log("Weakpoint Hit!");
-        //}
+        Debug.Log(target.GetComponent<CharStats>().weaknesses.ContainsKey(type));
+        if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
+        {
+            normDmg += normDmg * 0.2;
+            Debug.Log("Weakpoint Hit!");
+        }
         return (int)normDmg;
     }
 }

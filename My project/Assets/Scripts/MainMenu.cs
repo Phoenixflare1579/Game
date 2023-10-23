@@ -8,13 +8,24 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject MC;
     public GameObject Krys;
-    int t=0;
-    int t2 = 0;
+
+    private void Start()
+    {
+        for (int i = 0;i< GameObject.FindGameObjectsWithTag("Player").Length;i++)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("Player")[i]);
+        }
+        
+    }
+
     public void Play()
     {
-        t++;
-        //Instantiate(MC);
-        //Instantiate(Krys);
+        SceneManager.LoadScene("World");
+        GameObject rename = Instantiate(MC);
+        rename.name = rename.name.Replace("(Clone)", "").Trim();
+        rename = Instantiate(Krys);
+        rename.name = rename.name.Replace("(Clone)", "").Trim();
+
     }
 
     public void Exit()
@@ -24,18 +35,6 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Player").Length>0 && t==0)
-        {
-            for (int i = 0;i< GameObject.FindGameObjectsWithTag("Player").Length;i++)
-            {
-                Destroy(GameObject.FindGameObjectsWithTag("Player")[i]);
-            }
-        }
-        if (t==1)
-        {
-            t2++;
-            if (t2>250)
-            SceneManager.LoadScene("World");
-        }
+
     }
 }

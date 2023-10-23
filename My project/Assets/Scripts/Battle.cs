@@ -9,11 +9,8 @@ using UnityEngine.SceneManagement;
 public class Battle : MonoBehaviour
 {
     public int Movement=0;
-    public int Timer = 0;
     public int BattleCounter=5;
     public Rigidbody rb;
-    int interval = 1;
-    float nextTime = 0;
     private IEnumerator coroutine;
 
     void Start()
@@ -34,21 +31,15 @@ public class Battle : MonoBehaviour
             Debug.Log(Movement);
             if (rb.velocity.magnitude > 0)
             {
-                Timer++;
-                if (Timer <= 60)
+                Movement++;
+                if (rb.velocity.magnitude >= 150)
                 {
-                    Timer = 0;
                     Movement++;
-                    if (rb.velocity.magnitude >= 150)
-                    {
-                        Movement++;
-                    }
                 }
             }
             if (Movement >= BattleCounter)
             {
                 Movement = 0;
-                Timer = 0;
                 BattleCounter = 15 + Random.Range(0, 10);
                 GetComponent<Animator>().SetInteger("Weapon", 1);
                 GetComponent<Rigidbody>().useGravity = false;
