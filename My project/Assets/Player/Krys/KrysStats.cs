@@ -10,7 +10,6 @@ public class KrysStats : CharStats
     public Animator anim;
     public int Form = 0;
     int i = 0;
-    int currentHP;
     int D;
     // Start is called before the first frame update
     void Start()
@@ -62,8 +61,22 @@ public class KrysStats : CharStats
         {
             HP = MaxHP;
             Mana = MaxMana;
-            currentHP = MaxHP;
             i++;
+        }
+        if (EXP >= EXPMax)
+        {
+            Level++;
+            EXP -= EXPMax;
+            i--;
+        }
+        if (HP<=0)
+        {
+            HP = 0;
+            anim.SetBool("Dead", true);
+        }
+        else if (HP > 0)
+        {
+            anim.SetBool("Dead", false);
         }
     }
 
@@ -73,15 +86,15 @@ public class KrysStats : CharStats
             if (Form == 1)
             {
 
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
             }
             else if (Form == 2)
             {
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, true);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
             }
             else
             {
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, true);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
             }
         logic.GetComponent<BattleStartup>().order++;
     }
@@ -134,14 +147,14 @@ public class KrysStats : CharStats
 
     public void FireBall()
     {
-        target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, false);
+        target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, "Fire", false);
         Mana -= 10;
         logic.GetComponent<BattleStartup>().order++;
     }
 
     public void Drain()
     {
-        D -= DamageDone(20, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, true);
+        D += DamageDone(5, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, "Knife", true);
         target.GetComponent<CharStats>().HP -= D;
         if (HP + D / 4 > MaxHP)
         {

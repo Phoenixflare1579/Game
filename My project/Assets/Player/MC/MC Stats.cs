@@ -9,6 +9,7 @@ public class MCStats : CharStats
     public Animator anim;
     public int Form = 0;
     public int Weapon = 1;
+    public string WType = string.Empty;
     int i = 0;
     // Start is called before the first frame update
     void Start()
@@ -57,21 +58,52 @@ public class MCStats : CharStats
             Mana = MaxMana;
             i++;
         }
+        if (EXP >= EXPMax)
+        {
+            Level++;
+            EXP -= EXPMax;
+            i--;
+        }
+        if (Weapon == 1)
+        {
+            WType = "Sword";
+        }
+        else if (Weapon == 2)
+        {
+            WType = "Axe";
+        }
+        else if (Weapon == 3) 
+        {
+            WType = "Knife";
+        }
+        else if (Weapon == 4)
+        {
+            WType = "Spear";
+        }
+        if (HP <= 0)
+        {
+            HP = 0;
+            anim.SetBool("Dead", true);
+        }
+        else if (HP > 0)
+        {
+            anim.SetBool("Dead", false);
+        }
     }
 
     public void Attack()//Attacks will have a 2% randomization
     {
             if (Form == 1)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, WType, true);
             }
             else if (Form == 2)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.7, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.7, 0.01, target.GetComponent<CharStats>().Def, WType, true);
             }
             else
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, WType, true);
             }
         logic.GetComponent<BattleStartup>().order++;
     }

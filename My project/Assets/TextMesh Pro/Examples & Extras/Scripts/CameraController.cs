@@ -8,7 +8,7 @@ public class CamerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        player=GameObject.Find("MC");
     }
 
     // Update is called once per frame

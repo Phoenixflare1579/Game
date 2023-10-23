@@ -19,6 +19,7 @@ public class BattleStartup : MonoBehaviour
     GameObject E;
     public GameObject healthbar;
     public GameObject End;
+    public int xp=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +69,7 @@ public class BattleStartup : MonoBehaviour
             if (players[i].GetComponent<KrysStats>()!=null) 
             {
                 players[i].GetComponent<KrysStats>().Martial();
+                players[i].GetComponent<KrysStats>().anim.SetInteger("Phase", 1);
             }
             else if (players[i].GetComponent<MCStats>() != null)
             {
@@ -91,6 +93,10 @@ public class BattleStartup : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].GetComponent<CharStats>().EXP += xp;
+            }
             End.SetActive(true);
         }
     }

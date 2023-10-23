@@ -13,6 +13,7 @@ public class SeaWoolStats : CharStats
     {
         logic = GameObject.FindGameObjectWithTag("Logic");
         {
+            Level = UnityEngine.Random.Range(1, 5);
             MaxHP = UnityEngine.Random.Range(100, 150) + (5 * Level);
             HP = MaxHP;
             Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
@@ -24,10 +25,12 @@ public class SeaWoolStats : CharStats
             Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
             Crit = 15;
             CritDmg = 25;
-            Level = UnityEngine.Random.Range(1, 5); ;
             CharName = "SeaWool";
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
-            weakness = new string[4] {"Spear","Knife","Fire","Ice"};
+            //weaknesses["Spear"] = true;
+            //weaknesses["Knife"] = true;
+            //weaknesses["Fire"] = true;
+            //weaknesses["Light"] = true;
         }
     }
 
@@ -36,6 +39,7 @@ public class SeaWoolStats : CharStats
     {
         if (HP < 0)
         {
+            logic.GetComponent<BattleStartup>().xp += (int)(15 * Level / 2);
             Destroy(this.gameObject);
         }
     }
@@ -61,7 +65,7 @@ public class SeaWoolStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, true);
+        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Sword", true);
     }
 
     public void Ability()
@@ -70,7 +74,7 @@ public class SeaWoolStats : CharStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(10, PhysAtk, 0.6, 0.02, target.GetComponent<CharStats>().Def, true);
+                target.GetComponent<CharStats>().HP -= DamageDone(5, PhysAtk, 0.6, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
                 HP -= 10;
             }
 

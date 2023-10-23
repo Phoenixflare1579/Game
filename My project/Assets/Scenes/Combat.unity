@@ -1610,6 +1610,7 @@ MonoBehaviour:
   order: 0
   healthbar: {fileID: 218092869647039973, guid: 1c7b889413dd87842a30e4b5f045ec0a, type: 3}
   End: {fileID: 1896193544}
+  xp: 0
 --- !u!4 &537914408
 Transform:
   m_ObjectHideFlags: 0
@@ -4247,8 +4248,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1304663249}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
+        m_TargetAssemblyTypeName: Return, Assembly-CSharp
+        m_MethodName: R
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4305,7 +4306,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1304663244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 617a360229cdb144fa2b11b9fd26ce20, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a5995fd998cd4498c45065ec5333be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1376536345
