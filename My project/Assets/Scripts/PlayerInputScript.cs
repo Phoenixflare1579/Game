@@ -32,6 +32,10 @@ public class ExampleClass : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized*speed + new Vector3(0, rb.velocity.y, 0);
+        if (GameObject.FindGameObjectWithTag("Pause"))
+        {
+            menu = GameObject.FindGameObjectWithTag("Pause");
+        }
     }
 
     public void Move(InputAction.CallbackContext c)
@@ -63,11 +67,11 @@ public class ExampleClass : MonoBehaviour
        if (c.performed) 
        {
             speed *= 2.0f;
-        }
+       }
        else if (c.canceled)
-        {
+       {
             speed /= 2.0f;
-        }
+       }
     }
 
     public void Menu(InputAction.CallbackContext c) 
