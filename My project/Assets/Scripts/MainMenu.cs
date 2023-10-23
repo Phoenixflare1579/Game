@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
+        Debug.Log("MainMenu");
         SceneManager.LoadScene("World");
         GameObject rename = Instantiate(MC);
         rename.name = rename.name.Replace("(Clone)", "").Trim();

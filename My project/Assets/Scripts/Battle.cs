@@ -15,6 +15,7 @@ public class Battle : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Battle");
         rb = GetComponent<Rigidbody>();
         BattleCounter = 3 + Random.Range(0, 10);
         coroutine = WaitAndPrint(1.0f);

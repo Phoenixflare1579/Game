@@ -14,6 +14,7 @@ public class MCStats : CharStats
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("MC Stats");
         ChangeState();
         CharName = "???";
         position = 0;

@@ -23,7 +23,8 @@ public class BattleStartup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        players=GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log("BattleStartUp");
+        players =GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < enemyP.Length; i++)
         {
             E=Instantiate(enemyP[i]);

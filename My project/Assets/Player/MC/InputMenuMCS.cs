@@ -9,6 +9,7 @@ public class InputMenuMCS : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("InputMenuMCs");
         MC = GameObject.Find("MC");
     }
     public void Update()

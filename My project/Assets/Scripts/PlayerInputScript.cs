@@ -15,7 +15,7 @@ public class ExampleClass : MonoBehaviour
     int i = 0;
     void Start()
     {
-        
+        Debug.Log("PlayerInput");
         MyInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
