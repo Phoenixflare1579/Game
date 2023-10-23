@@ -37,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4859599567114563572
 SpriteRenderer:
@@ -353,3 +353,4 @@ MonoBehaviour:
   Form: 0
   Weapon: 1
   WType: 
+  Dead: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}
