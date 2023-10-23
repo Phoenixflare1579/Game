@@ -84,10 +84,12 @@ public class MCStats : CharStats
         {
             HP = 0;
             anim.SetBool("Dead", true);
+            anim.enabled=false;
         }
         else if (HP > 0)
         {
             anim.SetBool("Dead", false);
+            anim.enabled = true;
         }
     }
 
