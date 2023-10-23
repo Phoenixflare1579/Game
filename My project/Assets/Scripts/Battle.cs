@@ -26,11 +26,6 @@ public class Battle : MonoBehaviour
     private void Update()
     {
         
-        if (Time.time >= nextTime)
-        {
-            
-            nextTime += interval;
-        }
     }
     private IEnumerator WaitAndPrint(float waitTime)
     {
