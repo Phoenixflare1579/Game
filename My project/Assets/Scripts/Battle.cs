@@ -12,6 +12,7 @@ public class Battle : MonoBehaviour
     public int BattleCounter=5;
     public Rigidbody rb;
     private IEnumerator coroutine;
+    public GameObject MC;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class Battle : MonoBehaviour
         BattleCounter = 3 + Random.Range(0, 10);
         coroutine = WaitAndPrint(1.0f);
         StartCoroutine(coroutine);
+        MC = GameObject.Find("MC");
     }
     private void Update()
     {
@@ -30,7 +32,7 @@ public class Battle : MonoBehaviour
         while (true)
         {
             Debug.Log(Movement);
-            if (rb.velocity.magnitude > 0)
+            if (rb.velocity.magnitude > .1f)
             {
                 Movement++;
                 if (rb.velocity.magnitude >= 150)
@@ -40,6 +42,7 @@ public class Battle : MonoBehaviour
             }
             if (Movement >= BattleCounter)
             {
+                MC.GetComponent<MCStats>().Location = MC.gameObject.transform.position;
                 Movement = 0;
                 BattleCounter = 15 + Random.Range(0, 10);
                 GetComponent<Animator>().SetInteger("Weapon", 1);

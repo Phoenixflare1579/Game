@@ -7,6 +7,7 @@ using UnityEngine;
 public class BattleStartup : MonoBehaviour
     
 {
+    
     public GameObject[] enemyP;
     public GameObject[] players;
     public GameObject[] playerPos;

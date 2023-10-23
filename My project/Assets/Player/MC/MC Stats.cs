@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MCStats : CharStats
 {
+    public Vector3 Location;
     public Animator anim;
     public int Form = 0;
     public int Weapon = 1;
@@ -18,6 +20,7 @@ public class MCStats : CharStats
         ChangeState();
         CharName = "???";
         position = 0;
+        Location = this.gameObject.transform.position;
         DontDestroyOnLoad(this.gameObject);
     }
 
