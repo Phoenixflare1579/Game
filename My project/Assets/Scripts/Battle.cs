@@ -14,16 +14,29 @@ public class Battle : MonoBehaviour
     public Rigidbody rb;
     int interval = 1;
     float nextTime = 0;
+    private IEnumerator coroutine;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         BattleCounter = 3 + Random.Range(0, 10);
+        coroutine = WaitAndPrint(1.0f);
+        StartCoroutine(coroutine);
     }
     private void Update()
     {
+        
         if (Time.time >= nextTime)
         {
+            
+            nextTime += interval;
+        }
+    }
+    private IEnumerator WaitAndPrint(float waitTime)
+    {
+        while (true)
+        {
+            Debug.Log(Movement);
             if (rb.velocity.magnitude > 0)
             {
                 Timer++;
@@ -46,8 +59,9 @@ public class Battle : MonoBehaviour
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
+                StopCoroutine(coroutine);
             }
-            nextTime += interval;
+            yield return new WaitForSeconds(waitTime);
         }
     }
 }
