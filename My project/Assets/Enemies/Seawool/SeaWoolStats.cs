@@ -18,7 +18,7 @@ public class SeaWoolStats : CharStats
             HP = MaxHP;
             Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
             Def = UnityEngine.Random.Range(70, 90) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(80, 100) + (5 * Level);
+            PhysAtk = UnityEngine.Random.Range(70, 85) + (5 * Level);
             MagicAtk = UnityEngine.Random.Range(60, 75) + (3 * Level);
             MagicDef = UnityEngine.Random.Range(50, 65) + (3 * Level);
             Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
@@ -66,7 +66,7 @@ public class SeaWoolStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Sword", true);
+        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Sword", true);
     }
 
     public void Ability()
@@ -75,8 +75,8 @@ public class SeaWoolStats : CharStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(5, PhysAtk, 0.6, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
-                HP -= 10;
+                target.GetComponent<CharStats>().HP -= DamageDone(5, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
+                HP -= HP/4;
             }
 
         }

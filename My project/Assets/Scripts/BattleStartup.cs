@@ -9,7 +9,7 @@ public class BattleStartup : MonoBehaviour
 {
     
     public GameObject[] enemyP;
-    public GameObject[] players;
+    GameObject[] players;
     public GameObject[] playerPos;
     public GameObject[] enemyPos;
     int p=-1;
@@ -26,9 +26,9 @@ public class BattleStartup : MonoBehaviour
     {
         Debug.Log("BattleStartUp");
         players =GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < enemyP.Length; i++)
+        for (int i = 0; i < Random.Range(1,4); i++)
         {
-            E=Instantiate(enemyP[i]);
+            E=Instantiate(enemyP[Random.Range(0,enemyP.Length-1)]);
             if (p == E.GetComponent<CharStats>().position) 
                 E.GetComponent<CharStats>().position++;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
