@@ -76,6 +76,7 @@ public class KrysStats : CharStats
             GetComponent<SpriteRenderer>().sprite = Dead;
             GetComponent<Transform>().localScale = new Vector3(9,9,0);
             anim.enabled = false;
+            if (logic != null)
             if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] == this.gameObject.name)
                 logic.GetComponent<BattleStartup>().order++;
         }
