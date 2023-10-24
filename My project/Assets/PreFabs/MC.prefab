@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 46312363630226979}
   - component: {fileID: 1444678848907130703}
   - component: {fileID: 4704177349481688447}
-  - component: {fileID: 2349137982338147829}
   - component: {fileID: 7206234117706668810}
   m_Layer: 0
   m_Name: MC
@@ -301,22 +300,6 @@ MonoBehaviour:
   lastDirection: {x: 0, y: 0}
   animator: {fileID: 0}
   menu: {fileID: 0}
---- !u!114 &2349137982338147829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9211772109014788083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e1e228c5fb20742a70a651414e7673, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Movement: 0
-  Timer: 0
-  BattleCounter: 0
-  rb: {fileID: 0}
 --- !u!114 &7206234117706668810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,8 +332,8 @@ MonoBehaviour:
   CharName: 
   position: 0
   logic: {fileID: 0}
+  Location: {x: 0, y: 0, z: 0}
   anim: {fileID: 7372105991490610914}
   Form: 0
   Weapon: 1
   WType: 
-  Dead: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}

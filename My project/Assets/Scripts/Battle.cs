@@ -17,19 +17,13 @@ public class Battle : MonoBehaviour
     void Start()
     {
         Debug.Log("Battle");
-        rb = GetComponent<Rigidbody>();
         BattleCounter = 10 + Random.Range(0, 15);
         coroutine = WaitAndPrint(1.0f);
-        StartCoroutine(coroutine);
         MC = GameObject.Find("MC");
+        rb = MC.GetComponent<Rigidbody>();
+        StartCoroutine(coroutine);
     }
-    private void FixedUpdate()
-    {
-        if (SceneManager.GetActiveScene().name == "World")
-        {
-            StartCoroutine(coroutine);
-        }
-    }
+   
     private IEnumerator WaitAndPrint(float waitTime)
     {
         while (true)
@@ -48,9 +42,9 @@ public class Battle : MonoBehaviour
                 MC.GetComponent<MCStats>().Location = MC.gameObject.transform.position;
                 Movement = 0;
                 BattleCounter = 10 + Random.Range(0, 15);
-                GetComponent<Animator>().SetInteger("Weapon", 1);
-                GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<PlayerInput>().DeactivateInput();
+                MC.GetComponent<Animator>().SetInteger("Weapon", 1);
+                MC.GetComponent<Rigidbody>().useGravity = false;
+                MC.GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
                 StopCoroutine(coroutine);
             }
