@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor;
 
 public class BattleStartup : MonoBehaviour
     
@@ -58,6 +59,8 @@ public class BattleStartup : MonoBehaviour
         }
 
         var sorted = inOrder.OrderByDescending(y => y[1]);
+
+        
 
         foreach (string[] inOrder in sorted) 
         {
