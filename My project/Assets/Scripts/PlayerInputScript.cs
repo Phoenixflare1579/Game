@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class ExampleClass : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class ExampleClass : MonoBehaviour
         MyInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        
         if (MyInput != null )
         {
             MyMap = MyInput.actions;
@@ -32,10 +34,7 @@ public class ExampleClass : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized*speed + new Vector3(0, rb.velocity.y, 0);
-        if (GameObject.FindGameObjectWithTag("Pause"))
-        {
-            menu = GameObject.FindGameObjectWithTag("Pause");
-        }
+
     }
 
     public void Move(InputAction.CallbackContext c)
@@ -75,17 +74,19 @@ public class ExampleClass : MonoBehaviour
     }
 
     public void Menu(InputAction.CallbackContext c) 
-    { 
-       if (c.started)
+    {
+        menu = GameObject.Find("PauseParent").gameObject.transform.GetChild(0).gameObject;
+        Debug.Log(menu.name);
+        if (c.started)
         {
             if (i == 0)
             {
-                menu.gameObject.SetActive(true);
+                menu.SetActive(true);
                 i++;
             }
             else
             {
-                menu.gameObject.SetActive(false);
+                menu.SetActive(false);
                 i--;
             }
         }

@@ -2359,7 +2359,7 @@ GameObject:
   - component: {fileID: 1698589189}
   m_Layer: 0
   m_Name: Options Menu
-  m_TagString: Untagged
+  m_TagString: Pause
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

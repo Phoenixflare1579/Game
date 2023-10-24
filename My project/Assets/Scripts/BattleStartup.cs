@@ -29,7 +29,7 @@ public class BattleStartup : MonoBehaviour
         for (int i = 0; i < enemyP.Length; i++)
         {
             E=Instantiate(enemyP[i]);
-            if (p == E.GetComponent<CharStats>().position)
+            if (p == E.GetComponent<CharStats>().position) 
                 E.GetComponent<CharStats>().position++;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
             p = E.GetComponent<CharStats>().position;
