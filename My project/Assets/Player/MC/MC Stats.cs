@@ -13,6 +13,7 @@ public class MCStats : CharStats
     public int Weapon = 1;
     public string WType = string.Empty;
     int i = 0;
+    public Sprite Dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,12 +88,11 @@ public class MCStats : CharStats
         if (HP <= 0)
         {
             HP = 0;
-            anim.SetBool("Dead", true);
-            anim.enabled=false;
+            GetComponent<SpriteRenderer>().sprite = Dead;
+            anim.enabled = false;
         }
         else if (HP > 0)
         {
-            anim.SetBool("Dead", false);
             anim.enabled = true;
         }
     }

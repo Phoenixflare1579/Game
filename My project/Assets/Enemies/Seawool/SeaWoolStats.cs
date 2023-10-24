@@ -47,6 +47,7 @@ public class SeaWoolStats : CharStats
     {
         if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] == gameObject.name)
         {
+            target = GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
             Action = UnityEngine.Random.Range(0, 5);
             if (Action == 0)
             {

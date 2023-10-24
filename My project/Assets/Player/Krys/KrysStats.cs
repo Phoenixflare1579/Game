@@ -11,6 +11,7 @@ public class KrysStats : CharStats
     public int Form = 0;
     int i = 0;
     int D;
+    public Sprite Dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,11 +73,14 @@ public class KrysStats : CharStats
         if (HP<=0)
         {
             HP = 0;
-            anim.SetBool("Dead", true);
+            GetComponent<SpriteRenderer>().sprite = Dead;
+            GetComponent<Transform>().localScale = new Vector3(9,9,0);
+            anim.enabled = false;
         }
         else if (HP > 0)
         {
-            anim.SetBool("Dead", false);
+            GetComponent<Transform>().localScale = new Vector3(26, 26, 0);
+            anim.enabled = true;
         }
     }
 

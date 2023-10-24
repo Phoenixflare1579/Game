@@ -337,3 +337,4 @@ MonoBehaviour:
   Form: 0
   Weapon: 1
   WType: 
+  Dead: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}
