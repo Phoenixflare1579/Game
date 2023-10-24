@@ -101,6 +101,7 @@ public class KrysStats : CharStats
             else
             {
             target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
+            HP += DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true)/4;
             }
         logic.GetComponent<BattleStartup>().order++;
     }
@@ -133,6 +134,7 @@ public class KrysStats : CharStats
         anim.SetBool("Martial", false);
         anim.SetBool("Mage", false);
         Form = 3;
+        HP -= MaxHP / 4;
     }
 
     public void Martial()
