@@ -7,7 +7,6 @@ using UnityEngine;
 public class BattleStartup : MonoBehaviour
     
 {
-    
     public GameObject[] enemyP;
     GameObject[] players;
     public GameObject[] playerPos;
@@ -85,7 +84,7 @@ public class BattleStartup : MonoBehaviour
     }
     private void Update()
     {
-        if(order==Turn.Length)
+        if(order==inOrder.Length)
         {
             order = 0;
         }
