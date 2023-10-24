@@ -18,14 +18,17 @@ public class Battle : MonoBehaviour
     {
         Debug.Log("Battle");
         rb = GetComponent<Rigidbody>();
-        BattleCounter = 3 + Random.Range(0, 10);
+        BattleCounter = 10 + Random.Range(0, 15);
         coroutine = WaitAndPrint(1.0f);
         StartCoroutine(coroutine);
         MC = GameObject.Find("MC");
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        
+        if (SceneManager.GetActiveScene().name == "World")
+        {
+            StartCoroutine(coroutine);
+        }
     }
     private IEnumerator WaitAndPrint(float waitTime)
     {
@@ -44,7 +47,7 @@ public class Battle : MonoBehaviour
             {
                 MC.GetComponent<MCStats>().Location = MC.gameObject.transform.position;
                 Movement = 0;
-                BattleCounter = 15 + Random.Range(0, 10);
+                BattleCounter = 10 + Random.Range(0, 15);
                 GetComponent<Animator>().SetInteger("Weapon", 1);
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<PlayerInput>().DeactivateInput();
