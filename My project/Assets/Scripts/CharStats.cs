@@ -25,6 +25,8 @@ public class CharStats : MonoBehaviour
     public int EXPMax;
     public string CharName;
     public int position;
+    public int skillpoints=0;
+    public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
 

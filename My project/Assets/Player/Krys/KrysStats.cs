@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,8 @@ public class KrysStats : CharStats
     int i = 0;
     int D;
     public Sprite Dead;
+    int healthperlvl = 5;
+    int curve = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,10 @@ public class KrysStats : CharStats
         position = 1;
         target = GameObject.FindGameObjectWithTag("Enemy");
         DontDestroyOnLoad(this.gameObject);
+        Level = 1;
+        CritDmg = 25;
+        EXP = 0;
+        Crit = 15;
     }
 
     private void Awake()
@@ -36,8 +43,7 @@ public class KrysStats : CharStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
         else ChangeState();
-        Level = 1;
-        MaxHP = (120 + (5 * Level));
+        MaxHP = (120 + ( healthperlvl * Level));
         MaxMana = 80 + (15 * Level);
         Speed = 120 + (5 * Level);
         if (Speed > Max) Speed = Max;
@@ -53,11 +59,8 @@ public class KrysStats : CharStats
         if (Evasion > Max) Evasion = Max;
         Accuracy = 85 + (5 * Level);
         if (Accuracy > Max) Accuracy = Max;
-        Crit = 15;
         if (Crit > CritMax) Crit = CritMax;
-        CritDmg = 25;
-        EXP = 0;
-        EXPMax = 100 + (200 * Level);
+        EXPMax = 10 + (20 * Level * curve);
         if (i == 0)
         {
             HP = MaxHP;
@@ -67,7 +70,14 @@ public class KrysStats : CharStats
         if (EXP >= EXPMax)
         {
             Level++;
+            if (Level == 10 || Level==20 || Level == 30 || Level == 40 || Level == 50 || Level == 60 || Level == 70 || Level == 80 || Level == 90)
+            {
+                skillperlvl++;
+                healthperlvl += 3;
+                curve = Level * curve;
+            }
             EXP -= EXPMax;
+            skillpoints += skillperlvl;
             i--;
         }
         if (HP<=0)
@@ -85,6 +95,7 @@ public class KrysStats : CharStats
             GetComponent<Transform>().localScale = new Vector3(26, 26, 0);
             anim.enabled = true;
         }
+
     }
 
     

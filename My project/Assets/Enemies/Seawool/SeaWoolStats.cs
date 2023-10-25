@@ -40,7 +40,7 @@ public class SeaWoolStats : CharStats
     {
         if (HP < 0)
         {
-            logic.GetComponent<BattleStartup>().xp += (int)(15 * Level / 2);
+            logic.GetComponent<BattleStartup>().xp += (int)(10 * Level / 2);
             for (int i = 0, j=0; i < logic.GetComponent<BattleStartup>().inOrder.Length; i++)
             {
                 if (logic.GetComponent<BattleStartup>().inOrder[i][0] == gameObject.name)

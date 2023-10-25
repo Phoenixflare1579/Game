@@ -23,6 +23,7 @@ public class BattleStartup : MonoBehaviour
     public GameObject Turns;
     public GameObject[] Actions;
     public int xp=0;
+    int j = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,10 +100,14 @@ public class BattleStartup : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < players.Length; i++)
+            if (j == 0)
             {
-                players[i].GetComponent<CharStats>().EXP += xp;
+                for (int i = 0; i < players.Length; i++)
+                {
+                    players[i].GetComponent<CharStats>().EXP += xp;
+                }
             }
+            j = 1;
             End.SetActive(true);
             Turns.SetActive(false);
             for (int i = 0;i < Actions.Length; i++)

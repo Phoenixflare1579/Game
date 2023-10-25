@@ -14,6 +14,8 @@ public class MCStats : CharStats
     public string WType = string.Empty;
     int i = 0;
     public Sprite Dead;
+    int healthperlvl = 8;
+    int curve = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class MCStats : CharStats
         position = 0;
         Location = this.gameObject.transform.position;
         DontDestroyOnLoad(this.gameObject);
+        Level = 1;
+        EXP = 0;
+        Crit = 15;
+        CritDmg = 25;
     }
 
     // Update is called once per frame
@@ -35,8 +41,7 @@ public class MCStats : CharStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = GameObject.FindGameObjectWithTag("Enemy");
         else ChangeState();
-        Level = 1;
-        MaxHP = 120 + (8 * Level);
+        MaxHP = 120 + (healthperlvl * Level);
         MaxMana = 50 + (5 * Level);
         Speed = 100 + (5 * Level);
         if (Speed > Max) Speed = Max;
@@ -52,11 +57,8 @@ public class MCStats : CharStats
         if (Evasion > Max) Evasion = Max;
         Accuracy = 85 + (5 * Level);
         if (Accuracy > Max) Accuracy = Max;
-        Crit = 15;
         if (Crit > CritMax) Crit = CritMax;
-        CritDmg = 25;
-        EXP = 0;
-        EXPMax = 100 + (200 * Level);
+        EXPMax = 10 + (20 * Level * curve);
         if (i == 0)
         {
             HP = MaxHP;
@@ -66,6 +68,13 @@ public class MCStats : CharStats
         if (EXP >= EXPMax)
         {
             Level++;
+            if (Level == 10 || Level == 20 || Level == 30 || Level == 40 || Level == 50 || Level == 60 || Level == 70 || Level == 80 || Level == 90)
+            {
+                skillperlvl++;
+                healthperlvl += 5;
+                curve = Level * curve;
+            }
+            skillpoints += skillperlvl;
             EXP -= EXPMax;
             i--;
         }
