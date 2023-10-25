@@ -20,6 +20,8 @@ public class BattleStartup : MonoBehaviour
     GameObject E;
     public GameObject healthbar;
     public GameObject End;
+    public GameObject Turns;
+    public GameObject[] Actions;
     public int xp=0;
     // Start is called before the first frame update
     void Start()
@@ -102,6 +104,9 @@ public class BattleStartup : MonoBehaviour
                 players[i].GetComponent<CharStats>().EXP += xp;
             }
             End.SetActive(true);
+            Turns.SetActive(false);
+            for (int i = 0;i < Actions.Length; i++)
+                Actions[i].SetActive(false);
         }
     }
 }
