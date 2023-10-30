@@ -31,7 +31,7 @@ public class BattleStartup : MonoBehaviour
         players =GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < Random.Range(1,4); i++)
         {
-            E=Instantiate(enemyP[Random.Range(0,enemyP.Length-1)]);
+            E=Instantiate(enemyP[Random.Range(0,enemyP.Length)]);
             if (p == E.GetComponent<CharStats>().position) 
                 E.GetComponent<CharStats>().position++;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
@@ -82,6 +82,7 @@ public class BattleStartup : MonoBehaviour
             {
                 players[i].GetComponent<MCStats>().WeaponSwap();
                 players[i].GetComponent<SpriteRenderer>().flipX = true;
+                players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
             Holder.GetComponent<HealthBarS>().p = players[i];

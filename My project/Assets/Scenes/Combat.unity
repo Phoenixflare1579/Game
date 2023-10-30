@@ -1744,6 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyP:
+  - {fileID: 2299692878642332399, guid: 5db62211e997f764aafa02e9873b0750, type: 3}
   - {fileID: 1516542488240181328, guid: 36e79cd89b405dc47979790786df4da8, type: 3}
   playerPos:
   - {fileID: 466484449}
