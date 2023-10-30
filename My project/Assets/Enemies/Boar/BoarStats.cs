@@ -37,7 +37,16 @@ public class BoarStats : CharStats
     // Update is called once per frame
     void Update()
     {
-        if (HP < 0)
+        if (isTarget==true)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (HP <= 0)
         {
             logic.GetComponent<BattleStartup>().xp += (int)(10 * Level / 2);
             for (int i = 0, j = 0; i < logic.GetComponent<BattleStartup>().inOrder.Length; i++)
