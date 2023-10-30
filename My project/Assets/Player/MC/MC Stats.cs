@@ -34,12 +34,15 @@ public class MCStats : CharStats
     // Update is called once per frame
     void Update()
     {
+        
+
         if (GameObject.FindGameObjectWithTag("Logic") != null)
         {
             logic = GameObject.FindGameObjectWithTag("Logic");
         }
+
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
-            target = GameObject.FindGameObjectWithTag("Enemy");
+            target = generateTarget();
         else ChangeState();
         MaxHP = 120 + (healthperlvl * Level);
         MaxMana = 50 + (5 * Level);

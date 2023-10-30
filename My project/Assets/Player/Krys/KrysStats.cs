@@ -41,7 +41,7 @@ public class KrysStats : CharStats
         if (GameObject.FindGameObjectWithTag("Logic") != null)
             logic = GameObject.FindGameObjectWithTag("Logic");
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
-            target = GameObject.FindGameObjectWithTag("Enemy");
+            target = generateTarget();
         else ChangeState();
         MaxHP = (120 + ( healthperlvl * Level));
         MaxMana = 80 + (15 * Level);

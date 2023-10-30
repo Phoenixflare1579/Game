@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharStats : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class CharStats : MonoBehaviour
     public int EXPMax;
     public string CharName;
     public int position;
+    public bool isTarget = false;
     public int skillpoints=0;
     public int skillperlvl=1;
     public GameObject logic;
@@ -49,6 +52,36 @@ public class CharStats : MonoBehaviour
             normDmg += normDmg * 0.2;
             Debug.Log("Weakpoint Hit!");
         }
+        Debug.Log(target.GetComponent<CharStats>().HP - (int)normDmg + " " + target.name + " " + gameObject.name);
         return (int)normDmg;
     }
+
+    public void OnMouseDown()
+    {
+        if (gameObject.tag == "Enemy")
+        {
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<CharStats>().isTarget = false;
+                
+            }
+            Debug.Log(gameObject.name);
+            gameObject.GetComponent<CharStats>().isTarget = true;
+        }
+    }
+    
+    public GameObject generateTarget()
+    {
+        GameObject HoldTarget = GameObject.FindGameObjectsWithTag("Enemy")[0];
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<CharStats>().isTarget)
+            {
+                HoldTarget = GameObject.FindGameObjectsWithTag("Enemy")[i];
+            }
+        }
+        return HoldTarget;
+    }
+
 }

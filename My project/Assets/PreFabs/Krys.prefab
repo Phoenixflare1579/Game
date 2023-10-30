@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4357325740634181114}
   - component: {fileID: 981642501906859584}
   - component: {fileID: 3854558718292076483}
+  - component: {fileID: 5513518446308709574}
   m_Layer: 0
   m_Name: Krys
   m_TagString: Player
@@ -41,7 +42,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7646072654479239843}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -138,7 +139,31 @@ MonoBehaviour:
   EXPMax: 0
   CharName: 
   position: 0
+  isTarget: 0
+  skillpoints: 0
+  skillperlvl: 1
   logic: {fileID: 0}
   anim: {fileID: 981642501906859584}
   Form: 0
   Dead: {fileID: 21300000, guid: 78df787b038514d43a9e20f03688dafc, type: 3}
+--- !u!65 &5513518446308709574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646072654479239843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0597963, y: 1.9115732, z: 0.2}
+  m_Center: {x: -0.21887918, y: -0.5292204, z: 0}
