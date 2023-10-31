@@ -42,6 +42,7 @@ public class SeaWoolStats : CharStats
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
+
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
