@@ -88,6 +88,9 @@ public class BattleStartup : MonoBehaviour
             Holder.GetComponent<HealthBarS>().p = players[i];
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
+
+        GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
+
     }
     private void Update()
     {

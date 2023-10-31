@@ -62,6 +62,7 @@ public class SeaWoolStats : CharStats
                     logic.GetComponent<BattleStartup>().inOrder[i - 1][1] = logic.GetComponent<BattleStartup>().inOrder[i - 1][1];
                 }
             }
+            GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
             logic.GetComponent<BattleStartup>().inOrder = logic.GetComponent<BattleStartup>().inOrder.Take(logic.GetComponent<BattleStartup>().inOrder.Length - 1).ToArray();
             Destroy(this.gameObject);
         }

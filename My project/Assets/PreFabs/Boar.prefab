@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 902645085341157966}
   - component: {fileID: 5090210611363743785}
   - component: {fileID: 6915754095162011507}
+  - component: {fileID: 478983592632327313}
   m_Layer: 0
   m_Name: Boar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +149,27 @@ MonoBehaviour:
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
+--- !u!65 &478983592632327313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299692878642332399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.032294, y: 2.9044044, z: 0.2}
+  m_Center: {x: -0.06836764, y: -2.5978048, z: 0}
 --- !u!1 &7499554762563844498
 GameObject:
   m_ObjectHideFlags: 0
