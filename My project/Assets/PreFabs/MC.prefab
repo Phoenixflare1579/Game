@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7113381308813870756}
   - component: {fileID: 4859599567114563572}
   - component: {fileID: 7372105991490610914}
-  - component: {fileID: 4687922361661762320}
   - component: {fileID: 46312363630226979}
   - component: {fileID: 1444678848907130703}
   - component: {fileID: 4704177349481688447}
   - component: {fileID: 7206234117706668810}
+  - component: {fileID: 7723524079306629853}
   m_Layer: 0
   m_Name: MC
   m_TagString: Player
@@ -111,27 +111,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &4687922361661762320
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9211772109014788083}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.8067038, y: 5.094646, z: 0.4303574}
-  m_Center: {x: -0.10165987, y: -1.2110857, z: 0.02133313}
 --- !u!54 &46312363630226979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -331,6 +310,7 @@ MonoBehaviour:
   EXPMax: 0
   CharName: 
   position: 0
+  isTarget: 0
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
@@ -340,3 +320,26 @@ MonoBehaviour:
   Weapon: 1
   WType: 
   Dead: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}
+--- !u!136 &7723524079306629853
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211772109014788083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.3253762
+  m_Height: 5.2719507
+  m_Direction: 1
+  m_Center: {x: -0.1130356, y: -1.251305, z: 0.03030116}
