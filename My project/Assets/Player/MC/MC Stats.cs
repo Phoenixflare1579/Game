@@ -46,7 +46,7 @@ public class MCStats : CharStats
         else ChangeState();
         MaxHP = 120 + (healthperlvl * Level);
         MaxMana = 50 + (5 * Level);
-        Speed = 100 + (5 * Level);
+        Speed = 90 + (5 * Level);
         if (Speed > Max) Speed = Max;
         Def = 65 + (3 * Level);
         if (Def > Max) Def = Max;

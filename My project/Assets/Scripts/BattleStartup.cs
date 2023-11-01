@@ -106,7 +106,6 @@ public class BattleStartup : MonoBehaviour
             int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
 
             inOrder[i] = new string[] { Turn[i], CharSpeed.ToString() };
-
         }
 
         var sorted = inOrder.OrderByDescending(y => y[1]);
