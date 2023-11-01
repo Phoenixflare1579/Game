@@ -144,6 +144,7 @@ MonoBehaviour:
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
+  damageindicatorP: {fileID: 719356124934872132, guid: c6858d73b9989614cb3b94eaa53ae1fa, type: 3}
 --- !u!65 &2771569088137168439
 BoxCollider:
   m_ObjectHideFlags: 0

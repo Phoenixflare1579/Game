@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -32,6 +33,8 @@ public class CharStats : MonoBehaviour
     public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
+    public GameObject damageindicatorP;
+    GameObject holder;
 
     private void Start()
     {
@@ -40,19 +43,22 @@ public class CharStats : MonoBehaviour
 
     public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic/*, GameObject Object*/)
     {
-
+        holder = Instantiate(damageindicatorP);
         double normDmg = BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
-        if (Random.Range(0, 1) <= Crit / 100 && isNotMagic)
+        if (Random.Range(0, 1) >= 100-Crit / 100 && isNotMagic)
         { 
             normDmg += normDmg * CritDmg/100;
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,0,0,255);
         }
         Debug.Log(target.GetComponent<CharStats>().weaknesses.ContainsKey(type));
         if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
         {
             normDmg += normDmg * 0.2;
-            Debug.Log("Weakpoint Hit!");
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(0,255,0,255);
         }
         Debug.Log(target.GetComponent<CharStats>().HP - (int)normDmg + " " + target.name + " " + gameObject.name);
+        holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = " " + (int)normDmg;
+        holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y,target.transform.position.z);
         return (int)normDmg;
     }
 

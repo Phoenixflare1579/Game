@@ -314,6 +314,7 @@ MonoBehaviour:
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
+  damageindicatorP: {fileID: 719356124934872132, guid: c6858d73b9989614cb3b94eaa53ae1fa, type: 3}
   Location: {x: 0, y: 0, z: 0}
   anim: {fileID: 7372105991490610914}
   Form: 0
