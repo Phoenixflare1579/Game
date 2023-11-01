@@ -27,6 +27,7 @@ public class SeaWoolStats : CharStats
             Crit = 15;
             CritDmg = 25;
             CharName = "SeaWool";
+            position = 0;
             target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
             weaknesses.Add("Spear", true);
             weaknesses.Add("Knife", true);
@@ -51,20 +52,10 @@ public class SeaWoolStats : CharStats
         if (HP <= 0)
         {
             logic.GetComponent<BattleStartup>().xp += (int)(10 * Level / 2);
-            for (int i = 0, j=0; i < logic.GetComponent<BattleStartup>().inOrder.Length; i++)
-            {
-                if (logic.GetComponent<BattleStartup>().inOrder[i][0] == gameObject.name)
-                {
-                    j = 1;
-                }
-                if (j==1 && logic.GetComponent<BattleStartup>().inOrder[i][0] != gameObject.name)
-                {
-                    logic.GetComponent<BattleStartup>().inOrder[i - 1][0] = logic.GetComponent<BattleStartup>().inOrder[i - 1][0];
-                    logic.GetComponent<BattleStartup>().inOrder[i - 1][1] = logic.GetComponent<BattleStartup>().inOrder[i - 1][1];
-                }
-            }
-            GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
-            logic.GetComponent<BattleStartup>().inOrder = logic.GetComponent<BattleStartup>().inOrder.Take(logic.GetComponent<BattleStartup>().inOrder.Length - 1).ToArray();
+            this.tag = "Untagged";
+            logic.GetComponent<BattleStartup>().Order();
+            if (GameObject.FindGameObjectWithTag("Enemy") != null)
+                GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
             Destroy(this.gameObject);
         }
     }

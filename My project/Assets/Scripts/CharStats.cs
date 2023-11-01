@@ -35,12 +35,6 @@ public class CharStats : MonoBehaviour
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
     public GameObject damageindicatorP;
     GameObject holder;
-
-    private void Start()
-    {
-
-    }
-
     public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic/*, GameObject Object*/)
     {
         holder = Instantiate(damageindicatorP);
@@ -50,13 +44,11 @@ public class CharStats : MonoBehaviour
             normDmg += normDmg * CritDmg/100;
             holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,0,0,255);
         }
-        Debug.Log(target.GetComponent<CharStats>().weaknesses.ContainsKey(type));
         if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
         {
             normDmg += normDmg * 0.2;
             holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(0,255,0,255);
         }
-        Debug.Log(target.GetComponent<CharStats>().HP - (int)normDmg + " " + target.name + " " + gameObject.name);
         holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = " " + (int)normDmg;
         holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y,target.transform.position.z);
         return (int)normDmg;
@@ -71,7 +63,6 @@ public class CharStats : MonoBehaviour
                 GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<CharStats>().isTarget = false;
                 
             }
-            Debug.Log(gameObject.name);
             gameObject.GetComponent<CharStats>().isTarget = true;
         }
     }

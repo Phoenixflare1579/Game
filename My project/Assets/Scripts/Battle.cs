@@ -16,7 +16,6 @@ public class Battle : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Battle");
         BattleCounter = 10 + Random.Range(0, 15);
         coroutine = WaitAndPrint(1.0f);
         MC = GameObject.Find("MC");
@@ -28,7 +27,6 @@ public class Battle : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(Movement);
             if (rb.velocity.magnitude > .1f)
             {
                 Movement++;

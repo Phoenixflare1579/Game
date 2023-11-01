@@ -27,7 +27,6 @@ public class BattleStartup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("BattleStartUp");
         players =GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < Random.Range(1,4); i++)
         {
@@ -36,38 +35,6 @@ public class BattleStartup : MonoBehaviour
                 E.GetComponent<CharStats>().position++;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
             p = E.GetComponent<CharStats>().position;
-        }
-
-        Turn = new string[players.Length+ GameObject.FindGameObjectsWithTag("Enemy").Length];
-
-        inOrder = new string[players.Length+ GameObject.FindGameObjectsWithTag("Enemy").Length][];
-
-        for (int i = 0; i < players.Length; i++)
-        {
-            Turn[i] = (players[i].name);
-        }
-            
-        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-        {
-            Turn[i+players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
-        }
-
-        for (int i = 0; i< Turn.Length; i++)//Speed Random Bais
-        {
-            int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
-
-            inOrder[i] = new string[] { Turn[i], CharSpeed.ToString() };
-
-        }
-
-        var sorted = inOrder.OrderByDescending(y => y[1]);
-
-        
-
-        foreach (string[] inOrder in sorted) 
-        {
-            Debug.Log(inOrder[0]);
-            Debug.Log(inOrder[1]);
         }
 
         for (int i = 0; i < players.Length; i++)
@@ -88,7 +55,7 @@ public class BattleStartup : MonoBehaviour
             Holder.GetComponent<HealthBarS>().p = players[i];
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
-
+        Order();
         GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
 
     }
@@ -117,5 +84,31 @@ public class BattleStartup : MonoBehaviour
             for (int i = 0;i < Actions.Length; i++)
                 Actions[i].SetActive(false);
         }
+    }
+    public void Order()
+    {
+        Turn = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
+
+        inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length][];
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            Turn[i] = (players[i].name);
+        }
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+        {
+            Turn[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
+        }
+
+        for (int i = 0; i < Turn.Length; i++)//Speed Random Bais
+        {
+            int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
+
+            inOrder[i] = new string[] { Turn[i], CharSpeed.ToString() };
+
+        }
+
+        var sorted = inOrder.OrderByDescending(y => y[1]);
     }
 }
