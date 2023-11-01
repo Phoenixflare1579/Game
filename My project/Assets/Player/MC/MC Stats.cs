@@ -16,6 +16,7 @@ public class MCStats : CharStats
     public Sprite Dead;
     int healthperlvl = 8;
     int curve = 1;
+    Dictionary<string,int> inventory = new Dictionary<string,int>();
     // Start is called before the first frame update
     void Start()
     {
