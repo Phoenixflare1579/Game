@@ -103,7 +103,7 @@ public class MCStats : CharStats
             GetComponent<SpriteRenderer>().sprite = Dead;
             anim.enabled = false;
             if (logic != null)
-                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] ==this.gameObject.name)
+                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] ==this.gameObject.name)
             logic.GetComponent<BattleStartup>().order++;
         }
         else if (HP > 0)

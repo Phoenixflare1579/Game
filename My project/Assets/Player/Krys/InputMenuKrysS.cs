@@ -15,7 +15,7 @@ public class InputMenuKrysS : MonoBehaviour
     }
     public void Update()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] == "Krys") 
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == "Krys") 
         { 
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             if (i == 0)

@@ -9,8 +9,8 @@ public class TurnS : MonoBehaviour
 
     void Update()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0] != "MC Base")
-            this.GetComponent<TextMeshProUGUI>().text = logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order][0];
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] != "MC Base")
+            this.GetComponent<TextMeshProUGUI>().text = logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order];
         else
             this.GetComponent<TextMeshProUGUI>().text = "???";
     }

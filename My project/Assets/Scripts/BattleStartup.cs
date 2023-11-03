@@ -14,7 +14,8 @@ public class BattleStartup : MonoBehaviour
     public GameObject[] enemyPos;
     int p=-1;
     public string[] Turn;
-    public string[][] inOrder;
+    public string[] inOrder;
+    public int[] Speeds;
     public int order = 0;
     GameObject Holder;
     GameObject E;
@@ -61,7 +62,7 @@ public class BattleStartup : MonoBehaviour
     }
     private void Update()
     {
-        if(order==inOrder.Length)
+        if (order==inOrder.Length)
         {
             order = 0;
         }
@@ -89,7 +90,7 @@ public class BattleStartup : MonoBehaviour
     {
         Turn = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
 
-        inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length][];
+        inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -105,9 +106,14 @@ public class BattleStartup : MonoBehaviour
         {
             int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
 
-            inOrder[i] = new string[] { Turn[i], CharSpeed.ToString() };
+            inOrder[i] = Turn[i];
+            Speeds[i] = CharSpeed;
         }
-
-        var sorted = inOrder.OrderByDescending(y => y[1]);
+        ReSort();
+    }
+    public void ReSort()
+    {
+        System.Array.Sort(Speeds, inOrder);
+        System.Array.Reverse(inOrder);
     }
 }
