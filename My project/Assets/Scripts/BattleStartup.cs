@@ -25,7 +25,40 @@ public class BattleStartup : MonoBehaviour
     public GameObject[] Actions;
     public int xp=0;
     int j = 0;
-    // Start is called before the first frame update
+    public void ReSort()
+    {
+        System.Array.Sort(Speeds,inOrder);
+        System.Array.Reverse(inOrder);
+        for (int i = 0; i < Speeds.Length; i++)
+        Debug.Log(Speeds[i]);
+    }
+    public void Order()
+    {
+        Turn = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
+
+        inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
+
+        Speeds = new int[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            Turn[i] = (players[i].name);
+        }
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+        {
+            Turn[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
+        }
+
+        for (int i = 0; i < Turn.Length; i++)
+        {
+            int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
+
+            inOrder[i] = Turn[i];
+            Speeds[i] = CharSpeed;
+        }
+        ReSort();
+    }
     void Start()
     {
         players =GameObject.FindGameObjectsWithTag("Player");
@@ -58,7 +91,6 @@ public class BattleStartup : MonoBehaviour
         }
         Order();
         GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
-
     }
     private void Update()
     {
@@ -85,35 +117,5 @@ public class BattleStartup : MonoBehaviour
             for (int i = 0;i < Actions.Length; i++)
                 Actions[i].SetActive(false);
         }
-    }
-    public void Order()
-    {
-        Turn = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
-
-        inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
-
-        for (int i = 0; i < players.Length; i++)
-        {
-            Turn[i] = (players[i].name);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-        {
-            Turn[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
-        }
-
-        for (int i = 0; i < Turn.Length; i++)//Speed Random Bais
-        {
-            int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
-
-            inOrder[i] = Turn[i];
-            Speeds[i] = CharSpeed;
-        }
-        ReSort();
-    }
-    public void ReSort()
-    {
-        System.Array.Sort(Speeds, inOrder);
-        System.Array.Reverse(inOrder);
     }
 }
