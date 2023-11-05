@@ -1757,6 +1757,8 @@ MonoBehaviour:
   - {fileID: 950290553}
   - {fileID: 911521147}
   Turn: []
+  inOrder: []
+  Speeds: 
   order: 0
   healthbar: {fileID: 218092869647039973, guid: 1c7b889413dd87842a30e4b5f045ec0a, type: 3}
   End: {fileID: 1896193544}
