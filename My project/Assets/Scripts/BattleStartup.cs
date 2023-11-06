@@ -13,7 +13,6 @@ public class BattleStartup : MonoBehaviour
     public GameObject[] playerPos;
     public GameObject[] enemyPos;
     int p=-1;
-    public string[] Turn;
     public string[] inOrder;
     public int[] Speeds;
     public int order = 0;
@@ -34,27 +33,23 @@ public class BattleStartup : MonoBehaviour
     }
     public void Order()
     {
-        Turn = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
-
         inOrder = new string[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
 
         Speeds = new int[players.Length + GameObject.FindGameObjectsWithTag("Enemy").Length];
 
         for (int i = 0; i < players.Length; i++)
         {
-            Turn[i] = (players[i].name);
+            inOrder[i] = (players[i].name);
         }
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
         {
-            Turn[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
+            inOrder[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
         }
 
-        for (int i = 0; i < Turn.Length; i++)
+        for (int i = 0; i < inOrder.Length; i++)
         {
-            int CharSpeed = (GameObject.Find(Turn[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100));
-
-            inOrder[i] = Turn[i];
+            int CharSpeed = GameObject.Find(inOrder[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100);
             Speeds[i] = CharSpeed;
         }
         ReSort();
