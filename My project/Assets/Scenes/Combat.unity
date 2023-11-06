@@ -1745,7 +1745,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyP:
   - {fileID: 2299692878642332399, guid: 5db62211e997f764aafa02e9873b0750, type: 3}
+  - {fileID: 8464105675465758376, guid: 905c37ab450dec5448ad3266511fa54a, type: 3}
+  - {fileID: 2661836365264092323, guid: 50c1ef0cb9adb4a479253257df88e726, type: 3}
   - {fileID: 1516542488240181328, guid: 36e79cd89b405dc47979790786df4da8, type: 3}
+  - {fileID: 4003041462558925988, guid: 7f3c2de862443354f99904c11f22e06f, type: 3}
   playerPos:
   - {fileID: 466484449}
   - {fileID: 282650117}
