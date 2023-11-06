@@ -13,7 +13,7 @@ public class MCStats : CharStats
     public int Weapon = 1;
     public string WType = string.Empty;
     int i = 0;
-    public Sprite Dead;
+    public Sprite Die;
     int healthperlvl = 8;
     int curve = 1;
     Dictionary<string,int> inventory = new Dictionary<string,int>();
@@ -100,7 +100,7 @@ public class MCStats : CharStats
         if (HP <= 0)
         {
             HP = 0;
-            GetComponent<SpriteRenderer>().sprite = Dead;
+            GetComponent<SpriteRenderer>().sprite = Die;
             anim.enabled = false;
             if (logic != null)
                 if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] ==this.gameObject.name)

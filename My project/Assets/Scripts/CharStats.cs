@@ -35,6 +35,7 @@ public class CharStats : MonoBehaviour
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
     public GameObject damageindicatorP;
     GameObject holder;
+    public int Dead = 0;
     public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic/*, GameObject Object*/)
     {
         holder = Instantiate(damageindicatorP);

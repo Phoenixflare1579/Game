@@ -12,7 +12,7 @@ public class KrysStats : CharStats
     public int Form = 0;
     int i = 0;
     int D;
-    public Sprite Dead;
+    public Sprite Die;
     int healthperlvl = 5;
     int curve = 1;
     // Start is called before the first frame update
@@ -83,7 +83,7 @@ public class KrysStats : CharStats
         if (HP<=0)
         {
             HP = 0;
-            GetComponent<SpriteRenderer>().sprite = Dead;
+            GetComponent<SpriteRenderer>().sprite = Die;
             GetComponent<Transform>().localScale = new Vector3(9,9,0);
             anim.enabled = false;
             if (logic != null)

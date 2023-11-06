@@ -50,17 +50,23 @@ public class BasicAngelStats : CharStats
 
         if (HP <= 0)
         {
-            logic.GetComponent<BattleStartup>().xp += (int)(15 * Level / 2);
-            this.tag = "Untagged";
-            logic.GetComponent<BattleStartup>().Order();
-            if (GameObject.FindGameObjectWithTag("Enemy") != null)
-                GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
-            Destroy(this.gameObject);
+            if (Dead == 0)
+            {
+                logic.GetComponent<BattleStartup>().xp += (int)(15 * Level / 2);
+                this.tag = "Untagged";
+                if (GameObject.FindGameObjectWithTag("Enemy") != null)
+                    GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
+                Dead = 1;
+            }
+            GetComponent<SpriteRenderer>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order]==gameObject.name)
+            logic.GetComponent<BattleStartup>().order++;
         }
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name && Dead==0)
         {
             target = GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
             Action = UnityEngine.Random.Range(0, 5);

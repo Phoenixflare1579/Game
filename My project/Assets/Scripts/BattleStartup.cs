@@ -26,6 +26,11 @@ public class BattleStartup : MonoBehaviour
     int j = 0;
     public void ReSort()
     {
+        for (int i = 0; i < inOrder.Length; i++)
+        {
+            int CharSpeed = GameObject.Find(inOrder[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100);
+            Speeds[i] = CharSpeed;
+        }
         System.Array.Sort(Speeds,inOrder);
         System.Array.Reverse(inOrder);
         for (int i = 0; i < Speeds.Length; i++)
@@ -47,11 +52,6 @@ public class BattleStartup : MonoBehaviour
             inOrder[i + players.Length] = GameObject.FindGameObjectsWithTag("Enemy")[i].name;
         }
 
-        for (int i = 0; i < inOrder.Length; i++)
-        {
-            int CharSpeed = GameObject.Find(inOrder[i]).GetComponent<CharStats>().Speed + Random.Range(0, 100);
-            Speeds[i] = CharSpeed;
-        }
         ReSort();
     }
     void Start()
@@ -91,6 +91,7 @@ public class BattleStartup : MonoBehaviour
     {
         if (order==inOrder.Length)
         {
+            ReSort();
             order = 0;
         }
         if(GameObject.FindGameObjectWithTag("Enemy")!=null)
