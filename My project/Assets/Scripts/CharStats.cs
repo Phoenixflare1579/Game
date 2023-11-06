@@ -57,12 +57,17 @@ public class CharStats : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (gameObject.tag == "Enemy")
+        if (gameObject.tag == "Enemy" || gameObject.tag == "Player")
         {
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
             {
                 GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<CharStats>().isTarget = false;
                 
+            }
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<CharStats>().isTarget = false;
+
             }
             gameObject.GetComponent<CharStats>().isTarget = true;
         }
@@ -79,6 +84,15 @@ public class CharStats : MonoBehaviour
                 HoldTarget = GameObject.FindGameObjectsWithTag("Enemy")[i];
             }
         }
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<CharStats>().isTarget)
+            {
+                HoldTarget = GameObject.FindGameObjectsWithTag("Player")[i];
+            }
+        }
+
         return HoldTarget;
     }
 
