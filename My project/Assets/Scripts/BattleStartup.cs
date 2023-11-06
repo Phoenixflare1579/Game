@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class BattleStartup : MonoBehaviour
     
@@ -61,7 +62,7 @@ public class BattleStartup : MonoBehaviour
         {
             E=Instantiate(enemyP[Random.Range(0,enemyP.Length)]);
             if (p == E.GetComponent<CharStats>().position) 
-                E.GetComponent<CharStats>().position++;
+                E.GetComponent<CharStats>().position+=1;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
             p = E.GetComponent<CharStats>().position;
         }
@@ -93,6 +94,18 @@ public class BattleStartup : MonoBehaviour
         {
             ReSort();
             order = 0;
+        }
+        int d = 0;
+        for (int i=0; i<players.Length; i++)
+        {
+            if(players[i].GetComponent<CharStats>().HP<=0)
+            {
+                d++;
+            }
+            if(d==players.Length)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
         }
         if(GameObject.FindGameObjectWithTag("Enemy")!=null)
         {
