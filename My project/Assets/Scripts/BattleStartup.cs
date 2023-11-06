@@ -20,6 +20,7 @@ public class BattleStartup : MonoBehaviour
     GameObject Holder;
     GameObject E;
     public GameObject healthbar;
+    public GameObject manabar;
     public GameObject End;
     public GameObject Turns;
     public GameObject[] Actions;
@@ -81,6 +82,8 @@ public class BattleStartup : MonoBehaviour
                 players[i].GetComponent<SpriteRenderer>().flipX = true;
                 players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
+            Holder = Instantiate(manabar, GameObject.FindGameObjectWithTag("HP").transform);
+            Holder.GetComponent<ManaBarS>().p = players[i];
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
             Holder.GetComponent<HealthBarS>().p = players[i];
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
