@@ -88,7 +88,7 @@ public class KrysStats : CharStats
             anim.enabled = false;
             if (logic != null)
             if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
-                logic.GetComponent<BattleStartup>().order++;
+                logic.GetComponent<BattleStartup>().Increase();
         }
         else if (HP > 0)
         {
@@ -115,19 +115,19 @@ public class KrysStats : CharStats
             target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
             HP += DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true)/4;
             }
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Defend()
     {
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Flee()
     {
         int run = Random.Range(0, 4);
         if (run < 3)
-            logic.GetComponent<BattleStartup>().order++;
+            logic.GetComponent<BattleStartup>().Increase();
         else
             SceneManager.LoadScene("World");
     }
@@ -169,7 +169,7 @@ public class KrysStats : CharStats
     {
         target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, "Fire", false);
         Mana -= 10;
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Drain()
@@ -183,6 +183,6 @@ public class KrysStats : CharStats
         else
         HP += D / 4;
         Mana -= 7;
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
 }

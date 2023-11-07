@@ -13,7 +13,6 @@ public class BattleStartup : MonoBehaviour
     GameObject[] players;
     public GameObject[] playerPos;
     public GameObject[] enemyPos;
-    int p=-1;
     public string[] inOrder;
     public int[] Speeds;
     public int order = 0;
@@ -62,10 +61,8 @@ public class BattleStartup : MonoBehaviour
         for (int i = 0; i < Random.Range(1,4); i++)
         {
             E=Instantiate(enemyP[Random.Range(0,enemyP.Length)]);
-            if (p == E.GetComponent<CharStats>().position) 
-                E.GetComponent<CharStats>().position+=1;
+            E.GetComponent<CharStats>().position=i;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
-            p = E.GetComponent<CharStats>().position;
         }
 
         for (int i = 0; i < players.Length; i++)
@@ -129,5 +126,9 @@ public class BattleStartup : MonoBehaviour
             for (int i = 0;i < Actions.Length; i++)
                 Actions[i].SetActive(false);
         }
+    }
+    public void Increase()
+    {
+        order++;
     }
 }

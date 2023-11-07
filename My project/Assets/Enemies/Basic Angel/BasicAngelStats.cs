@@ -61,7 +61,7 @@ public class BasicAngelStats : CharStats
             GetComponent<SpriteRenderer>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
             if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order]==gameObject.name)
-            logic.GetComponent<BattleStartup>().order++;
+                    nt<BattleStartup>().Increase();
         }
     }
     private void FixedUpdate()
@@ -73,13 +73,13 @@ public class BasicAngelStats : CharStats
             if (Action == 0)
             {
                 Attack();
-                logic.GetComponent<BattleStartup>().order++;
+                logic.GetComponent<BattleStartup>().Increase();
                 TurnsPassed++;
             }
             else if (Action >= 1)
             {
                 Ability();
-                logic.GetComponent<BattleStartup>().order++;
+                logic.GetComponent<BattleStartup>().Increase();
                 TurnsPassed++;
             }
         }
