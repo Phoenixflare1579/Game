@@ -129,6 +129,11 @@ public class BattleStartup : MonoBehaviour
     }
     public void Increase()
     {
+        StartCoroutine(wait());
         order++;
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
