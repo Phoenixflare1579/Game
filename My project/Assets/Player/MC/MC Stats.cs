@@ -103,8 +103,8 @@ public class MCStats : CharStats
             GetComponent<SpriteRenderer>().sprite = Die;
             anim.enabled = false;
             if (logic != null)
-                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] ==this.gameObject.name)
-            logic.GetComponent<BattleStartup>().order++;
+                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
+                    logic.GetComponent<BattleStartup>().Increase();
         }
         else if (HP > 0)
         {
@@ -126,18 +126,18 @@ public class MCStats : CharStats
             {
                 target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, WType, true);
             }
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
     public void Defend()
     {
-        logic.GetComponent<BattleStartup>().order++;
+        logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Flee()
     {
         int run = Random.Range(0, 4);
         if (run < 3)
-            logic.GetComponent<BattleStartup>().order++;
+            logic.GetComponent<BattleStartup>().Increase();
         else
             SceneManager.LoadScene("World");
     }
