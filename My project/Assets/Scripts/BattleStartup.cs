@@ -134,6 +134,6 @@ public class BattleStartup : MonoBehaviour
     }
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(10);
     }
 }

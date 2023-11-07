@@ -95,7 +95,7 @@ public class CharStats : MonoBehaviour
 
         return HoldTarget;
     }
-    IEnumerator wait()
+    public IEnumerator wait()
     {
         yield return new WaitForSeconds(2);
     }
