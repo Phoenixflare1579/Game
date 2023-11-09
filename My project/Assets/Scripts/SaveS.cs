@@ -1,19 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 [System.Serializable]
-public class SaveS 
+public static class SaveS 
 {
-    private static SaveS _current;
-    public static SaveS Current
+    public static void SaveData(CharStats MC, CharStats Krys)
     {
-        get 
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Game.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        Data data = new Data(MC,Krys);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static Data LoadData()
+    {
+        string path = Application.persistentDataPath + "/Game.save";
+        if (File.Exists(path)) 
         {
-            if (_current == null)
-            {
-                _current = new SaveS();
-            }
-            return _current; 
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            Data data = formatter.Deserialize(stream) as Data;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            return null;
         }
     }
 }

@@ -6,22 +6,8 @@ using UnityEngine.Windows;
 
 public class SaveManager : MonoBehaviour
 {
-    public TMP_InputField saveName;
-    public GameObject loadbuttonP;
-
-    public void OnSave()
+    public void Save()
     {
-
-    }
-
-    public string[] savefiles;
-    public void GetLoadFiles()
-    {
-        if(!Directory.Exists(Application.persistentDataPath + "/saves/"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/saves/");
-        }
-
-        //savefiles = Directory.GetFiles(Application.persistentDataPath + "/saves/");
+        SaveS.SaveData(GameObject.Find("MC").GetComponent<CharStats>(), GameObject.Find("Krys").GetComponent<CharStats>());
     }
 }
