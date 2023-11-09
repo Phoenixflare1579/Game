@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class SaveManager : MonoBehaviour,IInteractable
+public class SaveManager : MonoBehaviour
 {
     CharStats MC;
     CharStats Krys;
@@ -37,10 +37,5 @@ public class SaveManager : MonoBehaviour,IInteractable
         Krys.skillpoints = data.skillpointsK;
         Krys.HP = data.healthK;
         Krys.Mana = data.manaK;
-    }
-
-    public void Interact()
-    {
-        Save();
     }
 }
