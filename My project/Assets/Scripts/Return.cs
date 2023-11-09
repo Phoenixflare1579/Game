@@ -18,6 +18,7 @@ public class Return : MonoBehaviour
         SceneManager.LoadScene("World");
         MC.gameObject.transform.position = MC.GetComponent<MCStats>().Location;
         MC.GetComponent<PlayerInput>().ActivateInput();
+        MC.GetComponent<Rigidbody>().useGravity = true;
         Krys.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

@@ -11,6 +11,7 @@ public class SliderValue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     void Start()
     {
-        slider.onValueChanged.AddListener((v) => { text.text = v.ToString("0")+"%"; });
+        slider.onValueChanged.AddListener((v) => { text.text = v.ToString("0") + "%"; });
+        slider.onValueChanged.AddListener((v) => { AudioListener.volume = v / 100; });
     }
 }
