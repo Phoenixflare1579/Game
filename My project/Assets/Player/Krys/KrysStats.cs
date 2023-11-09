@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+[System.Serializable]
 public class KrysStats : CharStats
 {
     public Animator anim;

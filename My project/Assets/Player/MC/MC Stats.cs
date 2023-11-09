@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-
+[System.Serializable]
 public class MCStats : CharStats
 {
     public Vector3 Location;
