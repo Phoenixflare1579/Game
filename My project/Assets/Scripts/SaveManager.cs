@@ -9,9 +9,11 @@ public class SaveManager : MonoBehaviour,IInteractable
 {
     CharStats MC;
     CharStats Krys;
-    private void Start()
+    private void Update()
     {
+        if (GameObject.Find("MC").GetComponent<CharStats>()!=null)
         MC = GameObject.Find("MC").GetComponent<CharStats>();
+        if (GameObject.Find("Krys").GetComponent<CharStats>()!=null)
         Krys = GameObject.Find("Krys").GetComponent<CharStats>();
     }
 
