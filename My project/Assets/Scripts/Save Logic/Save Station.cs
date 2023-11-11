@@ -22,5 +22,9 @@ public class SaveStation : MonoBehaviour
                 savemenu.SetActive(true);
             }
         }
+        else
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }
