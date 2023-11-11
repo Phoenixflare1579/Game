@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int HP;
+    public int Speed;
+    public int Def;
+    public int PhysAtk;
+    public int MagicAtk;
+    public int MagicDef;
+    public int Mana;
+    public int Evasion;
+    public int Accuracy;
+    public int Crit;
+    public int CritDmg;
+    public string Name;
+    public string Type;
 }
