@@ -102,7 +102,10 @@ public class CharStats : MonoBehaviour
     {
         logic = GameObject.FindGameObjectWithTag("Logic");
     }
+    public void AddEquipment(Equipment[] equipment)
+    {
 
+    }
     public IEnumerator wait()
     {
         yield return new WaitForSeconds(2);
