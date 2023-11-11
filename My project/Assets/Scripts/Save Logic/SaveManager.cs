@@ -7,8 +7,8 @@ using UnityEngine.Windows;
 
 public class SaveManager : MonoBehaviour
 {
-    CharStats MC;
-    CharStats Krys;
+    public CharStats MC;
+    public CharStats Krys;
     private void Update()
     {
         if (GameObject.Find("MC").GetComponent<CharStats>()!=null)
