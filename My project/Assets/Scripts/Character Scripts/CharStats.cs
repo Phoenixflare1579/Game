@@ -20,8 +20,8 @@ public class CharStats : MonoBehaviour
     public int Mana;
     public int Evasion;
     public int Accuracy;
-    public int Crit;
-    public int CritDmg;
+    public int Crit = 100;
+    public int CritDmg = 25;
     public const int CritMax = 100;
     public int Level;
     public int EXP;
@@ -33,25 +33,25 @@ public class CharStats : MonoBehaviour
     public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
-    //public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
-    //public Equipment[] Equipped;
-    //public Attack[] Attacks;
+    public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
+    public Equipment[] Equipped;
+    public Attacks[] Attacks;
     public GameObject damageindicatorP;
     GameObject holder;
     public int Dead = 0;
-    public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic/*, GameObject Object*/)
+    public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic)
     {
         holder = Instantiate(damageindicatorP);
         double normDmg = BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
-        if (Random.Range(0, 1) >= 100-Crit / 100 && isNotMagic)
+        if (Random.Range((float)0.0, (float)1.0) >= (float)(100.0-Crit/100.0) && isNotMagic)
         { 
             normDmg += normDmg * CritDmg/100;
-            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,0,0,255);
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,125,0,255);
         }
         if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
         {
             normDmg += normDmg * 0.2;
-            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(0,255,0,255);
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,0,0,255);
         }
         holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = " " + (int)normDmg;
         holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y,target.transform.position.z);

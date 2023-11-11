@@ -14,18 +14,10 @@ public class DeerStats : EnemyStats
     {
         FindLogic();
         {
-            Level = UnityEngine.Random.Range(1, 5);
-            MaxHP = UnityEngine.Random.Range(120, 150) + (5 * Level);
-            HP = MaxHP;
-            Speed = UnityEngine.Random.Range(90, 100) + (2 * Level);
-            Def = UnityEngine.Random.Range(80, 100) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(60, 75) + (5 * Level);
-            MagicAtk = UnityEngine.Random.Range(60, 75) + (3 * Level);
-            MagicDef = UnityEngine.Random.Range(50, 65) + (3 * Level);
-            Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
-            Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
-            Crit = 15;
-            CritDmg = 25;
+            min = new int[] { 1, 120, 90, 80, 60, 60, 50, 50, 60 };
+            max = new int[] { 5, 150, 100, 100, 75, 75, 65, 65, 100 };
+            growth = new int[] { 5, 2, 5, 5, 3, 4, 3, 5 };
+            StatRandom(min, max, growth);
             CharName = "Deer";
             position = 0;
             GetTarget();

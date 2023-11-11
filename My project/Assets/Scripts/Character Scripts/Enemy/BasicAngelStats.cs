@@ -14,18 +14,10 @@ public class BasicAngelStats : EnemyStats
     {
         FindLogic();
         {
-            Level = UnityEngine.Random.Range(1, 5);
-            MaxHP = UnityEngine.Random.Range(80, 115) + (5 * Level);
-            HP = MaxHP;
-            Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
-            Def = UnityEngine.Random.Range(70, 90) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(50, 70) + (5 * Level);
-            MagicAtk = UnityEngine.Random.Range(90, 105) + (3 * Level);
-            MagicDef = UnityEngine.Random.Range(80, 100) + (3 * Level);
-            Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
-            Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
-            Crit = 15;
-            CritDmg = 25;
+            min = new int[] { 1, 80, 80, 70, 50, 90, 80, 50, 60 };
+            max = new int[] { 5, 115, 100, 90, 70, 105, 100, 65, 100 };
+            growth = new int[] { 5, 2, 4, 3, 5, 5, 3, 5 };
+            StatRandom(min, max, growth);
             CharName = "MuteAngel";
             position = 0;
             GetTarget();

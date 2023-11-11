@@ -18,9 +18,7 @@ public class KrysStats : PlayerStats
         target = GameObject.FindGameObjectWithTag("Enemy");
         DontDestroyOnLoad(this.gameObject);
         Level = 1;
-        CritDmg = 25;
         EXP = 0;
-        Crit = 15;
         WType = "Knife";
         healthperlvl = 5;
         anim.SetInteger("Phase", 1);

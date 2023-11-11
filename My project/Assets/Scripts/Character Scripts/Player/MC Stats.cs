@@ -20,8 +20,6 @@ public class MCStats : PlayerStats
         DontDestroyOnLoad(this.gameObject);
         Level = 1;
         EXP = 0;
-        Crit = 15;
-        CritDmg = 25;
         healthperlvl = 8;
     }
     // Update is called once per frame

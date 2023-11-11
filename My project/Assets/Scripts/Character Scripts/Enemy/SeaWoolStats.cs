@@ -14,18 +14,10 @@ public class SeaWoolStats : EnemyStats
     {
         FindLogic();
         {
-            Level = UnityEngine.Random.Range(1, 5);
-            MaxHP = UnityEngine.Random.Range(100, 150) + (5 * Level);
-            HP = MaxHP;
-            Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
-            Def = UnityEngine.Random.Range(70, 90) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(70, 85) + (5 * Level);
-            MagicAtk = UnityEngine.Random.Range(60, 75) + (3 * Level);
-            MagicDef = UnityEngine.Random.Range(50, 65) + (3 * Level);
-            Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
-            Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
-            Crit = 15;
-            CritDmg = 25;
+            min = new int[] { 1, 100, 80, 70, 70, 60, 50, 50, 60 };
+            max = new int[] { 5, 150, 100, 90, 85, 75, 65, 65, 100 };
+            growth = new int[] { 5, 2, 5, 5, 3, 3, 3, 5 };
+            StatRandom(min,max,growth);
             CharName = "SeaWool";
             position = 0;
             GetTarget();
