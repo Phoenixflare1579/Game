@@ -14,7 +14,7 @@ public class SaveStation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(MC.transform.position, this.gameObject.transform.position) <= 30.0f)
+        if (Vector3.Distance(MC.transform.position, this.gameObject.transform.position) <= 50.0f)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             if(Input.GetKeyDown(KeyCode.E))
