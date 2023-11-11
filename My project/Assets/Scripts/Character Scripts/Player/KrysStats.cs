@@ -6,15 +6,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class KrysStats : CharStats
+public class KrysStats : PlayerStats
 {
-    public Animator anim;
-    public int Form = 0;
-    int i = 0;
-    int D;
+    int c = 0;
     public Sprite Die;
-    int healthperlvl = 5;
-    int curve = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,20 +21,17 @@ public class KrysStats : CharStats
         CritDmg = 25;
         EXP = 0;
         Crit = 15;
-    }
-
-    private void Awake()
-    {
+        WType = "Knife";
+        healthperlvl = 5;
         anim.SetInteger("Phase", 1);
-        anim.SetBool("Martial", true);
         Form = 1;
+        anim.SetInteger("Form", Form);
     }
-
     // Update is called once per frame
     void Update()
     {
         if (GameObject.FindGameObjectWithTag("Logic") != null)
-            logic = GameObject.FindGameObjectWithTag("Logic");
+            FindLogic();
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
@@ -61,11 +53,20 @@ public class KrysStats : CharStats
         if (Accuracy > Max) Accuracy = Max;
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
-        if (i == 0)
+        if (Form == 3 && c==0)
+        {
+            HP -= HP / 4;
+            c++;
+        }
+        else if (Form != 3 && c==1)
+        {
+            c = 0;
+        }
+        if (LvlUP == 0)
         {
             HP = MaxHP;
             Mana = MaxMana;
-            i++;
+            LvlUP++;
         }
         if (EXP >= EXPMax)
         {
@@ -78,7 +79,7 @@ public class KrysStats : CharStats
             }
             EXP -= EXPMax;
             skillpoints += skillperlvl;
-            i--;
+            LvlUP--;
         }
         if (HP<=0)
         {
@@ -97,8 +98,6 @@ public class KrysStats : CharStats
         }
 
     }
-
-    
     public void Attack()//Attacks will have a 2% randomization
     {
             if (Form == 1)
@@ -118,53 +117,6 @@ public class KrysStats : CharStats
         logic.GetComponent<BattleStartup>().Increase();
     }
 
-    public void Defend()
-    {
-        logic.GetComponent<BattleStartup>().Increase();
-    }
-
-    public void Flee()
-    {
-        int run = Random.Range(0, 4);
-        if (run < 3)
-            logic.GetComponent<BattleStartup>().Increase();
-        else
-            SceneManager.LoadScene("World");
-    }
-    
-    public void ChangeState()
-    {
-        anim.SetBool("Eldritch", false);
-        anim.SetBool("Martial", false);
-        anim.SetBool("Mage", false);
-        anim.SetInteger("Phase", 0);
-    }
-
-    public void Eldritch()
-    {
-        anim.SetBool("Eldritch", true);
-        anim.SetBool("Martial", false);
-        anim.SetBool("Mage", false);
-        Form = 3;
-        HP -= MaxHP / 4;
-    }
-
-    public void Martial()
-    {
-        anim.SetBool("Eldritch", false);
-        anim.SetBool("Martial", true);
-        anim.SetBool("Mage", false);
-        Form=1;
-    }
-
-    public void Mage()
-    {
-        anim.SetBool("Eldritch", false);
-        anim.SetBool("Martial", false);
-        anim.SetBool("Mage", true);
-        Form=2;
-    }
-
     public void FireBall()
     {
         target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, "Fire", false);
@@ -174,7 +126,8 @@ public class KrysStats : CharStats
 
     public void Drain()
     {
-        D += DamageDone(5, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, "Knife", true);
+        int D;
+        D = DamageDone(5, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, "Knife", true);
         target.GetComponent<CharStats>().HP -= D;
         if (HP + D / 4 > MaxHP)
         {

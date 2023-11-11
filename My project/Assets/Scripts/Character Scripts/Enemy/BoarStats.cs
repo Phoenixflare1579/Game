@@ -3,47 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.InputSystem.Processors;
+using static UnityEngine.GraphicsBuffer;
 
-public class SeaWoolStats : CharStats
+public class BoarStats : EnemyStats
 {
     int Action;
     int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic");
+        FindLogic();
         {
             Level = UnityEngine.Random.Range(1, 5);
-            MaxHP = UnityEngine.Random.Range(100, 150) + (5 * Level);
+            MaxHP = UnityEngine.Random.Range(70, 100) + (5 * Level);
             HP = MaxHP;
-            Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
+            Speed = UnityEngine.Random.Range(60, 80) + (2 * Level);
             Def = UnityEngine.Random.Range(70, 90) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(70, 85) + (5 * Level);
+            PhysAtk = UnityEngine.Random.Range(60, 80) + (5 * Level);
             MagicAtk = UnityEngine.Random.Range(60, 75) + (3 * Level);
             MagicDef = UnityEngine.Random.Range(50, 65) + (3 * Level);
             Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
             Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
             Crit = 15;
             CritDmg = 25;
-            CharName = "SeaWool";
+            CharName = "Boar";
             position = 0;
-            target=GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0,GameObject.FindGameObjectsWithTag("Player").Length-1)];
-            weaknesses.Add("Spear", true);
-            weaknesses.Add("Knife", true);
-            weaknesses.Add("Fire", true);
-            weaknesses.Add("Light", true);
+            GetTarget();
+            weakness = new string[]{ "Sword", "Spear", "Lightning", };
+            SetWeakness(weakness);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isTarget == true)
+        if (isTarget==true)
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
-
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
@@ -67,9 +65,9 @@ public class SeaWoolStats : CharStats
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name && Dead == 0)
         {
-            target = GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
+            GetTarget();
             Action = UnityEngine.Random.Range(0, 5);
             if (Action == 0)
             {
@@ -88,27 +86,24 @@ public class SeaWoolStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-        target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Sword", true);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Staff", true);
     }
 
     public void Ability()
     {
-        if (Action<=2)
+        if (Action <= 2)
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(5, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
-                HP -= HP/4;
+                GetTarget();
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.2, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
+                GetTarget();
+                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.2, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
             }
-
         }
-        else if (Action>2)
+        else if (Action > 2)
         {
-            Speed += (int)(1.25 * Speed);
-            if (Speed > Max*1.25)
-            {
-                Speed = (int)(Max*1.25);
-            }
-        } 
+            target.GetComponent<CharStats>().Speed = (int)(0.85 * Speed);
+        }
     }
 }

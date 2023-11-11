@@ -44,15 +44,15 @@ public class InputMenuKrysS : MonoBehaviour
     }
     public void Eldritch()
     {
-        Krys.GetComponent<KrysStats>().Eldritch();
+        Krys.GetComponent<KrysStats>().ChangeForm(3);
     }
     public void Mage()
     {
-        Krys.GetComponent<KrysStats>().Mage();
+        Krys.GetComponent<KrysStats>().ChangeForm(2);
     }
     public void Martial()
     {
-        Krys.GetComponent<KrysStats>().Martial();
+        Krys.GetComponent<KrysStats>().ChangeForm(1);
     }
     public void FireBall()
     {

@@ -70,7 +70,7 @@ public class BattleStartup : MonoBehaviour
             players[i].GetComponent<SpriteRenderer>().enabled = true;
             if (players[i].GetComponent<KrysStats>()!=null) 
             {
-                players[i].GetComponent<KrysStats>().Martial();
+                players[i].GetComponent<KrysStats>().ChangeForm(1);
                 players[i].GetComponent<KrysStats>().anim.SetInteger("Phase", 1);
             }
             else if (players[i].GetComponent<MCStats>() != null)

@@ -33,6 +33,9 @@ public class CharStats : MonoBehaviour
     public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
+    //public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
+    //public Equipment[] Equipped;
+    //public Attack[] Attacks;
     public GameObject damageindicatorP;
     GameObject holder;
     public int Dead = 0;
@@ -95,6 +98,11 @@ public class CharStats : MonoBehaviour
 
         return HoldTarget;
     }
+    public void FindLogic()
+    {
+        logic = GameObject.FindGameObjectWithTag("Logic");
+    }
+
     public IEnumerator wait()
     {
         yield return new WaitForSeconds(2);

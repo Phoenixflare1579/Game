@@ -5,17 +5,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class MCStats : CharStats
+public class MCStats : PlayerStats
 {
     public Vector3 Location;
-    public Animator anim;
-    public int Form = 0;
-    public int Weapon = 1;
-    public string WType = string.Empty;
-    int i = 0;
     public Sprite Die;
-    int healthperlvl = 8;
-    int curve = 1;
     Dictionary<string,int> inventory = new Dictionary<string,int>();
     // Start is called before the first frame update
     void Start()
@@ -29,18 +22,13 @@ public class MCStats : CharStats
         EXP = 0;
         Crit = 15;
         CritDmg = 25;
+        healthperlvl = 8;
     }
-
     // Update is called once per frame
     void Update()
     {
-        
-
         if (GameObject.FindGameObjectWithTag("Logic") != null)
-        {
-            logic = GameObject.FindGameObjectWithTag("Logic");
-        }
-
+            FindLogic();
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
@@ -62,11 +50,11 @@ public class MCStats : CharStats
         if (Accuracy > Max) Accuracy = Max;
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
-        if (i == 0)
+        if (LvlUP == 0)
         {
             HP = MaxHP;
             Mana = MaxMana;
-            i++;
+            LvlUP++;
         }
         if (EXP >= EXPMax)
         {
@@ -79,7 +67,7 @@ public class MCStats : CharStats
             }
             skillpoints += skillperlvl;
             EXP -= EXPMax;
-            i--;
+            LvlUP--;
         }
         if (Weapon == 1)
         {
@@ -127,34 +115,5 @@ public class MCStats : CharStats
                 target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, WType, true);
             }
         logic.GetComponent<BattleStartup>().Increase();
-    }
-    public void Defend()
-    {
-        logic.GetComponent<BattleStartup>().Increase();
-    }
-
-    public void Flee()
-    {
-        int run = Random.Range(0, 4);
-        if (run < 3)
-            logic.GetComponent<BattleStartup>().Increase();
-        else
-            SceneManager.LoadScene("World");
-    }
-
-    public void ChangeState()
-    {
-        Weapon = 0;
-        anim.SetInteger("Weapon", Weapon);
-    }
-
-    public void WeaponSwap()
-    {
-        Weapon++;
-        if (Weapon > 4) 
-        {
-            Weapon = 1;
-        }
-        anim.SetInteger("Weapon", Weapon);
     }
 }

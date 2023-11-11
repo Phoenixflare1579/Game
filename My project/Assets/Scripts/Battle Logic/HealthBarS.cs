@@ -14,13 +14,9 @@ public class HealthBarS : MonoBehaviour
     {
         s= GetComponent<Slider>();
         f= gameObject.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>();
-        if (p.GetComponent<KrysStats>() != null)
+        if (p.GetComponent<CharStats>() != null)
         {
-            s.maxValue = p.GetComponent<KrysStats>().MaxHP;
-        }
-        else if (p.GetComponent<MCStats>() != null) 
-        {
-            s.maxValue = p.GetComponent<MCStats>().MaxHP;
+            s.maxValue = p.GetComponent<CharStats>().MaxHP;
         }
         s.value = s.maxValue;
     }
@@ -28,13 +24,9 @@ public class HealthBarS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (p.GetComponent<KrysStats>() != null)
+        if (p.GetComponent<CharStats>() != null)
         {
-            s.value = p.GetComponent<KrysStats>().HP;
-        }
-        else if (p.GetComponent<MCStats>() != null)
-        {
-            s.value = p.GetComponent<MCStats>().HP;
+            s.value = p.GetComponent<CharStats>().HP;
         }
         if (s.value >= s.maxValue/2)
         {

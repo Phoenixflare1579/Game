@@ -5,34 +5,32 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class WolfStats : CharStats
+public class BasicAngelStats : EnemyStats
 {
     int Action;
     int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic");
+        FindLogic();
         {
             Level = UnityEngine.Random.Range(1, 5);
-            MaxHP = UnityEngine.Random.Range(70, 90) + (5 * Level);
+            MaxHP = UnityEngine.Random.Range(80, 115) + (5 * Level);
             HP = MaxHP;
-            Speed = UnityEngine.Random.Range(90, 100) + (2 * Level);
-            Def = UnityEngine.Random.Range(60, 70) + (5 * Level);
-            PhysAtk = UnityEngine.Random.Range(80, 90) + (5 * Level);
-            MagicAtk = UnityEngine.Random.Range(60, 75) + (3 * Level);
-            MagicDef = UnityEngine.Random.Range(50, 65) + (3 * Level);
+            Speed = UnityEngine.Random.Range(80, 100) + (2 * Level);
+            Def = UnityEngine.Random.Range(70, 90) + (5 * Level);
+            PhysAtk = UnityEngine.Random.Range(50, 70) + (5 * Level);
+            MagicAtk = UnityEngine.Random.Range(90, 105) + (3 * Level);
+            MagicDef = UnityEngine.Random.Range(80, 100) + (3 * Level);
             Evasion = UnityEngine.Random.Range(50, 65) + (3 * Level); ;
             Accuracy = UnityEngine.Random.Range(60, 100) + (5 * Level); ;
             Crit = 15;
             CritDmg = 25;
-            CharName = "Wolf";
+            CharName = "MuteAngel";
             position = 0;
-            target = GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length - 1)];
-            weaknesses.Add("Spear", true);
-            weaknesses.Add("Axe", true);
-            weaknesses.Add("Sword", true);
-            weaknesses.Add("Fire", true);
+            GetTarget();
+            weakness = new string[]{ "Knife", "Dark", "Lightning" };
+            SetWeakness(weakness);
         }
     }
 
@@ -53,7 +51,7 @@ public class WolfStats : CharStats
         {
             if (Dead == 0)
             {
-                logic.GetComponent<BattleStartup>().xp += (int)(7 * Level / 2);
+                logic.GetComponent<BattleStartup>().xp += (int)(15 * Level / 2);
                 this.tag = "Untagged";
                 if (GameObject.FindGameObjectWithTag("Enemy") != null)
                     GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
@@ -61,15 +59,15 @@ public class WolfStats : CharStats
             }
             GetComponent<SpriteRenderer>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
-            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order]==gameObject.name)
                 logic.GetComponent<BattleStartup>().Increase();
         }
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name && Dead==0)
         {
-            target = GameObject.FindGameObjectsWithTag("Player")[UnityEngine.Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
+            GetTarget();
             Action = UnityEngine.Random.Range(0, 5);
             if (Action == 0)
             {
@@ -88,7 +86,7 @@ public class WolfStats : CharStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
+            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Staff", true);
     }
 
     public void Ability()
@@ -97,22 +95,16 @@ public class WolfStats : CharStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def- target.GetComponent<CharStats>().Def/4, "Knife", true);
+                target.GetComponent<CharStats>().HP -= DamageDone(10, MagicAtk, 0.4, 0.02, target.GetComponent<CharStats>().MagicDef, "Light", false);
             }
 
         }
         else if (Action > 2)
         {
-
-            if (target.GetComponent<CharStats>() != null)
+            HP += MaxHP / 4;
+            if (HP > MaxHP) 
             {
-                int D = DamageDone(0, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def, "Knife", true);
-                target.GetComponent<CharStats>().HP -= D;
-                HP += D / 4;
-                if (HP > MaxHP)
-                {
-                    HP = MaxHP;
-                }
+                HP = MaxHP;
             }
         }
     }

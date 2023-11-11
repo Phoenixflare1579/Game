@@ -13,13 +13,9 @@ public class ManaBarS : MonoBehaviour
     {
         s = GetComponent<Slider>();
         f = gameObject.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>();
-        if (p.GetComponent<KrysStats>() != null)
+        if (p.GetComponent<CharStats>() != null)
         {
-            s.maxValue = p.GetComponent<KrysStats>().MaxMana;
-        }
-        else if (p.GetComponent<MCStats>() != null)
-        {
-            s.maxValue = p.GetComponent<MCStats>().MaxMana;
+            s.maxValue = p.GetComponent<CharStats>().MaxMana;
         }
         s.value = s.maxValue;
     }
@@ -27,13 +23,9 @@ public class ManaBarS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (p.GetComponent<KrysStats>() != null)
+        if (p.GetComponent<CharStats>() != null)
         {
-            s.value = p.GetComponent<KrysStats>().Mana;
-        }
-        else if (p.GetComponent<MCStats>() != null)
-        {
-            s.value = p.GetComponent<MCStats>().Mana;
+            s.value = p.GetComponent<CharStats>().Mana;
         }
     }
 }
