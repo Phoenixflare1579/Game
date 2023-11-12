@@ -12,11 +12,23 @@ public class BattleStartup : StartUp
     void Start()
     {
         players =GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < Random.Range(1,4); i++)
+        if (players.Length > 1)
         {
-            E=Instantiate(enemyP[Random.Range(0,enemyP.Length)]);
-            E.GetComponent<CharStats>().position=i;
-            E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+            for (int i = 0; i < Random.Range(1, 4); i++)
+            {
+                E = Instantiate(enemyP[Random.Range(0, enemyP.Length)]);
+                E.GetComponent<CharStats>().position = i;
+                E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Random.Range(1, 2); i++)
+            {
+                E = Instantiate(enemyP[Random.Range(0, enemyP.Length)]);
+                E.GetComponent<CharStats>().position = i;
+                E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+            }
         }
 
         for (int i = 0; i < players.Length; i++)
