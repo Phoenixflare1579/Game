@@ -21,6 +21,8 @@ public class MCStats : PlayerStats
         Level = 1;
         EXP = 0;
         healthperlvl = 8;
+        CritDmg = 25;
+        Crit = 100;
     }
     // Update is called once per frame
     void Update()

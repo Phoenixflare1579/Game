@@ -24,6 +24,8 @@ public class KrysStats : PlayerStats
         anim.SetInteger("Phase", 1);
         Form = 1;
         anim.SetInteger("Form", Form);
+        CritDmg = 25;
+        Crit = 15;
     }
     // Update is called once per frame
     void Update()

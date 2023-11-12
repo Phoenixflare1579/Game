@@ -46,7 +46,7 @@ public class CharStats : MonoBehaviour
         if (Random.Range((float)0.0, (float)1.0) >= (float)(100.0-Crit/100.0) && isNotMagic)
         { 
             normDmg += normDmg * CritDmg/100;
-            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,125,0,255);
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(125,125,0,255);
         }
         if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
         {

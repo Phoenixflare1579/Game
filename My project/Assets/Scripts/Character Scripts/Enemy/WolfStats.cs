@@ -23,6 +23,8 @@ public class WolfStats : EnemyStats
             GetTarget();
             weakness = new string[]{"Sword","Axe", "Fire"};
             SetWeakness(weakness);
+            CritDmg = 25;
+            Crit = 15;
         }
     }
 

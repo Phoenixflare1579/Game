@@ -23,6 +23,8 @@ public class SeaWoolStats : EnemyStats
             GetTarget();
             weakness = new string[]{ "Spear", "Knife", "Fire", "Light" };
             SetWeakness(weakness);
+            CritDmg = 25;
+            Crit = 15;
         }
     }
 

@@ -23,6 +23,8 @@ public class DeerStats : EnemyStats
             GetTarget();
             weakness = new string[]{ "Sword", "Spear", "Axe", "Fire"};
             SetWeakness(weakness);
+            CritDmg = 25;
+            Crit = 15;
         }
     }
 

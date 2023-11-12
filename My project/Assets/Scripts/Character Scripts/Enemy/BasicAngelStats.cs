@@ -23,6 +23,8 @@ public class BasicAngelStats : EnemyStats
             GetTarget();
             weakness = new string[]{ "Knife", "Dark", "Lightning" };
             SetWeakness(weakness);
+            CritDmg = 25;
+            Crit = 15;
         }
     }
 

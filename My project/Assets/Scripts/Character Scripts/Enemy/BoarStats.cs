@@ -24,6 +24,8 @@ public class BoarStats : EnemyStats
             GetTarget();
             weakness = new string[]{ "Sword", "Spear", "Lightning", };
             SetWeakness(weakness);
+            CritDmg = 25;
+            Crit = 15;
         }
     }
 
