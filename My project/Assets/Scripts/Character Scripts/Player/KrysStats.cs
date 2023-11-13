@@ -96,7 +96,6 @@ public class KrysStats : PlayerStats
             GetComponent<Transform>().localScale = new Vector3(26, 26, 0);
             anim.enabled = true;
         }
-
     }
     public void Attack()//Attacks will have a 2% randomization
     {
