@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject MC;
     public GameObject Krys;
+    public GameObject Johanna;
 
     private void Start()
     {
@@ -21,12 +22,11 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         Debug.Log("MainMenu");
-        SceneManager.LoadScene("World");
+        SceneManager.LoadScene("Starting Level");
         GameObject rename = Instantiate(MC);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename = Instantiate(Krys);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
-
     }
 
     public void Exit()
