@@ -9,6 +9,7 @@ TagManager:
   - HP
   - Pause
   - Damage
+  - Counter
   layers:
   - Default
   - TransparentFX
