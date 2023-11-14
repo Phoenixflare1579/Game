@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JohannaStats : PlayerStats
 {
@@ -71,15 +72,21 @@ public class JohannaStats : PlayerStats
         if (HP <= 0)
         {
             HP = 0;
+            this.gameObject.tag = "Untagged";
             GetComponent<SpriteRenderer>().sprite = Die;
             anim.enabled = false;
             if (logic != null)
                 if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
                     logic.GetComponent<BattleStartup>().Increase();
+            if (SceneManager.GetActiveScene().name != "Combat")
+            {
+                HP = 1;
+            }
         }
         else if (HP > 0)
         {
             anim.enabled = true;
+            this.gameObject.tag = "Player";
         }
     }
 }
