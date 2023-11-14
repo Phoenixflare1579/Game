@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/The Nature's Sanctuary.unity
     guid: 09217bd0c9affb844a463919faac3986
   - enabled: 1
+    path: Assets/Scenes/The Forbidden Forest.unity
+    guid: be960393ec18ca44f8535300fd65b19d
+  - enabled: 1
     path: Assets/Scenes/Combat.unity
     guid: 4dc764f47fc520d408613aba653e2743
   - enabled: 1
