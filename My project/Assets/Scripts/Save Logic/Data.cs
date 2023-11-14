@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [System.Serializable]
 public class Data 
 {
@@ -18,6 +19,8 @@ public class Data
     public int skillpointsK;
     public int healthK;
     public int manaK;
+    public string scene;
+    public bool T;
 
     public Data(CharStats statsMC, CharStats statsK) 
     {
@@ -38,5 +41,7 @@ public class Data
         skillpointsK = statsK.skillpoints;
         healthK = statsK.HP;
         manaK = statsK.Mana;
+        //World Save
+        scene = SceneManager.GetActiveScene().name;
     }
 }

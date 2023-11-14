@@ -19,11 +19,11 @@ public class SafeZone : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-        B.GetComponent<Battle>().S++;
+        B.GetComponent<Battle>().Safe();
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-            B.GetComponent<Battle>().S--;
+            B.GetComponent<Battle>().UnSafe();
     }
 }

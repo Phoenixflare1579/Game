@@ -8,8 +8,8 @@ using UnityEngine.UIElements;
 public class MCStats : PlayerStats
 {
     public Vector3 Location;
+    public string scene;
     public Sprite Die;
-    Dictionary<string,int> inventory = new Dictionary<string,int>();
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,7 @@ public class MCStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
+        scene = SceneManager.GetActiveScene().name;
         MaxHP = 120 + (healthperlvl * Level);
         MaxMana = 50 + (5 * Level);
         Speed = 90 + (5 * Level);
