@@ -33,6 +33,7 @@ public class ExampleClass : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name != "Combat")
         rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized * speed + new Vector3(0,Physics.gravity.y,0)*3;
     }
 

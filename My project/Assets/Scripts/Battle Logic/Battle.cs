@@ -13,6 +13,7 @@ public class Battle : MonoBehaviour
     public Rigidbody rb;
     private IEnumerator coroutine;
     public GameObject MC;
+    public int S = 0;
 
     void Start()
     {
@@ -27,10 +28,10 @@ public class Battle : MonoBehaviour
     {
         while (true)
         {
-            if (rb.velocity.magnitude > .1f)
+            if (rb.velocity.x > .1f && SceneManager.GetActiveScene().name != "Combat" && S==0)
             {
                 Movement++;
-                if (rb.velocity.magnitude >= 150)
+                if (rb.velocity.x >= 150)
                 {
                     Movement++;
                 }

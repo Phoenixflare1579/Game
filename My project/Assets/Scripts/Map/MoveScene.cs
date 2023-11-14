@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class MoveScene : MonoBehaviour
 {
     public string SceneName;
+    public Vector3 Start;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(SceneName);
+            collision.gameObject.transform.position = Start;
         }
     }
 }

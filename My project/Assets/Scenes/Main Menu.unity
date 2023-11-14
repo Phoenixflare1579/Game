@@ -1336,6 +1336,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 9211772109014788083, guid: e3ad88e85ca140a4689d8fababe43782, type: 3}
   Krys: {fileID: 7646072654479239843, guid: 61a63d6042b1d8d4fbd02f9c18023bc8, type: 3}
+  Johanna: {fileID: 0}
+  Cam: {fileID: 2051542908711627379, guid: d5c8f211d90620f439111eb13336ae59, type: 3}
+  Battle: {fileID: 362022663148800756, guid: 25467bfef3aef7d47a9e469436b08f20, type: 3}
+  Pause: {fileID: 4096861794669421594, guid: 92e6ad2f97a7c0341ace7f36ec761977, type: 3}
 --- !u!1 &895082941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 0}
   Krys: {fileID: 0}
+  Johanna: {fileID: 0}
+  Cam: {fileID: 0}
+  Battle: {fileID: 0}
+  Pause: {fileID: 0}
 --- !u!1 &1388118245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2406,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 0}
   Krys: {fileID: 0}
+  Johanna: {fileID: 0}
+  Cam: {fileID: 0}
+  Battle: {fileID: 0}
+  Pause: {fileID: 0}
 --- !u!1 &1762569331
 GameObject:
   m_ObjectHideFlags: 0
