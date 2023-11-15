@@ -15,22 +15,15 @@ public class Battle : MonoBehaviour
     private IEnumerator coroutine;
     public GameObject MC;
     public int S = 0;
-    int i = 0;
 
     void Start()
     {
+        Movement = 0;
         BattleCounter = 10 + Random.Range(0, 15);
         coroutine = WaitAndPrint(1.0f);
         MC = GameObject.Find("MC");
         rb = MC.GetComponent<Rigidbody>();
-    }
-    private void Update()
-    {
-        if (i == 0 && S==0)
-        {
-            StartCoroutine(coroutine);
-            i++;
-        }
+        StartCoroutine(coroutine);
     }
 
     private IEnumerator WaitAndPrint(float waitTime)
@@ -55,8 +48,7 @@ public class Battle : MonoBehaviour
                 MC.GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
                 StopCoroutine(coroutine);
-                S = 1;
-                i = 0;
+                Safe();
             }
             yield return new WaitForSeconds(waitTime);
         }
@@ -68,5 +60,9 @@ public class Battle : MonoBehaviour
     public void UnSafe()
     {
         S = 0;
+    }
+    public void Restart()
+    {
+        Start();
     }
 }
