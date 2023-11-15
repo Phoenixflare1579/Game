@@ -20,5 +20,6 @@ public class Return : MonoBehaviour
         MC.GetComponent<PlayerInput>().ActivateInput();
         MC.GetComponent<Rigidbody>().isKinematic = false;
         Krys.GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("Counter").GetComponent<Battle>().UnSafe();
     }
 }

@@ -15,6 +15,6 @@ public class Equipment : MonoBehaviour
     public int Accuracy;
     public int Crit;
     public int CritDmg;
-    public string Name;
     public string Type;
+    public string Name;
 }

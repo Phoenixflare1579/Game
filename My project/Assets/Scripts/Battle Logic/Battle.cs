@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -25,7 +26,7 @@ public class Battle : MonoBehaviour
     }
     private void Update()
     {
-        if (i == 0 && SceneManager.GetActiveScene().name != "Combat")
+        if (i == 0 && S==0)
         {
             StartCoroutine(coroutine);
             i++;
@@ -53,8 +54,9 @@ public class Battle : MonoBehaviour
                 MC.GetComponent<Rigidbody>().useGravity = false;
                 MC.GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
-                i = 0;
                 StopCoroutine(coroutine);
+                S = 1;
+                i = 0;
             }
             yield return new WaitForSeconds(waitTime);
         }
