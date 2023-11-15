@@ -10,6 +10,7 @@ public class Chest : MonoBehaviour
     public Consumable consumable;
     public Equipment equipment;
     public Sprite open;
+    public int multiple;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class Chest : MonoBehaviour
             {
                 if (consumable != null) 
                 {
+                    for (int j = 0; j < multiple; j++)
                     MC.GetComponent<CharStats>().Consumables.Add(consumable, true);
                 }
                 if (equipment != null)
