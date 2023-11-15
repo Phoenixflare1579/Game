@@ -11,7 +11,7 @@ public class BattleStartup : StartUp
 {
     void Start()
     {
-        players =GameObject.FindGameObjectsWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 1)
         {
             for (int i = 0; i < Random.Range(1, 4); i++)
@@ -43,7 +43,8 @@ public class BattleStartup : StartUp
             {
                 players[i].GetComponent<MCStats>().WeaponSwap();
                 players[i].GetComponent<SpriteRenderer>().flipX = true;
-                players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                players[i].GetComponent<Rigidbody>().isKinematic = true;
+
             }
             Holder = Instantiate(manabar, GameObject.FindGameObjectWithTag("HP").transform);
             Holder.GetComponent<ManaBarS>().p = players[i];

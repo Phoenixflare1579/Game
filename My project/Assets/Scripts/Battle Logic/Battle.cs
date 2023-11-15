@@ -13,6 +13,8 @@ public class Battle : MonoBehaviour
     public Rigidbody rb;
     private IEnumerator coroutine;
     public GameObject MC;
+    public int S = 0;
+    int i = 0;
 
     void Start()
     {
@@ -20,17 +22,24 @@ public class Battle : MonoBehaviour
         coroutine = WaitAndPrint(1.0f);
         MC = GameObject.Find("MC");
         rb = MC.GetComponent<Rigidbody>();
-        StartCoroutine(coroutine);
     }
-   
+    private void Update()
+    {
+        if (i == 0 && SceneManager.GetActiveScene().name != "Combat")
+        {
+            StartCoroutine(coroutine);
+            i++;
+        }
+    }
+
     private IEnumerator WaitAndPrint(float waitTime)
     {
         while (true)
         {
-            if (rb.velocity.magnitude > .1f)
+            if (rb.velocity.x > .1f && S==0)
             {
                 Movement++;
-                if (rb.velocity.magnitude >= 150)
+                if (rb.velocity.x >= 150)
                 {
                     Movement++;
                 }
@@ -44,9 +53,18 @@ public class Battle : MonoBehaviour
                 MC.GetComponent<Rigidbody>().useGravity = false;
                 MC.GetComponent<PlayerInput>().DeactivateInput();
                 SceneManager.LoadScene("Combat");
+                i = 0;
                 StopCoroutine(coroutine);
             }
             yield return new WaitForSeconds(waitTime);
         }
+    }
+    public void Safe()
+    {
+        S = 1;
+    }
+    public void UnSafe()
+    {
+        S = 0;
     }
 }

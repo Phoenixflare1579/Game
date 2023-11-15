@@ -42,20 +42,29 @@ public class CharStats : MonoBehaviour
     public int DamageDone(double BaseDmg, double DmgStat, double BaseDmgScale, double LevelDmgAmount, double DefStat, string type, bool isNotMagic)
     {
         holder = Instantiate(damageindicatorP);
-        double normDmg = BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
-        if (Random.Range((float)0.0, (float)1.0) >= (float)(100.0-Crit/100.0) && isNotMagic)
-        { 
-            normDmg += normDmg * CritDmg/100;
-            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(125,125,0,255);
-        }
-        if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
+
+        if (target.GetComponent<CharStats>().Evasion * Random.Range((float).75, (float)1.0) <= Accuracy * Random.Range((float).75, (float)1.0))
         {
-            normDmg += normDmg * 0.2;
-            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,0,0,255);
+            double normDmg = BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (BaseDmgScale + (LevelDmgAmount * Level)) - DefStat * 0.25));
+            if (Random.Range((float)0.0, (float)1.0) <= (float)(Crit / 100.0) && isNotMagic)
+            {
+                normDmg += normDmg * CritDmg / 100;
+                holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(125, 125, 0, 255);
+            }
+            if (target.GetComponent<CharStats>().weaknesses.ContainsKey(type))
+            {
+                normDmg += normDmg * 0.2;
+                holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255, 0, 0, 255);
+            }
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = " " + (int)normDmg;
+            holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+            return (int)normDmg;
         }
-        holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = " " + (int)normDmg;
-        holder.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y,target.transform.position.z);
-        return (int)normDmg;
+        else
+        {
+            return 0;
+        }
+        
     }
 
     public void OnMouseDown()

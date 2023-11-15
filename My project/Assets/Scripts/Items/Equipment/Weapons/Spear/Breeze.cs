@@ -21,4 +21,5 @@ public class Breeze : Equipment
         Name = "The Breeze";
         Type = "Spear";
     }//Increases healing by 15%
+
 }

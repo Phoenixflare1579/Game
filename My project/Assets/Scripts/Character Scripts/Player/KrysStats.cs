@@ -85,16 +85,22 @@ public class KrysStats : PlayerStats
         {
             HP = 0;
             GetComponent<SpriteRenderer>().sprite = Die;
+            this.gameObject.tag = "Untagged";
             GetComponent<Transform>().localScale = new Vector3(9,9,0);
             anim.enabled = false;
             if (logic != null)
             if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
                 logic.GetComponent<BattleStartup>().Increase();
+            if (SceneManager.GetActiveScene().name != "Combat")
+            {
+                HP = 1;
+            }
         }
         else if (HP > 0)
         {
             GetComponent<Transform>().localScale = new Vector3(26, 26, 0);
             anim.enabled = true;
+            this.gameObject.tag = "Player";
         }
     }
     public void Attack()//Attacks will have a 2% randomization

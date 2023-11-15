@@ -13,8 +13,6 @@ public class EnemyStats : CharStats
     public void GetTarget()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length - 1)];
-        if (target.gameObject.GetComponent<CharStats>().HP <=0)
-            GetTarget();
     }
     public void SetWeakness(string[] weakness)
     {

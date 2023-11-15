@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class SaveManager : MonoBehaviour
     public CharStats Krys;
     private void Update()
     {
-        if (GameObject.Find("MC").GetComponent<CharStats>()!=null)
+        if (MC == null)
         MC = GameObject.Find("MC").GetComponent<CharStats>();
-        if (GameObject.Find("Krys").GetComponent<CharStats>()!=null)
+        if (Krys == null)
         Krys = GameObject.Find("Krys").GetComponent<CharStats>();
     }
 
@@ -25,6 +26,7 @@ public class SaveManager : MonoBehaviour
     public void Load()
     {
         Data data = SaveS.LoadData();
+        SceneManager.LoadScene(data.scene);
         MC.Level = data.levelM;
         MC.EXP = data.expM;
         MC.skillpoints = data.skillpointsM;

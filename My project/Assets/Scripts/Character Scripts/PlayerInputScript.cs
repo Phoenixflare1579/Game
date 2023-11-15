@@ -33,7 +33,8 @@ public class ExampleClass : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized*speed + new Vector3(0, rb.velocity.y, 0);
+        if (SceneManager.GetActiveScene().name != "Combat")
+        rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized * speed + new Vector3(0,Physics.gravity.y,0)*3;
     }
 
     public void Move(InputAction.CallbackContext c)
@@ -74,19 +75,22 @@ public class ExampleClass : MonoBehaviour
 
     public void Menu(InputAction.CallbackContext c) 
     {
-        menu = GameObject.Find("PauseParent").gameObject.transform.GetChild(0).gameObject;
-        Debug.Log(menu.name);
-        if (c.started)
+        if (GameObject.Find("PauseParent") != null)
         {
-            if (i == 0)
+            menu = GameObject.Find("PauseParent").gameObject.transform.GetChild(0).gameObject;
+            Debug.Log(menu.name);
+            if (c.started)
             {
-                menu.SetActive(true);
-                i++;
-            }
-            else
-            {
-                menu.SetActive(false);
-                i--;
+                if (i == 0)
+                {
+                    menu.SetActive(true);
+                    i++;
+                }
+                else
+                {
+                    menu.SetActive(false);
+                    i--;
+                }
             }
         }
     }

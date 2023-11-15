@@ -15,10 +15,10 @@ public class Return : MonoBehaviour
     }
     public void R()
     {
-        SceneManager.LoadScene("World");
+        SceneManager.LoadScene(MC.GetComponent<MCStats>().scene);
         MC.gameObject.transform.position = MC.GetComponent<MCStats>().Location;
         MC.GetComponent<PlayerInput>().ActivateInput();
-        MC.GetComponent<Rigidbody>().useGravity = true;
+        MC.GetComponent<Rigidbody>().isKinematic = false;
         Krys.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
