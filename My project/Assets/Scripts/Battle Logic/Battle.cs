@@ -41,6 +41,7 @@ public class Battle : MonoBehaviour
             if (Movement >= BattleCounter)
             {
                 MC.GetComponent<MCStats>().Location = MC.gameObject.transform.position;
+                MC.GetComponent<MCStats>().scene = SceneManager.GetActiveScene().name;
                 Movement = 0;
                 BattleCounter = 10 + Random.Range(0, 15);
                 MC.GetComponent<Animator>().SetInteger("Weapon", 1);
