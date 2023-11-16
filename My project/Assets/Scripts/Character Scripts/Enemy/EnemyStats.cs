@@ -12,7 +12,7 @@ public class EnemyStats : CharStats
     public Consumable[] items;
     public void GetTarget()
     {
-        target = GameObject.FindGameObjectsWithTag("Player")[Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length - 1)];
+        target = GameObject.FindGameObjectsWithTag("Player")[(int)Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
     }
     public void SetWeakness(string[] weakness)
     {
