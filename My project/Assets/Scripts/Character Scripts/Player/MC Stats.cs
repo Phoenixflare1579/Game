@@ -17,6 +17,7 @@ public class MCStats : PlayerStats
         CharName = "???";
         position = 0;
         Location = this.gameObject.transform.position;
+        scene = string.Empty;
         DontDestroyOnLoad(this.gameObject);
         Level = 1;
         EXP = 0;
@@ -32,7 +33,6 @@ public class MCStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
-        scene = SceneManager.GetActiveScene().name;
         MaxHP = 120 + (healthperlvl * Level);
         MaxMana = 50 + (5 * Level);
         Speed = 90 + (5 * Level);
