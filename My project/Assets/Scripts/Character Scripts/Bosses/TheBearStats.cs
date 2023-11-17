@@ -53,8 +53,8 @@ public class TheBearStats : EnemyStats
         }
         else if (HP < MaxHP/2 && h==0)
         {
-            min = new int[] { 5, 500, 120, 90, 90, 130, 100, 40, 80 };
-            max = new int[] { 5, 500, 120, 90, 90, 130, 100, 40, 80 };
+            min = new int[] { 5, HP, 120, 90, 90, 130, 100, 40, 80 };
+            max = new int[] { 5, HP, 120, 90, 90, 130, 100, 40, 80 };
             growth = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
             StatRandom(min, max, growth);
             h = 1;
