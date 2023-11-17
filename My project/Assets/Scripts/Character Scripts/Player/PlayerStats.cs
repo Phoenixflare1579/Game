@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : CharStats
 {
+
     public int Weapon = 1;
     public int Form = 0;
     public Animator anim;
@@ -24,11 +26,23 @@ public class PlayerStats : CharStats
     }
     public void Flee()
     {
+        string Location = GameObject.Find("MC").GetComponent<MCStats>().scene;
         int run = Random.Range(0, 4);
         if (run < 3)
             logic.GetComponent<BattleStartup>().Increase();
         else
-            SceneManager.LoadScene("World");
+        {
+            GameObject MC = GameObject.Find("MC");
+            GameObject Krys = GameObject.Find("Krys");
+            SceneManager.LoadScene(MC.GetComponent<MCStats>().scene);
+            MC.gameObject.transform.position = MC.GetComponent<MCStats>().Location;
+            MC.GetComponent<PlayerInput>().ActivateInput();
+            MC.GetComponent<Rigidbody>().isKinematic = false;
+            Krys.GetComponent<SpriteRenderer>().enabled = false;
+            GameObject.FindGameObjectWithTag("Counter").GetComponent<Battle>().UnSafe();
+            GameObject.FindGameObjectWithTag("Counter").GetComponent<Battle>().Restart();
+
+        }
     }
     public void WeaponSwap()
     {

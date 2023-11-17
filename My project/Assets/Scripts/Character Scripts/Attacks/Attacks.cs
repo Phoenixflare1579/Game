@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attacks : MonoBehaviour
+/*public class Attacks : MonoBehaviour 
 {
     public double BaseDmg;
     public double BaseDmgScale;
@@ -30,4 +30,4 @@ public class Attacks : MonoBehaviour
         isPhysAtk = isPhysAtkC;
         isMagicAtk = isMagicAtkC;
     }
-}
+}*/

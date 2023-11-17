@@ -11,7 +11,7 @@ public class EnemyStats : CharStats
     public int[] growth;
     public Consumable[] items;
 
-    public Attacks BasicAttack = new Attacks(0, 0, 0, 0, 0, 0, 0, false, string.Empty, true, false);
+
     public void GetTarget()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[(int)Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];

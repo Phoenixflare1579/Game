@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UIElements.Experimental;
+using static UnityEngine.GraphicsBuffer;
 
 public class CharStats : MonoBehaviour
 {
@@ -36,10 +37,38 @@ public class CharStats : MonoBehaviour
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
     public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
     public Equipment[] Equipped;
-    public Attacks[] Attacks;
     public GameObject damageindicatorP;
     GameObject holder;
     public int Dead = 0;
+
+    public class Attacks
+    {
+        public double BaseDmg;
+        public double BaseDmgScale;
+        public double LevelDmgAmount;
+        public int Healing;
+        public int MPCost;
+        public int HPCost;
+        public double PercentLifeSteal;
+        public bool AOE;
+        public string DamageType;
+        public bool isPhysAtk;
+        public bool isMagicAtk;
+        public Attacks(double BaseDmgC, double BaseDmgScaleC, double LevelDmgAmountC, int HealingC, int MPCostC, int HPCostC, double PercentLifeStealC, bool AOEC, string DamageTypeC, bool isPhysAtkC, bool isMagicAtkC)
+        {
+            BaseDmg = BaseDmgC;
+            BaseDmgScale = BaseDmgScaleC;
+            LevelDmgAmount = LevelDmgAmountC;
+            Healing = HealingC;
+            MPCost = MPCostC;
+            HPCost = HPCostC;
+            PercentLifeSteal = PercentLifeStealC;
+            AOE = AOEC;
+            DamageType = DamageTypeC;
+            isPhysAtk = isPhysAtkC;
+            isMagicAtk = isMagicAtkC;
+        }
+    }
 
     // Attacks//
     public Attacks BasicAttack = new Attacks(0, 0, 0, 0, 0, 0, 0, false, string.Empty, true, false);
@@ -67,6 +96,15 @@ public class CharStats : MonoBehaviour
         }
 
         target.GetComponent<CharStats>().HP += attack.Healing;
+
+        if (HP > MaxHP)
+        {
+            HP = MaxHP;
+        }
+        if (target.GetComponent<CharStats>().HP > target.GetComponent<CharStats>().MaxHP)
+        {
+            target.GetComponent<CharStats>().HP = target.GetComponent<CharStats>().MaxHP;
+        }
     }
 
     public void Damage(Attacks attack)

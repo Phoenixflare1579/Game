@@ -111,15 +111,15 @@ public class MCStats : PlayerStats
     {
             if (Form == 1)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, WType, true);
+                DamageDone(BasicAttack);
             }
             else if (Form == 2)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.7, 0.01, target.GetComponent<CharStats>().Def, WType, true);
+                DamageDone(BasicAttack);
             }
             else
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, WType, true);
+                DamageDone(BasicAttack);
             }
         logic.GetComponent<BattleStartup>().Increase();
     }

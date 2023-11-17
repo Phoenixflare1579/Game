@@ -107,40 +107,28 @@ public class KrysStats : PlayerStats
     {
             if (Form == 1)
             {
-
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
+                DamageDone(BasicAttack);
             }
             else if (Form == 2)
             {
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
+            DamageDone(BasicAttack);
             }
             else
             {
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
-            HP += DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true)/4;
+            DamageDone(BasicAttack);
             }
         logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void FireBall()
     {
-        target.GetComponent<CharStats>().HP -= DamageDone(50, MagicAtk, 0.4, 0.08, target.GetComponent<CharStats>().MagicDef, "Fire", false);
-        Mana -= 10;
+        DamageDone(BasicAttack);
         logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Drain()
     {
-        int D;
-        D = DamageDone(5, PhysAtk, 0.4, 0.08, target.GetComponent<CharStats>().Def, "Knife", true);
-        target.GetComponent<CharStats>().HP -= D;
-        if (HP + D / 4 > MaxHP)
-        {
-            HP = MaxHP;
-        }
-        else
-        HP += D / 4;
-        Mana -= 7;
+        DamageDone(BasicAttack);
         logic.GetComponent<BattleStartup>().Increase();
     }
 }

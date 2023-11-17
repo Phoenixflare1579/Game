@@ -77,7 +77,7 @@ public class DemonDeer : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.3, 0.01, target.GetComponent<CharStats>().Def, "Staff", true);
+            DamageDone(BasicAttack);
     }
 
     public void Ability()
@@ -86,17 +86,14 @@ public class DemonDeer : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(5, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def, "Staff", true);
+                DamageDone(BasicAttack);
             }
 
         }
         else if (Action > 2)
         {
+            DamageDone(BasicAttack);
 
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
-            {
-                GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.2, 0.04, GameObject.FindGameObjectsWithTag("Player")[i].GetComponent<CharStats>().Def, "Staff", true);
-            }
         }
     }
 }

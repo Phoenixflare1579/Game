@@ -80,7 +80,7 @@ public class WolfStats : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.01, target.GetComponent<CharStats>().Def, "Knife", true);
+            DamageDone(BasicAttack);
     }
 
     public void Ability()
@@ -89,7 +89,7 @@ public class WolfStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def- target.GetComponent<CharStats>().Def/4, "Knife", true);
+                DamageDone(BasicAttack);
             }
 
         }
@@ -98,13 +98,7 @@ public class WolfStats : EnemyStats
 
             if (target.GetComponent<CharStats>() != null)
             {
-                int D = DamageDone(0, PhysAtk, 0.4, 0.02, target.GetComponent<CharStats>().Def, "Knife", true);
-                target.GetComponent<CharStats>().HP -= D;
-                HP += D / 4;
-                if (HP > MaxHP)
-                {
-                    HP = MaxHP;
-                }
+                DamageDone(BasicAttack);
             }
         }
     }
