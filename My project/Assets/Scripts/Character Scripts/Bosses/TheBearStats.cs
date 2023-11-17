@@ -58,6 +58,53 @@ public class TheBearStats : EnemyStats
             growth = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
             StatRandom(min, max, growth);
             h = 1;
+            GetComponent<Animator>().SetBool("H", true);
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name && Dead == 0)
+        {
+            GetTarget();
+            Action = UnityEngine.Random.Range(0, 5);
+            if (Action == 0)
+            {
+                Attack();
+                logic.GetComponent<BattleStartup>().Increase();
+                TurnsPassed++;
+            }
+            else if (Action >= 1)
+            {
+                Ability();
+                logic.GetComponent<BattleStartup>().Increase();
+                TurnsPassed++;
+            }
+        }
+    }
+    public void Attack()
+    {
+
+        if (target.GetComponent<CharStats>() != null)
+            DamageDone(BasicStaff);
+    }
+
+    public void Ability()
+    {
+        if (Action <= 2 && h==1)
+        {
+            DamageDone(BeyondTheVeil);
+        }
+        else if (Action > 2 && h==1)
+        {
+            DamageDone(EctieneZrakan);
+        }
+        else if (Action <= 2 && h==0)
+        {
+            DamageDone(ClawSwipe);
+        }
+        else if (Action > 2 && h == 0)
+        {
+            DamageDone(Crunch);
         }
     }
 }

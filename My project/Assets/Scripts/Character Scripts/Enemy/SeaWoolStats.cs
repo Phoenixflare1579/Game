@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class SeaWoolStats : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,8 +87,7 @@ public class SeaWoolStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicStaff);
-                HP -= HP/4;
+                DamageDone(Rampage);
             }
 
         }

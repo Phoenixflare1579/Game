@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class BasicAngelStats : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,17 +88,13 @@ public class BasicAngelStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicSword);
+                DamageDone(HolyLight);
             }
 
         }
         else if (Action > 2)
         {
-            HP += MaxHP / 4;
-            if (HP > MaxHP) 
-            {
-                HP = MaxHP;
-            }
+            DamageDone(Heal);
         }
     }
 }

@@ -8,8 +8,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BoarStats : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,9 +88,11 @@ public class BoarStats : EnemyStats
             if (target.GetComponent<CharStats>() != null)
             {
                 GetTarget();
-                DamageDone(BasicStaff);
+                DamageDone(WildRush);
                 GetTarget();
-                DamageDone(BasicStaff);
+                DamageDone(WildRush);
+                GetTarget();
+                DamageDone(WildRush);
             }
         }
         else if (Action > 2)

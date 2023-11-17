@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DemonDeer : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,18 +80,21 @@ public class DemonDeer : EnemyStats
 
     public void Ability()
     {
-        if (Action <= 2)
+        if (Action == 1)
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicStaff);
+                DamageDone(HornSlam);
             }
 
         }
-        else if (Action > 2)
+        else if (Action >= 2 && Action < 4)
         {
-            DamageDone(BasicStaff);
-
+            DamageDone(SkeirnaFiernie);
+        }
+        else if (Action >= 4)
+        {
+            DamageDone(SolneIcante);
         }
     }
 }

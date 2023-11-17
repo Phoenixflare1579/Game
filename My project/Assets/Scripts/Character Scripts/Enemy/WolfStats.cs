@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class WolfStats : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +87,7 @@ public class WolfStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicDagger);
+                DamageDone(Bite);
             }
 
         }
@@ -98,7 +96,7 @@ public class WolfStats : EnemyStats
 
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicDagger);
+                DamageDone(Crunch);
             }
         }
     }

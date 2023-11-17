@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class DeerStats : EnemyStats
 {
-    int Action;
-    int TurnsPassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,15 +87,13 @@ public class DeerStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicStaff);
+                DamageDone(HornSlam);
             }
 
         }
         else if (Action > 2)
-        {
-
-         DamageDone(BasicStaff);
-
+        {    
+         DamageDone(Eat);
         }
     }
 }

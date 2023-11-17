@@ -38,7 +38,9 @@ public class CharStats : MonoBehaviour
     public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
     public Equipment[] Equipped;
     public GameObject damageindicatorP;
+    public GameObject[] animations; 
     GameObject holder;
+    GameObject hold;
     public int Dead = 0;
 
     public class Attacks
@@ -77,15 +79,17 @@ public class CharStats : MonoBehaviour
     public Attacks BasicAxe = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Axe", true, false);
     public Attacks BasicStaff = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
     public Attacks Bite = new Attacks(0, 0.6, 0.03, 0, 0, 0, 0.25, false, "Knife", true, false);
-    public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0, 0, false, "Staff", true, false);
+    public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0.1, 0, false, "Staff", true, false);
     public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
     public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
+    public Attacks HornSlam = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, true, "Staff", true, false);
+    public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Sword", true, false);
+    public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Dagger", false, false);
     public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true);
     public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true);
     public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true);
     public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true);
     public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true);
-    public Attacks HellsGate = new Attacks(50, 0.7, 0.08, 0, 50, 0, 0, false, "Fire", false, true);
     public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
     public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
     // Attacks//
@@ -138,6 +142,11 @@ public class CharStats : MonoBehaviour
                 DmgStat = MagicAtk;
                 DefStat = target.GetComponent<CharStats>().MagicDef;
             }
+            else 
+            {
+                DmgStat = PhysAtk;
+                DefStat = 0;
+            }
 
             double normDmg = attack.BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (attack.BaseDmgScale + (attack.LevelDmgAmount * Level)) - DefStat * 0.25));
             if (Random.Range((float)0.0, (float)1.0) <= (float)(Crit / 100.0) && attack.isPhysAtk)
@@ -160,7 +169,70 @@ public class CharStats : MonoBehaviour
             }
         }
     }
+    public void Animation(string Wtype)
+    {
+        if (Wtype == "Sword")
+        {
+            hold = Instantiate(animations[0]);
+            hold.transform.position=target.transform.position;
+        }
+        else if (Wtype == "Knife")
+        {
+            hold = Instantiate(animations[1]);
+            hold.transform.position = target.transform.position;
+        }
+        else if (Wtype == "Spear")
+        {
+            hold = Instantiate(animations[2]);
+            hold.transform.position = target.transform.position;
+        }
+        else if (Wtype == "Axe")
+        {
+            hold = Instantiate(animations[3]);
+            hold.transform.position = target.transform.position;
+        }
+        else if (Wtype == "Staff")
+        {
+            hold = Instantiate(animations[4]);
+            hold.transform.position = target.transform.position;
+        }
+        else if (Wtype == "Fire")
+        {
+            hold = Instantiate(animations[5]);
+            hold.transform.position = this.gameObject.transform.position;
+            Rigidbody rb = hold.GetComponent<Rigidbody>();
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
 
+        }
+        else if (Wtype == "Ice")
+        {
+            hold = Instantiate(animations[6]);
+            hold.transform.position = this.gameObject.transform.position;
+            Rigidbody rb = hold.GetComponent<Rigidbody>();
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+        }
+        else if (Wtype == "Lightning")
+        {
+            hold = Instantiate(animations[7]);
+            hold.transform.position = this.gameObject.transform.position;
+            Rigidbody rb = hold.GetComponent<Rigidbody>();
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+        }
+        else if (Wtype == "Light")
+        {
+            hold = Instantiate(animations[8]);
+            hold.transform.position = this.gameObject.transform.position + new Vector3 (0,100,0);
+            Rigidbody rb = hold.GetComponent<Rigidbody>();
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+        }
+        else if (Wtype == "Dark")
+        {
+            hold = Instantiate(animations[9]);
+            hold.transform.position = target.transform.position + new Vector3(0, -20, 0);
+            Rigidbody rb = hold.GetComponent<Rigidbody>(); 
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 5f * Time.deltaTime);
+        }
+    }
     public void OnMouseDown()
     {
         if (gameObject.tag == "Enemy" || gameObject.tag == "Player")

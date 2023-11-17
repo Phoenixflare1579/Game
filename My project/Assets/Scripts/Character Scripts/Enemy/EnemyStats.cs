@@ -10,8 +10,14 @@ public class EnemyStats : CharStats
     public int[] max;
     public int[] growth;
     public Consumable[] items;
+    public int Action;
+    public int TurnsPassed;
 
-
+    private void Start()
+    {
+        MaxMana = 50;
+        Mana = MaxMana;
+    }
     public void GetTarget()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[(int)Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
