@@ -80,7 +80,7 @@ public class SeaWoolStats : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-        DamageDone(BasicAttack);
+        DamageDone(BasicStaff);
     }
 
     public void Ability()
@@ -89,7 +89,7 @@ public class SeaWoolStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicStaff);
                 HP -= HP/4;
             }
 

@@ -107,28 +107,28 @@ public class KrysStats : PlayerStats
     {
             if (Form == 1)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicDagger);
             }
             else if (Form == 2)
             {
-            DamageDone(BasicAttack);
+            DamageDone(BasicDagger);
             }
             else
             {
-            DamageDone(BasicAttack);
+            DamageDone(BasicDagger);
             }
         logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void FireBall()
     {
-        DamageDone(BasicAttack);
+        DamageDone(BasicSword);
         logic.GetComponent<BattleStartup>().Increase();
     }
 
     public void Drain()
     {
-        DamageDone(BasicAttack);
+        DamageDone(BasicSword);
         logic.GetComponent<BattleStartup>().Increase();
     }
 }

@@ -80,7 +80,7 @@ public class WolfStats : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            DamageDone(BasicAttack);
+            DamageDone(BasicDagger);
     }
 
     public void Ability()
@@ -89,7 +89,7 @@ public class WolfStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicDagger);
             }
 
         }
@@ -98,7 +98,7 @@ public class WolfStats : EnemyStats
 
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicDagger);
             }
         }
     }

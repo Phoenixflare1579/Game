@@ -80,7 +80,7 @@ public class BoarStats : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            DamageDone(BasicAttack);
+            DamageDone(BasicStaff);
     }
 
     public void Ability()
@@ -90,9 +90,9 @@ public class BoarStats : EnemyStats
             if (target.GetComponent<CharStats>() != null)
             {
                 GetTarget();
-                DamageDone(BasicAttack);
+                DamageDone(BasicStaff);
                 GetTarget();
-                DamageDone(BasicAttack);
+                DamageDone(BasicStaff);
             }
         }
         else if (Action > 2)

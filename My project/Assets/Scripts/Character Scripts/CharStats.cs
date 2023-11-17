@@ -46,15 +46,15 @@ public class CharStats : MonoBehaviour
         public double BaseDmg;
         public double BaseDmgScale;
         public double LevelDmgAmount;
-        public int Healing;
+        public double Healing;
         public int MPCost;
-        public int HPCost;
+        public double HPCost;
         public double PercentLifeSteal;
         public bool AOE;
         public string DamageType;
         public bool isPhysAtk;
         public bool isMagicAtk;
-        public Attacks(double BaseDmgC, double BaseDmgScaleC, double LevelDmgAmountC, int HealingC, int MPCostC, int HPCostC, double PercentLifeStealC, bool AOEC, string DamageTypeC, bool isPhysAtkC, bool isMagicAtkC)
+        public Attacks(double BaseDmgC, double BaseDmgScaleC, double LevelDmgAmountC, double HealingC, int MPCostC, double HPCostC, double PercentLifeStealC, bool AOEC, string DamageTypeC, bool isPhysAtkC, bool isMagicAtkC)
         {
             BaseDmg = BaseDmgC;
             BaseDmgScale = BaseDmgScaleC;
@@ -71,13 +71,28 @@ public class CharStats : MonoBehaviour
     }
 
     // Attacks//
-    public Attacks BasicAttack = new Attacks(0, 0, 0, 0, 0, 0, 0, false, string.Empty, true, false);
-    public Attacks Dagger = new Attacks(0, 0, 0, 0, 0, 0, 0, false, string.Empty, true, false);
+    public Attacks BasicSword = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
+    public Attacks BasicDagger = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Knife", true, false);
+    public Attacks BasicSpear = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Spear", true, false);
+    public Attacks BasicAxe = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Axe", true, false);
+    public Attacks BasicStaff = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
+    public Attacks Bite = new Attacks(0, 0.6, 0.03, 0, 0, 0, 0.25, false, "Knife", true, false);
+    public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0, 0, false, "Staff", true, false);
+    public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
+    public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
+    public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true);
+    public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true);
+    public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true);
+    public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true);
+    public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true);
+    public Attacks HellsGate = new Attacks(50, 0.7, 0.08, 0, 50, 0, 0, false, "Fire", false, true);
+    public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
+    public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
     // Attacks//
     public void DamageDone(Attacks attack)
     {
         holder = Instantiate(damageindicatorP);
-        HP -= attack.HPCost;
+        HP -= (int)(MaxHP*attack.HPCost);
         Mana -= attack.MPCost;
 
         if (attack.AOE)
@@ -95,7 +110,7 @@ public class CharStats : MonoBehaviour
             Damage(attack);
         }
 
-        target.GetComponent<CharStats>().HP += attack.Healing;
+        target.GetComponent<CharStats>().HP += (int)(MaxHP * attack.Healing);
 
         if (HP > MaxHP)
         {

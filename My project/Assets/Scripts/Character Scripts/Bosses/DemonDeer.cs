@@ -77,7 +77,7 @@ public class DemonDeer : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            DamageDone(BasicAttack);
+            DamageDone(BasicStaff);
     }
 
     public void Ability()
@@ -86,13 +86,13 @@ public class DemonDeer : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicStaff);
             }
 
         }
         else if (Action > 2)
         {
-            DamageDone(BasicAttack);
+            DamageDone(BasicStaff);
 
         }
     }

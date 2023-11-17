@@ -111,15 +111,15 @@ public class MCStats : PlayerStats
     {
             if (Form == 1)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicSword);
             }
             else if (Form == 2)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicSword);
             }
             else
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicSword);
             }
         logic.GetComponent<BattleStartup>().Increase();
     }

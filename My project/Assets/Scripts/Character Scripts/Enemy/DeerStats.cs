@@ -80,7 +80,7 @@ public class DeerStats : EnemyStats
     public void Attack()
     {
         if (target.GetComponent<CharStats>() != null)
-            DamageDone(BasicAttack);
+            DamageDone(BasicStaff);
     }
 
     public void Ability()
@@ -89,14 +89,14 @@ public class DeerStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicStaff);
             }
 
         }
         else if (Action > 2)
         {
 
-         DamageDone(BasicAttack);
+         DamageDone(BasicStaff);
 
         }
     }

@@ -81,7 +81,7 @@ public class BasicAngelStats : EnemyStats
     {
         
         if (target.GetComponent<CharStats>() != null)
-            DamageDone(BasicAttack);
+            DamageDone(BasicStaff);
     }
 
     public void Ability()
@@ -90,7 +90,7 @@ public class BasicAngelStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(BasicAttack);
+                DamageDone(BasicSword);
             }
 
         }
