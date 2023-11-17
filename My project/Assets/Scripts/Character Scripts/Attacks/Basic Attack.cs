@@ -7,7 +7,9 @@ public class BasicAttack : Attacks
 {
     private void Start()
     {
-        Damage = 0;
+        BaseDmg = 0;
+        BaseDmgScale = 0;
+        LevelDmgAmount = 0;
         Healing = 0;
         MPCost = 0;
         HPCost = 0;

@@ -79,8 +79,9 @@ public class BasicAngelStats : EnemyStats
     }
     public void Attack()
     {
+        
         if (target.GetComponent<CharStats>() != null)
-            target.GetComponent<CharStats>().HP -= DamageDone(0, PhysAtk, 0.5, 0.01, target.GetComponent<CharStats>().Def, "Staff", true);
+            DamageDone(BasicAttack);
     }
 
     public void Ability()
@@ -89,7 +90,7 @@ public class BasicAngelStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                target.GetComponent<CharStats>().HP -= DamageDone(10, MagicAtk, 0.4, 0.02, target.GetComponent<CharStats>().MagicDef, "Light", false);
+                DamageDone(BasicAttack);
             }
 
         }

@@ -10,6 +10,8 @@ public class EnemyStats : CharStats
     public int[] max;
     public int[] growth;
     public Consumable[] items;
+
+    public Attacks BasicAttack = new Attacks(0, 0, 0, 0, 0, 0, 0, false, string.Empty, true, false);
     public void GetTarget()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[(int)Random.Range(0, GameObject.FindGameObjectsWithTag("Player").Length)];
@@ -34,9 +36,9 @@ public class EnemyStats : CharStats
         Evasion = Random.Range(min[7], max[7]) + (growth[6] * Level);
         Accuracy = Random.Range(min[8], max[8] ) + (growth[7] * Level);
     }
-    public void GetAttacks(Attacks[] attacks) 
-    { 
-        
+    public void GetAttacks(string attacks) 
+    {
+
     }
     public void GetConsumables(Consumable[] consumables) 
     {
