@@ -90,8 +90,14 @@ public class CharStats : MonoBehaviour
     public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true);
     public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true);
     public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true);
+    public Attacks ESkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Fire", false, true);
+    public Attacks ESolneIcante = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Ice", false, true);
+    public Attacks EEctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
+    public Attacks EHolyLight = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Light", false, true);
+    public Attacks EDarkness = new Attacks(20, 0.6, 0.08, 0, 0, 0.1, 0, false, "Darkness", false, true);
     public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
     public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
+    public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true);
     // Attacks//
     public void DamageDone(Attacks attack)
     {

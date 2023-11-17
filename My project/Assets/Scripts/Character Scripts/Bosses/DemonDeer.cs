@@ -90,11 +90,11 @@ public class DemonDeer : EnemyStats
         }
         else if (Action >= 2 && Action < 4)
         {
-            DamageDone(SkeirnaFiernie);
+            DamageDone(ESkeirnaFiernie);
         }
         else if (Action >= 4)
         {
-            DamageDone(SolneIcante);
+            DamageDone(ESolneIcante);
         }
     }
 }

@@ -96,7 +96,7 @@ public class TheBearStats : EnemyStats
         }
         else if (Action > 2 && h==1)
         {
-            DamageDone(EctieneZrakan);
+            DamageDone(EEctieneZrakan);
         }
         else if (Action <= 2 && h==0)
         {

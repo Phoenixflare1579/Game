@@ -88,13 +88,13 @@ public class BasicAngelStats : EnemyStats
         {
             if (target.GetComponent<CharStats>() != null)
             {
-                DamageDone(HolyLight);
+                DamageDone(EHolyLight);
             }
 
         }
         else if (Action > 2)
         {
-            DamageDone(Heal);
+            DamageDone(EHeal);
         }
     }
 }
