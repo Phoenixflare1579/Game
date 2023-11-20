@@ -278,7 +278,8 @@ MonoBehaviour:
   speed: 100
   lastDirection: {x: 0, y: 0}
   animator: {fileID: 0}
-  menu: {fileID: 0}
+  menu: {fileID: 4096861794669421594, guid: 92e6ad2f97a7c0341ace7f36ec761977, type: 3}
+  recommended: {fileID: 8538530198926236740, guid: fb7a771f0cf0d174cbb924f64e2ef09b, type: 3}
 --- !u!114 &7206234117706668810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,13 +315,19 @@ MonoBehaviour:
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
+  Equipped: []
   damageindicatorP: {fileID: 719356124934872132, guid: c6858d73b9989614cb3b94eaa53ae1fa, type: 3}
+  animations: []
   Dead: 0
-  Location: {x: 0, y: 0, z: 0}
-  anim: {fileID: 7372105991490610914}
-  Form: 0
   Weapon: 1
+  Form: 0
+  anim: {fileID: 7372105991490610914}
   WType: 
+  healthperlvl: 0
+  curve: 1
+  LvlUP: 0
+  Location: {x: 0, y: 0, z: 0}
+  scene: 
   Die: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}
 --- !u!136 &7723524079306629853
 CapsuleCollider:

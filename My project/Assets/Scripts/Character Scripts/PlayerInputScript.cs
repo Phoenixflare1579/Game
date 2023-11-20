@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ExampleClass : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class ExampleClass : MonoBehaviour
     public Vector2 lastDirection;
     public Animator animator;
     public GameObject menu;
+    public GameObject recommended;
+    GameObject holder;
+    GameObject p;
     int i = 0;
     void Start()
     {
@@ -35,6 +39,19 @@ public class ExampleClass : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Combat")
         rb.velocity = new Vector3(lastDirection.x,0,lastDirection.y).normalized * speed + new Vector3(0, rb.velocity.y + Physics.gravity.y,0);
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Area").Length; i++)
+        if (Vector3.Distance(this.gameObject.transform.position, GameObject.FindGameObjectsWithTag("Area")[i].transform.position)<=200f)
+            {
+                holder=Instantiate(recommended);
+                holder.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = GameObject.FindGameObjectsWithTag("Area")[i].GetComponent<MoveScene>().SceneName + '\n' + "Recommended Level:" + GameObject.FindGameObjectsWithTag("Area")[i].GetComponent<MoveScene>().RLvL;
+            }
+        else
+            {
+                if (holder != null)
+                {
+                    Destroy(holder.gameObject);
+                }
+            }
     }
 
     public void Move(InputAction.CallbackContext c)
@@ -75,23 +92,19 @@ public class ExampleClass : MonoBehaviour
 
     public void Menu(InputAction.CallbackContext c) 
     {
-        if (GameObject.Find("PauseParent") != null)
-        {
-            menu = GameObject.Find("PauseParent").gameObject.transform.GetChild(0).gameObject;
-            Debug.Log(menu.name);
             if (c.started)
             {
                 if (i == 0)
                 {
-                    menu.SetActive(true);
+                    p=Instantiate(menu);
                     i++;
                 }
                 else
                 {
-                    menu.SetActive(false);
+                    if (p != null)
+                    Destroy(p.gameObject);
                     i--;
                 }
-            }
         }
     }
 }

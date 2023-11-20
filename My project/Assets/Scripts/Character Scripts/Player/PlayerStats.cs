@@ -15,7 +15,7 @@ public class PlayerStats : CharStats
     public int healthperlvl;
     public int curve = 1;
     public int LvlUP = 0;
-    public Dictionary<string,bool> skilltree;
+    public Dictionary<string,bool> skilltree = new Dictionary<string, bool>();
     private void Start()
     {
         anim = GetComponent<Animator>();

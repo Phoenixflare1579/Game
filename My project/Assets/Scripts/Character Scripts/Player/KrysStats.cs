@@ -119,13 +119,11 @@ public class KrysStats : PlayerStats
             }
         logic.GetComponent<BattleStartup>().Increase();
     }
-
     public void FireBall()
     {
         DamageDone(BasicSword);
         logic.GetComponent<BattleStartup>().Increase();
     }
-
     public void Drain()
     {
         DamageDone(BasicSword);

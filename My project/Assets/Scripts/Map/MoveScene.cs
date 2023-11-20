@@ -7,6 +7,7 @@ public class MoveScene : MonoBehaviour
 {
     public string SceneName;
     public Vector3 Start;
+    public int RLvL;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")

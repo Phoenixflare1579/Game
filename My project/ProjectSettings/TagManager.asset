@@ -10,6 +10,7 @@ TagManager:
   - Pause
   - Damage
   - Counter
+  - Area
   layers:
   - Default
   - TransparentFX

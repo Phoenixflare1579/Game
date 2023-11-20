@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
     public GameObject Johanna;
     public GameObject Cam;
     public GameObject Battle;
-    public GameObject Pause;
 
     private void Start()
     {
@@ -33,8 +32,6 @@ public class MainMenu : MonoBehaviour
         rename = Instantiate(Cam);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename = Instantiate(Battle);
-        rename.name = rename.name.Replace("(Clone)", "").Trim();
-        rename = Instantiate(Pause);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
     }
 
