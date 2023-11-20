@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,10 @@ public class MCStats : PlayerStats
         healthperlvl = 8;
         CritDmg = 25;
         Crit = 100;
+        bonuses = new int[9];
+        skilltree1 = new int[9];
+        skilltree2 = new int[9];
+        skilltree3 = new int[9];
     }
     // Update is called once per frame
     void Update()
@@ -33,21 +38,21 @@ public class MCStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
-        MaxHP = 120 + (healthperlvl * Level);
-        MaxMana = 50 + (5 * Level);
-        Speed = 90 + (5 * Level);
+        MaxHP = 120 + (healthperlvl * Level) + bonuses[0];
+        MaxMana = 50 + (5 * Level) + bonuses[1];
+        Speed = 90 + (5 * Level) + bonuses[2];
         if (Speed > Max) Speed = Max;
-        Def = 65 + (3 * Level);
+        Def = 65 + (3 * Level) + bonuses[3];
         if (Def > Max) Def = Max;
-        PhysAtk = 120 + (4 * Level);
+        PhysAtk = 120 + (4 * Level) + bonuses[4];
         if (PhysAtk > Max) PhysAtk = Max;
-        MagicAtk = 85 + (6 * Level);
+        MagicAtk = 85 + (6 * Level) + bonuses[5];
         if (MagicAtk > Max) MagicAtk = Max;
-        MagicDef = 60 + (5 * Level);
+        MagicDef = 60 + (5 * Level) + bonuses[6];
         if (MagicDef > Max) MagicDef = Max;
-        Evasion = 60 + (5 * Level);
+        Evasion = 60 + (5 * Level) + bonuses[7];
         if (Evasion > Max) Evasion = Max;
-        Accuracy = 85 + (5 * Level);
+        Accuracy = 85 + (5 * Level) + bonuses[8];
         if (Accuracy > Max) Accuracy = Max;
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
@@ -104,6 +109,10 @@ public class MCStats : PlayerStats
         {
             anim.enabled = true;
             this.gameObject.tag = "Player";
+        }
+        if (skilltree1[0]==1)
+        {
+            bonuses[4] = 10;
         }
     }
 

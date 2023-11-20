@@ -22,6 +22,10 @@ public class JohannaStats : PlayerStats
         anim.SetInteger("Form", Form);
         CritDmg = 25;
         Crit = 15;
+        bonuses = new int[9];
+        skilltree1 = new int[9];
+        skilltree2 = new int[9];
+        skilltree3 = new int[9];
     }
 
     // Update is called once per frame
@@ -32,21 +36,21 @@ public class JohannaStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
-        MaxHP = (105 + (healthperlvl * Level));
-        MaxMana = 80 + (12 * Level);
-        Speed = 130 + (5 * Level);
+        MaxHP = (105 + (healthperlvl * Level)) + bonuses[0];
+        MaxMana = 80 + (12 * Level) + bonuses[1];
+        Speed = 130 + (5 * Level) + bonuses[2];
         if (Speed > Max) Speed = Max;
-        Def = 70 + (6 * Level);
+        Def = 70 + (6 * Level) + bonuses[3];
         if (Def > Max) Def = Max;
-        PhysAtk = 80 + (5 * Level);
+        PhysAtk = 80 + (5 * Level) + bonuses[4];
         if (PhysAtk > Max) PhysAtk = Max;
-        MagicAtk = 100 + (6 * Level);
+        MagicAtk = 100 + (6 * Level) + bonuses[5];
         if (MagicAtk > Max) MagicAtk = Max;
-        MagicDef = 90 + (5 * Level);
+        MagicDef = 90 + (5 * Level) + bonuses[6];
         if (MagicDef > Max) MagicDef = Max;
-        Evasion = 60 + (3 * Level);
+        Evasion = 60 + (3 * Level) + bonuses[7];
         if (Evasion > Max) Evasion = Max;
-        Accuracy = 85 + (5 * Level);
+        Accuracy = 85 + (5 * Level) + bonuses[8];
         if (Accuracy > Max) Accuracy = Max;
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
