@@ -11,6 +11,8 @@ public class MCStats : PlayerStats
     public Vector3 Location;
     public string scene;
     public Sprite Die;
+    bool followup = false;
+    int c = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +28,9 @@ public class MCStats : PlayerStats
         CritDmg = 25;
         Crit = 100;
         bonuses = new int[9];
-        skilltree1 = new int[9];
-        skilltree2 = new int[9];
-        skilltree3 = new int[9];
+        skilltree1 = new bool[9];
+        skilltree2 = new bool[9];
+        skilltree3 = new bool[9];
     }
     // Update is called once per frame
     void Update()
@@ -110,9 +112,53 @@ public class MCStats : PlayerStats
             anim.enabled = true;
             this.gameObject.tag = "Player";
         }
-        if (skilltree1[0]==1)
+        if (skilltree1[0]== true && skilltree1[2] == false)
         {
             bonuses[4] = 10;
+        }
+        else if (skilltree1[2] == true)
+        {
+            bonuses[4] = 25;
+        }
+        if (skilltree1[1]==true && skilltree1[5] == false)
+        {
+            bonuses[2] = 10;
+        }
+        else if (skilltree1[5] == true)
+        {
+            bonuses[2] = 35;
+        }
+        if (skilltree1[3]==true)
+        {
+            if (followup == true)
+            {
+                if (Random.Range(0f,1f)>=0.5f)
+                {
+                    DamageDone(BasicSword);
+                }
+            }
+            followup = false;
+        }
+        if (skilltree1[4]==true)
+        {
+            bonuses[0] = 50;
+        }
+        if (skilltree1[6]==true)
+        {
+            bonuses[8] = 30;
+        }
+        if (skilltree1[7]==true)
+        {
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c==0)
+            if (Random.Range(0f, 1f) >= 0.8f);
+            {
+                target.GetComponent<CharStats>().Def /= 2;
+            }
+            c = 1;
+        }
+        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 1)
+        {
+            c = 0;
         }
     }
 
@@ -121,6 +167,7 @@ public class MCStats : PlayerStats
             if (Form == 1)
             {
                 DamageDone(BasicSword);
+                followup = true;
             }
             else if (Form == 2)
             {

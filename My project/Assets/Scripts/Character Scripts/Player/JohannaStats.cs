@@ -23,9 +23,9 @@ public class JohannaStats : PlayerStats
         CritDmg = 25;
         Crit = 15;
         bonuses = new int[9];
-        skilltree1 = new int[9];
-        skilltree2 = new int[9];
-        skilltree3 = new int[9];
+        skilltree1 = new bool[9];
+        skilltree2 = new bool[9];
+        skilltree3 = new bool[9];
     }
 
     // Update is called once per frame

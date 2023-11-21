@@ -15,9 +15,9 @@ public class PlayerStats : CharStats
     public int healthperlvl;
     public int curve = 1;
     public int LvlUP = 0;
-    public int[] skilltree1;
-    public int[] skilltree2;
-    public int[] skilltree3;
+    public bool[] skilltree1;
+    public bool[] skilltree2;
+    public bool[] skilltree3;
     public int[] bonuses;
     private void Start()
     {
