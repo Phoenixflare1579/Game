@@ -84,7 +84,7 @@ public class CharStats : MonoBehaviour
     public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
     public Attacks HornSlam = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, true, "Staff", true, false);
     public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Sword", true, false);
-    public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Dagger", false, false);
+    public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Knife", false, false);
     public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true);
     public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true);
     public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true);
@@ -99,6 +99,7 @@ public class CharStats : MonoBehaviour
     public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
     public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true);
     public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false);
+    public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
     // Attacks//
     public void DamageDone(Attacks attack)
     {
