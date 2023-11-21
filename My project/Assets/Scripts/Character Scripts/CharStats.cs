@@ -98,6 +98,7 @@ public class CharStats : MonoBehaviour
     public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
     public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
     public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true);
+    public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false);
     // Attacks//
     public void DamageDone(Attacks attack)
     {

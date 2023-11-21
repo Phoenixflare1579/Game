@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -130,7 +129,7 @@ public class MCStats : PlayerStats
         }
         if (skilltree1[3]==true)
         {
-            if (followup == true)
+            if (followup == true && Form == 1)
             {
                 if (Random.Range(0f,1f)>=0.5f)
                 {
@@ -147,10 +146,10 @@ public class MCStats : PlayerStats
         {
             bonuses[8] = 30;
         }
-        if (skilltree1[7]==true)
+        if (skilltree1[7]==true && Form ==1)
         {
             if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c==0)
-            if (Random.Range(0f, 1f) >= 0.8f);
+            if (Random.Range(0f, 1f) >= 0.8f)
             {
                 target.GetComponent<CharStats>().Def /= 2;
             }
@@ -159,6 +158,82 @@ public class MCStats : PlayerStats
         if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 1)
         {
             c = 0;
+        }
+        if (skilltree2[0] == true && skilltree2[2] == false)
+        {
+            bonuses[5] = 10;
+        }
+        else if (skilltree2[2] == true)
+        {
+            bonuses[5] = 25;
+        }
+        if (skilltree2[1] == true && skilltree2[5] == false)
+        {
+            bonuses[6] = 10;
+        }
+        else if (skilltree2[5] == true)
+        {
+            bonuses[6] = 35;
+        }
+        if (skilltree2[3] == true && Form == 2)
+        {
+            bonuses[4] += Level * 2;
+            bonuses[5] += Level * 2;
+        }
+        if (skilltree2[4] == true)
+        {
+            bonuses[0] = 50;
+        }
+        if (skilltree2[6] == true)
+        {
+            bonuses[7] = 30;
+        }
+        if (skilltree2[7] == true && Form == 2)
+        {
+            int P = PhysAtk;
+            PhysAtk += MagicAtk/2;
+            MagicAtk += P/2;
+        }
+        if (skilltree3[0] == true && skilltree3[2] == false)
+        {
+            bonuses[4] = 10;
+        }
+        else if (skilltree3[2] == true)
+        {
+            bonuses[4] = 25;
+        }
+        if (skilltree3[1] == true && skilltree3[5] == false)
+        {
+            bonuses[5] = 10;
+        }
+        else if (skilltree3[5] == true)
+        {
+            bonuses[5] = 35;
+        }
+        if (skilltree3[3] == true)
+        {
+            bonuses[1] = 20;
+        }
+        if (skilltree3[4] == true)
+        {
+            bonuses[0] = 50;
+        }
+        if (skilltree3[6] == true)
+        {
+            Crit += 5;
+        }
+        if (skilltree3[7] == true)
+        {
+            Crit += 10;
+            CritDmg += 15;
+            if (target.GetComponent<CharStats>().HP < target.GetComponent<CharStats>().MaxHP/2)
+            {
+                Crit += 35;
+            }
+            else if (target.GetComponent<CharStats>().HP < target.GetComponent<CharStats>().MaxHP /10)
+            {
+                DamageDone(Execution);
+            }
         }
     }
 
