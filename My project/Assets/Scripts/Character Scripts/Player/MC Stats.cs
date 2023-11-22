@@ -146,18 +146,21 @@ public class MCStats : PlayerStats
         {
             bonuses[8] = 30;
         }
-        if (skilltree1[7]==true && Form ==1)
+        if (logic != null)
         {
-            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c==0)
-            if (Random.Range(0f, 1f) >= 0.8f)
+            if (skilltree1[7] == true && Form == 1)
             {
-                target.GetComponent<CharStats>().Def /= 2;
+                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 0)
+                    if (Random.Range(0f, 1f) >= 0.8f)
+                    {
+                        target.GetComponent<CharStats>().Def /= 2;
+                    }
+                c = 1;
             }
-            c = 1;
-        }
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 1)
-        {
-            c = 0;
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 1)
+            {
+                c = 0;
+            }
         }
         if (skilltree2[0] == true && skilltree2[2] == false)
         {

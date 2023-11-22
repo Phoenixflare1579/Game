@@ -139,10 +139,6 @@ public class KrysStats : PlayerStats
         {
             bonuses[8] = 30;
         }
-        if (skilltree1[7] == true && Form == 1)
-        {
-            //add bladestorm and marks
-        }
         if (skilltree2[0] == true && skilltree2[2] == false)
         {
             bonuses[5] = 10;
@@ -159,10 +155,6 @@ public class KrysStats : PlayerStats
         {
             bonuses[6] = 35;
         }
-        if (skilltree2[3] == true && Form == 2)
-        {
-            // Gain Access to Insurgence
-        }
         if (skilltree2[4] == true)
         {
             bonuses[1] = 20;
@@ -170,10 +162,6 @@ public class KrysStats : PlayerStats
         if (skilltree2[6] == true)
         {
             bonuses[7] = 30;
-        }
-        if (skilltree2[7] == true && Form == 2)
-        {
-            //Gain Access to Vampirism
         }
         if (skilltree3[0] == true && skilltree3[2] == false)
         {
@@ -225,14 +213,45 @@ public class KrysStats : PlayerStats
             }
         logic.GetComponent<BattleStartup>().Increase();
     }
-    public void FireBall()
+    public void F1()
     {
-        DamageDone(BasicSword);
+        DamageDone(SkeirnaFiernie);
         logic.GetComponent<BattleStartup>().Increase();
     }
-    public void Drain()
+    public void D()
     {
-        DamageDone(BasicSword);
+        DamageDone(Drain);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void E1()
+    {
+        DamageDone(EctieneZrakan);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void I1()
+    {
+        DamageDone(SolneIcante);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void BS()
+    {
+        int t=Random.Range(1, 5);
+        for (int i = 0; i < t; i++)
+        {
+            DamageDone(BladeStorm);
+        }
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void DI()
+    {
+        HP -= MaxHP / 3;
+        Mana -= 30;
+        target.GetComponent<CharStats>().HP -= (MaxHP/3)*2;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void V()
+    {
+        DamageDone(Vampirism);
         logic.GetComponent<BattleStartup>().Increase();
     }
 }

@@ -79,6 +79,7 @@ public class CharStats : MonoBehaviour
     public Attacks BasicAxe = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Axe", true, false);
     public Attacks BasicStaff = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
     public Attacks Bite = new Attacks(0, 0.6, 0.03, 0, 0, 0, 0.25, false, "Knife", true, false);
+    public Attacks Drain = new Attacks(0, 0.6, 0.06, 0, 0, 0, 0.25, false, "Knife", true, false);
     public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0.1, 0, false, "Staff", true, false);
     public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
     public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
@@ -100,6 +101,8 @@ public class CharStats : MonoBehaviour
     public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true);
     public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false);
     public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
+    public Attacks BladeStorm = new Attacks(10, 0.4, 0.02, 0, 0, 0, 0, true, "Knife", true, false);
+    public Attacks Vampirism = new Attacks(0, 0.75, 0, 0, 40, 0, 1, false, "Dark", false, true);
     // Attacks//
     public void DamageDone(Attacks attack)
     {
