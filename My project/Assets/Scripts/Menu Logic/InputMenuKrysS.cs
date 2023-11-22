@@ -56,10 +56,10 @@ public class InputMenuKrysS : MonoBehaviour
     }
     public void FireBall()
     {
-        Krys.GetComponent<KrysStats>().FireBall();
+        Krys.GetComponent<KrysStats>().F1();
     }
     public void Drain() 
     {
-        Krys.GetComponent<KrysStats>().Drain();
+        Krys.GetComponent<KrysStats>().D();
     }
 }

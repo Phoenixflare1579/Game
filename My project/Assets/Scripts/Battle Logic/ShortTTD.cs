@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimetoDie : MonoBehaviour
+public class ShortTTD : MonoBehaviour
 {
     int T = 0;
 
@@ -10,7 +10,7 @@ public class TimetoDie : MonoBehaviour
     void FixedUpdate()
     {
         T++;
-        if (T>=400)
+        if (T >= 70)
         {
             Destroy(this.gameObject);
         }

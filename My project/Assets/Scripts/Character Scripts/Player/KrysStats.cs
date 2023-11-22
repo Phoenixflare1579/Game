@@ -33,6 +33,12 @@ public class KrysStats : PlayerStats
         skilltree1 = new bool[9];
         skilltree2 = new bool[9];
         skilltree3 = new bool[9];
+        for (int i = 0; i < 9; i++)
+        {
+            skilltree1[i] = false;
+            skilltree2[i] = false;
+            skilltree3[i] = false;
+        }
     }
     // Update is called once per frame
     void Update()

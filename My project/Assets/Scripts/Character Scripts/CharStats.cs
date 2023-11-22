@@ -214,7 +214,7 @@ public class CharStats : MonoBehaviour
             hold = Instantiate(animations[5]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
 
         }
         else if (Wtype == "Ice")
@@ -222,28 +222,28 @@ public class CharStats : MonoBehaviour
             hold = Instantiate(animations[6]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
         }
         else if (Wtype == "Lightning")
         {
             hold = Instantiate(animations[7]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
         }
         else if (Wtype == "Light")
         {
             hold = Instantiate(animations[8]);
             hold.transform.position = this.gameObject.transform.position + new Vector3 (0,100,0);
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 10f * Time.deltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
         }
         else if (Wtype == "Dark")
         {
             hold = Instantiate(animations[9]);
             hold.transform.position = target.transform.position + new Vector3(0, -20, 0);
             Rigidbody rb = hold.GetComponent<Rigidbody>(); 
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 5f * Time.deltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 500f * Time.deltaTime);
         }
     }
     public void OnMouseDown()

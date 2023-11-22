@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2372902652425104994}
-  - component: {fileID: 6948180098962487942}
+  - component: {fileID: 8498748672906379844}
   m_Layer: 0
   m_Name: Damage Indicator
   m_TagString: Damage
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6948180098962487942
+--- !u!114 &8498748672906379844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 719356124934872132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b96780f94a7be42899357846b4f7c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 081e3b7383e8b3749b3b6c457edbeb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3567807001777812801
