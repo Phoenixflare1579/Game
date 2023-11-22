@@ -317,7 +317,17 @@ MonoBehaviour:
   logic: {fileID: 0}
   Equipped: []
   damageindicatorP: {fileID: 719356124934872132, guid: c6858d73b9989614cb3b94eaa53ae1fa, type: 3}
-  animations: []
+  animations:
+  - {fileID: 885164656192517445, guid: bf7c490cc671a0a4aa0f8918fa0da625, type: 3}
+  - {fileID: 7185234532430884914, guid: ea3d2051a5cc071419e6add0767f8411, type: 3}
+  - {fileID: 7817333130819043492, guid: e38cb8b8f84bb0543851a60424301734, type: 3}
+  - {fileID: 3395665203152350142, guid: 1abdc60997a00164ab2a456a61d4fa97, type: 3}
+  - {fileID: 4917079149152084371, guid: 585450416ab288e4192f208383fb53df, type: 3}
+  - {fileID: 1954402420305909242, guid: a455889d3ae71db42b88107967a67f6e, type: 3}
+  - {fileID: 7668729849773046564, guid: 7f3814af882d96843bf6e5977f7dd564, type: 3}
+  - {fileID: 4442112551574316898, guid: 155f625b6b866fb44b57db9921a31ece, type: 3}
+  - {fileID: 4967138563012143804, guid: 16bd4ef0d0704984284a4a14064c9995, type: 3}
+  - {fileID: 6382316988226569114, guid: 94f33f04b532fae44bd00defef23c57a, type: 3}
   Dead: 0
   Weapon: 1
   Form: 0
@@ -326,6 +336,10 @@ MonoBehaviour:
   healthperlvl: 0
   curve: 1
   LvlUP: 0
+  skilltree1: 
+  skilltree2: 
+  skilltree3: 
+  bonuses: 
   Location: {x: 0, y: 0, z: 0}
   scene: 
   Die: {fileID: 21300000, guid: dd5b3d9aa7f05114492335b478f422df, type: 3}

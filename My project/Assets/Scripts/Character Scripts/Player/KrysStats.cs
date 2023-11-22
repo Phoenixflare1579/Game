@@ -11,6 +11,8 @@ public class KrysStats : PlayerStats
     int c = 0;
     public Sprite Die;
     int current=0;
+    int l = 0;
+    int t = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,6 +109,10 @@ public class KrysStats : PlayerStats
             anim.enabled = true;
             this.gameObject.tag = "Player";
         }
+        if (t==2)
+        {
+            t = 0;
+        }
         if (skilltree1[0] == true && skilltree1[2] == false)
         {
             bonuses[4] = 10;
@@ -165,23 +171,29 @@ public class KrysStats : PlayerStats
         }
         if (skilltree3[0] == true && skilltree3[2] == false)
         {
-            
+            bonuses[0] = 50;
         }
         else if (skilltree3[2] == true)
         {
-            
+            bonuses[0] = 200;
         }
         if (skilltree3[1] == true && skilltree3[5] == false)
         {
-            
+            bonuses[2] = 15;
         }
         else if (skilltree3[5] == true)
         {
-            
+            bonuses[2] = 35;
         }
         if (skilltree3[3] == true)
         {
-            
+            if (Form == 3 && HP < current && l<5)
+            {
+                PhysAtk += (int)(PhysAtk * 0.05);
+                MagicAtk += (int)(MagicAtk * 0.05);
+                l++;
+            }
+            current = HP;
         }
         if (skilltree3[4] == true)
         {
@@ -189,11 +201,16 @@ public class KrysStats : PlayerStats
         }
         if (skilltree3[6] == true)
         {
-
+            bonuses[8] = 30;
         }
         if (skilltree3[7] == true)
         {
-
+            if (logic != null)
+                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && t==0)
+                {
+                    HP += MaxHP / 5;
+                    t++;
+                }
         }
     }
 
@@ -210,7 +227,8 @@ public class KrysStats : PlayerStats
             else
             {
             DamageDone(BasicDagger);
-            }
+            t++;
+        }
         logic.GetComponent<BattleStartup>().Increase();
     }
     public void F1()
@@ -226,6 +244,7 @@ public class KrysStats : PlayerStats
     public void E1()
     {
         DamageDone(EctieneZrakan);
+        t++;
         logic.GetComponent<BattleStartup>().Increase();
     }
     public void I1()
@@ -252,6 +271,21 @@ public class KrysStats : PlayerStats
     public void V()
     {
         DamageDone(Vampirism);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void BV() 
+    {
+        DamageDone(BeyondTheVeil);
+        HP -= HP / 3;
+        t++;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void EV() 
+    {
+        DamageDone(EyesoftheVoid);
+        DamageDone(EyesoftheVoid);
+        HP -= HP / 2;
+        t++;
         logic.GetComponent<BattleStartup>().Increase();
     }
 }

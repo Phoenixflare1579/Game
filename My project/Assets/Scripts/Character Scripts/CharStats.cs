@@ -103,6 +103,7 @@ public class CharStats : MonoBehaviour
     public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
     public Attacks BladeStorm = new Attacks(10, 0.4, 0.02, 0, 0, 0, 0, true, "Knife", true, false);
     public Attacks Vampirism = new Attacks(0, 0.75, 0, 0, 40, 0, 1, false, "Dark", false, true);
+    public Attacks EyesoftheVoid = new Attacks(10, 0.5, 0.08, 0, 35, 0, 0, false, "Staff", true, false);
     // Attacks//
     public void DamageDone(Attacks attack)
     {
@@ -178,6 +179,7 @@ public class CharStats : MonoBehaviour
             {
                 HP += (int)(attack.PercentLifeSteal * normDmg);
             }
+            Animation(attack.DamageType);
         }
     }
     public void Animation(string Wtype)
