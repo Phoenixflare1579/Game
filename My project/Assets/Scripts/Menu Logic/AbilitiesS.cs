@@ -16,5 +16,55 @@ public class AbilitiesS : MonoBehaviour
     public void Ability()
     {
         this.gameObject.transform.GetChild(Char.Form).gameObject.SetActive(true);
+        if (Char.gameObject.name == "Krys")
+        {
+            if (Char.Level < 5)
+            {
+                gameObject.transform.GetChild(1).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(0).gameObject.SetActive(false);
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(0).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(2).gameObject.SetActive(false);
+            }
+            if (Char.skilltree1[7]==false) 
+            { 
+                gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.SetActive(false);
+            }
+            if (Char.skilltree2[3] == false)
+            {
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(2).gameObject.SetActive(false);
+            }
+            if (Char.skilltree2[7] == false)
+            {
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(3).gameObject.SetActive(false);
+            }
+            if (Char.Mana < 30)
+            {
+                gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.SetActive(false);
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(2).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(2).gameObject.SetActive(false);
+            }
+            if (Char.Mana < 40)
+            {
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(3).gameObject.SetActive(false);
+            }
+            if (Char.Mana < 15)
+            {
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(0).gameObject.SetActive(false);
+                gameObject.transform.GetChild(2).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            }
+            if (Char.Mana < 10)
+            {
+                gameObject.transform.GetChild(1).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            }
+        }
+        else if (Char.gameObject.name == "MC")
+        {
+
+        }
     }
 }

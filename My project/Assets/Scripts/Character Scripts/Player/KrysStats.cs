@@ -260,6 +260,7 @@ public class KrysStats : PlayerStats
     }
     public void BS()
     {
+        Mana -= 30;
         int t=Random.Range(1, 5);
         for (int i = 0; i < t; i++)
         {
@@ -292,6 +293,16 @@ public class KrysStats : PlayerStats
         DamageDone(EyesoftheVoid);
         HP -= HP / 2;
         t++;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void TC() 
+    {
+        Mana -= 10;
+        int t = Random.Range(1, 8);
+        for (int i = 0; i < t; i++)
+        {
+            DamageDone(ThousandCuts);
+        }
         logic.GetComponent<BattleStartup>().Increase();
     }
 }

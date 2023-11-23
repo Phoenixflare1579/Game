@@ -92,7 +92,7 @@ public class TheBearStats : EnemyStats
     {
         if (Action <= 2 && h==1)
         {
-            DamageDone(BeyondTheVeil);
+            DamageDone(EBeyondTheVeil);
         }
         else if (Action > 2 && h==1)
         {

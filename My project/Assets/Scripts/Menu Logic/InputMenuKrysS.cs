@@ -7,6 +7,7 @@ public class InputMenuKrysS : MonoBehaviour
 {
     public GameObject logic;
     public GameObject Krys;
+    public Button Button;
     int i=0;
     private void Start()
     {
@@ -54,7 +55,7 @@ public class InputMenuKrysS : MonoBehaviour
     {
         Krys.GetComponent<KrysStats>().ChangeForm(1);
     }
-    public void FireBall()
+    public void FireL()
     {
         Krys.GetComponent<KrysStats>().F1();
     }
@@ -62,4 +63,37 @@ public class InputMenuKrysS : MonoBehaviour
     {
         Krys.GetComponent<KrysStats>().D();
     }
+    public void LightningL()
+    {
+        Krys.GetComponent<KrysStats>().E1();
+    }
+    public void IceL()
+    {
+        Krys.GetComponent<KrysStats>().I1();
+    }
+    public void BladeStorm()
+    {
+        Krys.GetComponent<KrysStats>().BS();
+    }
+    public void DemonicI()
+    {
+        Krys.GetComponent<KrysStats>().DI();
+    }
+    public void Vampirism()
+    {
+        Krys.GetComponent<KrysStats>().V();
+    }
+    public void BeyondVeil()
+    {
+        Krys.GetComponent<KrysStats>().BV();
+    }
+    public void EyesVoid()
+    {
+        Krys.GetComponent<KrysStats>().EV();
+    }
+    public void ThousandCuts()
+    {
+        Krys.GetComponent<KrysStats>().TC();
+    }
+
 }
