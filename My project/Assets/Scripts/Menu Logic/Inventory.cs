@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
             holder = Instantiate(items, Canvas.transform);
             holder.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = MC.GetComponent<CharStats>().Consumables.Keys.ToArray()[i].Name;
         }
+        gameObject.transform.parent.transform.GetChild(0).gameObject.GetComponent<Image>().color = Color.black;
     }
     public void Remove()
     {
@@ -28,5 +30,6 @@ public class Inventory : MonoBehaviour
         {
             Destroy(Canvas.transform.GetChild(i).gameObject);
         }
+        gameObject.transform.parent.transform.GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
     }
 }
