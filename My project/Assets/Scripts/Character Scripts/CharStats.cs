@@ -56,7 +56,8 @@ public class CharStats : MonoBehaviour
         public string DamageType;
         public bool isPhysAtk;
         public bool isMagicAtk;
-        public Attacks(double BaseDmgC, double BaseDmgScaleC, double LevelDmgAmountC, double HealingC, int MPCostC, double HPCostC, double PercentLifeStealC, bool AOEC, string DamageTypeC, bool isPhysAtkC, bool isMagicAtkC)
+        public string name;
+        public Attacks(double BaseDmgC, double BaseDmgScaleC, double LevelDmgAmountC, double HealingC, int MPCostC, double HPCostC, double PercentLifeStealC, bool AOEC, string DamageTypeC, bool isPhysAtkC, bool isMagicAtkC, string nameC)
         {
             BaseDmg = BaseDmgC;
             BaseDmgScale = BaseDmgScaleC;
@@ -69,45 +70,46 @@ public class CharStats : MonoBehaviour
             DamageType = DamageTypeC;
             isPhysAtk = isPhysAtkC;
             isMagicAtk = isMagicAtkC;
+            name = nameC;
         }
     }
 
     // Attacks//
-    public Attacks BasicSword = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
-    public Attacks BasicDagger = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Knife", true, false);
-    public Attacks BasicSpear = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Spear", true, false);
-    public Attacks BasicAxe = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Axe", true, false);
-    public Attacks BasicStaff = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
-    public Attacks Bite = new Attacks(0, 0.6, 0.03, 0, 0, 0, 0.25, false, "Knife", true, false);
-    public Attacks Drain = new Attacks(0, 0.6, 0.06, 0, 10, 0, 0.25, false, "Knife", true, false);
-    public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0.1, 0, false, "Staff", true, false);
-    public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false);
-    public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false);
-    public Attacks HornSlam = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, true, "Staff", true, false);
-    public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Sword", true, false);
-    public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Knife", false, false);
-    public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true);
-    public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true);
-    public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true);
-    public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true);
-    public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true);
-    public Attacks ESkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Fire", false, true);
-    public Attacks ESolneIcante = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Ice", false, true);
-    public Attacks EEctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
-    public Attacks EHolyLight = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Light", false, true);
-    public Attacks EDarkness = new Attacks(20, 0.6, 0.08, 0, 0, 0.1, 0, false, "Darkness", false, true);
-    public Attacks EBeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true);
-    public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 30, 0, 0, false, "Lightning", false, true);
-    public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true);
-    public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true);
-    public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false);
-    public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
-    public Attacks BladeStorm = new Attacks(10, 0.4, 0.02, 0, 0, 0, 0, true, "Knife", true, false);
-    public Attacks Vampirism = new Attacks(0, 0.75, 0, 0, 40, 0, 1, false, "Dark", false, true);
-    public Attacks EyesoftheVoid = new Attacks(10, 0.5, 0.08, 0, 30, 0, 0, false, "Staff", true, false);
-    public Attacks ThousandCuts = new Attacks(3, 0.1, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
-    public Attacks Double = new Attacks(0, 0.25, 0.025, 0, 0, 0, 0, false, "Spear", true, false);
-    public Attacks GodSpeed = new Attacks(0, 0.7, 0.05, 0, 30, 0, 0, false, "Spear", false, false);
+    public Attacks BasicSword = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Sword", true, false, "Attack");
+    public Attacks BasicDagger = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Knife", true, false, "Attack");
+    public Attacks BasicSpear = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Spear", true, false, "Attack");
+    public Attacks BasicAxe = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Axe", true, false, "Attack");
+    public Attacks BasicStaff = new Attacks(0, 0.5, 0.05, 0, 0, 0, 0, false, "Staff", true, false, "Attack");
+    public Attacks Bite = new Attacks(0, 0.6, 0.03, 0, 0, 0, 0.25, false, "Knife", true, false, "Bite");
+    public Attacks Drain = new Attacks(0, 0.6, 0.06, 0, 10, 0, 0.25, false, "Knife", true, false, "Drain");
+    public Attacks Rampage = new Attacks(10, 0.6, 0.08, 0 , 0, 0.1, 0, false, "Staff", true, false, "Rampage");
+    public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false, "Wild Rush");
+    public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false, "Claw Swipe");
+    public Attacks HornSlam = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, true, "Staff", true, false, "Horn Slam");
+    public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Sword", true, false, "Eat");
+    public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Knife", false, false, "Crunch");
+    public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true, "Skeirna Fiernie");
+    public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true, "Solne Icante");
+    public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true, "Ectiene Zrakan");
+    public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true, "Holy Light");
+    public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true, "Darkness");
+    public Attacks ESkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Fire", false, true, "Skeirna Fiernie");
+    public Attacks ESolneIcante = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Ice", false, true, "Solne Icante");
+    public Attacks EEctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Ectiene Zrakan");
+    public Attacks EHolyLight = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Light", false, true, "Holy Light");
+    public Attacks EDarkness = new Attacks(20, 0.6, 0.08, 0, 0, 0.1, 0, false, "Darkness", false, true, "Darkness");
+    public Attacks EBeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Beyond the Veil");
+    public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 30, 0, 0, false, "Lightning", false, true, "Beyond the Veil");
+    public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true, "Heal");
+    public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true, "Heal");
+    public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false, "Execution");
+    public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false, "Flick");
+    public Attacks BladeStorm = new Attacks(10, 0.4, 0.02, 0, 0, 0, 0, true, "Knife", true, false, "Blade Storm");
+    public Attacks Vampirism = new Attacks(0, 0.75, 0, 0, 40, 0, 1, false, "Dark", false, true, "Vampirism");
+    public Attacks EyesoftheVoid = new Attacks(10, 0.5, 0.08, 0, 30, 0, 0, false, "Staff", true, false, "Eyes of the Void");
+    public Attacks ThousandCuts = new Attacks(3, 0.1, 0.02, 0, 0, 0, 0, false, "Knife", true, false, "Thousand Cuts");
+    public Attacks Double = new Attacks(0, 0.25, 0.025, 0, 0, 0, 0, false, "Spear", true, false, "Attack");
+    public Attacks GodSpeed = new Attacks(0, 0.7, 0.05, 0, 30, 0, 0, false, "Spear", false, false, "God Speed");
     // Attacks//
     public void DamageDone(Attacks attack)
     {
@@ -189,6 +191,7 @@ public class CharStats : MonoBehaviour
                 HP += (int)(attack.PercentLifeSteal * normDmg);
             }
             Animation(attack.DamageType);
+            GameObject.Find("Attacks").transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = CharName + " used " + attack.name;
         }
     }
     public void Animation(string Wtype)
