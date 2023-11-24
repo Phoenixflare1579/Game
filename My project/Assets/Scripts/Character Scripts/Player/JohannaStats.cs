@@ -121,7 +121,7 @@ public class JohannaStats : PlayerStats
             }
             if (skilltree1[6] == true)
             {
-                bonuses[8] = 30;
+                bonuses[7] = 30;
             }
             if (skilltree1[7] == true && Form == 1)
             {
@@ -129,11 +129,11 @@ public class JohannaStats : PlayerStats
             }
             if (skilltree2[0] == true && skilltree2[2] == false)
             {
-                bonuses[5] = 10;
+                bonuses[3] = 10;
             }
             else if (skilltree2[2] == true)
             {
-                bonuses[5] = 25;
+                bonuses[3] = 25;
             }
             if (skilltree2[1] == true && skilltree2[5] == false)
             {
@@ -153,7 +153,7 @@ public class JohannaStats : PlayerStats
             }
             if (skilltree2[6] == true)
             {
-                bonuses[7] = 30;
+                bonuses[1] = 30;
             }
             if (skilltree2[7] == true && Form == 2)
             {
@@ -161,23 +161,23 @@ public class JohannaStats : PlayerStats
             }
             if (skilltree3[0] == true && skilltree3[2] == false)
             {
-                bonuses[4] = 10;
+                bonuses[7] = 10;
             }
             else if (skilltree3[2] == true)
             {
-                bonuses[4] = 25;
+                bonuses[7] = 25;
             }
             if (skilltree3[1] == true && skilltree3[5] == false)
             {
-                bonuses[5] = 10;
+                bonuses[2] = 10;
             }
             else if (skilltree3[5] == true)
             {
-                bonuses[5] = 35;
+                bonuses[2] = 35;
             }
             if (skilltree3[3] == true)
             {
-                bonuses[1] = 20;
+
             }
             if (skilltree3[4] == true)
             {
@@ -185,7 +185,7 @@ public class JohannaStats : PlayerStats
             }
             if (skilltree3[6] == true)
             {
-
+                Crit += 10;
             }
             if (skilltree3[7] == true)
             {
@@ -197,5 +197,32 @@ public class JohannaStats : PlayerStats
             anim.enabled = true;
             this.gameObject.tag = "Player";
         }
+    }
+    public void Attack()//Attacks will have a 2% randomization
+    {
+        if (Form == 1)
+        {
+            DamageDone(BasicSpear);
+        }
+        else if (Form == 2)
+        {
+            DamageDone(BasicSpear);
+        }
+        else
+        {
+            DamageDone(BasicSpear);
+            DamageDone(Double);
+        }
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void L1()
+    {
+        DamageDone(HolyLight);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void GS()
+    {
+        DamageDone(GodSpeed);
+        logic.GetComponent<BattleStartup>().Increase();
     }
 }

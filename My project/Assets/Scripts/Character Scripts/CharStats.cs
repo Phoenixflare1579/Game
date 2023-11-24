@@ -106,6 +106,8 @@ public class CharStats : MonoBehaviour
     public Attacks Vampirism = new Attacks(0, 0.75, 0, 0, 40, 0, 1, false, "Dark", false, true);
     public Attacks EyesoftheVoid = new Attacks(10, 0.5, 0.08, 0, 30, 0, 0, false, "Staff", true, false);
     public Attacks ThousandCuts = new Attacks(3, 0.1, 0.02, 0, 0, 0, 0, false, "Knife", true, false);
+    public Attacks Double = new Attacks(0, 0.25, 0.025, 0, 0, 0, 0, false, "Spear", true, false);
+    public Attacks GodSpeed = new Attacks(0, 0.7, 0.05, 0, 30, 0, 0, false, "Spear", false, false);
     // Attacks//
     public void DamageDone(Attacks attack)
     {
@@ -155,6 +157,11 @@ public class CharStats : MonoBehaviour
             {
                 DmgStat = MagicAtk;
                 DefStat = target.GetComponent<CharStats>().MagicDef;
+            }
+            else if (attack == GodSpeed)
+            {
+                DmgStat = Speed;
+                DefStat = target.GetComponent<CharStats>().Def;
             }
             else 
             {
