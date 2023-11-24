@@ -161,11 +161,11 @@ public class KrysStats : PlayerStats
         }
         if (skilltree2[1] == true && skilltree2[5] == false)
         {
-            bonuses[6] = 10;
+            bonuses[7] = 10;
         }
         else if (skilltree2[5] == true)
         {
-            bonuses[6] = 35;
+            bonuses[7] = 20;
         }
         if (skilltree2[4] == true)
         {

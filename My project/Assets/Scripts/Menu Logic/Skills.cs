@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,18 @@ public class Skills : MonoBehaviour
         {
             gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
         }
+        else if (Form == 3 && ((Branch != 0 && Char.skilltree3[Branch - 1] != true) || (Branch == 3 && Char.skilltree3[Branch - 1] != true && Char.skilltree3[Branch - 2] != true) || (Branch == 6 && Char.skilltree3[Branch - 1] != true && Char.skilltree3[Branch - 2] != true)))
+                {
+            gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+                }
+        else if (Form == 1 && ((Branch != 0 && Char.skilltree1[Branch - 1] != true) || (Branch == 3 && Char.skilltree1[Branch - 1] != true && Char.skilltree1[Branch - 2] != true) || (Branch == 6 && Char.skilltree1[Branch - 1] != true && Char.skilltree1[Branch - 2] != true)))
+        {
+            gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+        }
+        else if (Form == 2 && ((Branch != 0 && Char.skilltree2[Branch - 1] != true) || (Branch == 3 && Char.skilltree2[Branch - 1] != true && Char.skilltree2[Branch - 2] != true) || (Branch == 6 && Char.skilltree2[Branch - 1] != true && Char.skilltree2[Branch - 2] != true)))
+        {
+            gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+        }
     }
     public void Unlock()
     {
@@ -41,24 +54,33 @@ public class Skills : MonoBehaviour
         {
             if (Char.skillpoints >= SP && Char.skilltree1[Branch] != true)
             {
-                Char.skilltree1[Branch] = true;
-                Char.skillpoints -= SP;
+                if ((Branch != 0 && Char.skilltree1[Branch - 1] == true) || (Branch == 3 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true) || (Branch == 6 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true))
+                {
+                    Char.skilltree1[Branch] = true;
+                    Char.skillpoints -= SP;
+                }
             }
         }
         else if (Form == 2) 
         {
             if (Char.skillpoints >= SP && Char.skilltree2[Branch] != true)
             {
-                Char.skilltree2[Branch] = true;
-                Char.skillpoints -= SP;
+                if ((Branch != 0 && Char.skilltree2[Branch - 1] == true) || (Branch == 3 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true) || (Branch == 6 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true))
+                {
+                    Char.skilltree2[Branch] = true;
+                    Char.skillpoints -= SP;
+                }
             }
         }
         else if (Form == 3)
         {
             if (Char.skillpoints >= SP && Char.skilltree3[Branch] != true)
             {
-                Char.skilltree3[Branch] = true;
-                Char.skillpoints -= SP;
+                if ((Branch != 0 && Char.skilltree3[Branch - 1] == true) || (Branch == 3 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true) || (Branch == 6 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true))
+                {
+                    Char.skilltree3[Branch] = true;
+                    Char.skillpoints -= SP;
+                }
             }
         }
     }
