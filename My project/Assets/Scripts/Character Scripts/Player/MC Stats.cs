@@ -12,6 +12,7 @@ public class MCStats : PlayerStats
     public Sprite Die;
     bool followup = false;
     int c = 0;
+    int f = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -197,12 +198,7 @@ public class MCStats : PlayerStats
         {
             bonuses[7] = 30;
         }
-        if (skilltree2[7] == true && Form == 2)
-        {
-            int P = PhysAtk;
-            PhysAtk += MagicAtk/2;
-            MagicAtk += P/2;
-        }
+        //if (skilltree2[7] == true) learn SpellBlade
         if (skilltree3[0] == true && skilltree3[2] == false)
         {
             bonuses[4] = 10;
@@ -245,6 +241,25 @@ public class MCStats : PlayerStats
                 DamageDone(Execution);
             }
         }
+        if (Form == 3)
+        {
+            Def /= 2;
+            MagicDef /= 2;
+            PhysAtk = (int)(1.5 * PhysAtk);
+            MagicAtk = (int)(1.5 * MagicAtk);
+            f = 1;
+        }
+        else
+        {
+            if (f == 1) 
+            {
+                Def *= 2;
+                MagicDef *= 2;
+                PhysAtk = (int)(PhysAtk/1.5);
+                MagicAtk = (int)(MagicAtk/1.5);
+                f = 0;
+            }
+        }
     }
 
     public void Attack()//Attacks will have a 2% randomization
@@ -263,5 +278,9 @@ public class MCStats : PlayerStats
                 DamageDone(BasicSword);
             }
         logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void C()
+    {
+
     }
 }

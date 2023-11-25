@@ -7,9 +7,9 @@ public class Party : MonoBehaviour
     GameObject MC;
     GameObject Krys;
     GameObject Johanna;
-    int positionM=-1;
-    int positionK=-1;
-    int positionJ=-1;
+    public int positionM=-1;
+    public int positionK=-1;
+    public int positionJ=-1;
     // Start is called before the first frame update
     void Start()
     {

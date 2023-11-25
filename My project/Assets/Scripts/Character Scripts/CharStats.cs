@@ -110,6 +110,16 @@ public class CharStats : MonoBehaviour
     public Attacks ThousandCuts = new Attacks(3, 0.1, 0.02, 0, 0, 0, 0, false, "Knife", true, false, "Thousand Cuts");
     public Attacks Double = new Attacks(0, 0.25, 0.025, 0, 0, 0, 0, false, "Spear", true, false, "Attack");
     public Attacks GodSpeed = new Attacks(0, 0.7, 0.05, 0, 30, 0, 0, false, "Spear", false, false, "God Speed");
+    public Attacks Cleave = new Attacks(10, 0.4, 0.03, 0, 10, 0, 0, true, "Axe", true, false, "Cleave");
+    public Attacks CrossStrike = new Attacks(5, 0.4, 0.04, 0, 15, 0, 0, false, "Sword", true, false, "Cross Strike");
+    public Attacks PiercingStrike = new Attacks(10, 0.4, 0.05, 0, 10, 0, 0, false, "Spear", true, false, "Piercing Strike");
+    public Attacks Backstab = new Attacks(20, 0.6, 0.05, 0, 30, 0, 0, false, "Knife", true, false, "Backstab");
+    public Attacks Bladewhirl = new Attacks(5, 0.25, 0.025, 0, 15, 0, 0, true, "Sword", true, false, "Bladewhirl");
+    public Attacks Sweep = new Attacks(10, 0.25, 0.025, 0, 15, 0, 0, true, "Spear", true, false, "Sweep");
+    public Attacks GuillotineStrike = new Attacks(20, 0.7, 0.08, 0, 30, 0, 0, false, "Axe", true, false, "Guillotine Strike");
+    public Attacks SpellBlade = new Attacks(0, 0.1, 0.02, 0, 0, 0, 0, true, "Sword", false, true, "Spell Blade");
+    public Attacks Experimentation = new Attacks(5, 0.3, 0.05, 0, 10, 0, 0, false, " ", false, true, "Experimentation");
+    
     // Attacks//
     public void DamageDone(Attacks attack)
     {
@@ -170,7 +180,20 @@ public class CharStats : MonoBehaviour
                 DmgStat = PhysAtk;
                 DefStat = 0;
             }
-
+            if (attack == Experimentation)
+            {
+                int w = Random.Range(1, 5);
+                if (w == 1)
+                    attack.DamageType = "Lightning";
+                else if (w == 2)
+                    attack.DamageType = "Fire";
+                else if (w == 3)
+                    attack.DamageType = "Dark";
+                else if (w == 4)
+                    attack.DamageType = "Ice";
+                else if (w == 5)
+                    attack.DamageType = "Light";
+            }
             double normDmg = attack.BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (attack.BaseDmgScale + (attack.LevelDmgAmount * Level)) - DefStat * 0.25));
             if (Random.Range((float)0.0, (float)1.0) <= (float)(Crit / 100.0) && attack.isPhysAtk)
             {

@@ -225,4 +225,10 @@ public class JohannaStats : PlayerStats
         DamageDone(GodSpeed);
         logic.GetComponent<BattleStartup>().Increase();
     }
+    public void H1()
+    {
+        DamageDone(Heal);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+
 }
