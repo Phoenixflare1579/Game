@@ -58,6 +58,21 @@ public class Skills : MonoBehaviour
                 {
                     Char.skilltree1[Branch] = true;
                     Char.skillpoints -= SP;
+                    if (Char.gameObject.name == "MC")
+                    {
+                        if (Branch == 0)
+                        {
+                            Char.PhysAtk += 15;
+                        }
+                        else if (Branch == 1)
+                        {
+
+                        }
+                        else if (Branch == 2)
+                        {
+                            Char.PhysAtk += 25;
+                        }
+                    }
                 }
             }
         }
@@ -69,6 +84,10 @@ public class Skills : MonoBehaviour
                 {
                     Char.skilltree2[Branch] = true;
                     Char.skillpoints -= SP;
+                    if (Char.gameObject.name == "MC")
+                    {
+                        if (Branch == 0)
+                    }
                 }
             }
         }

@@ -92,22 +92,6 @@ public class JohannaStats : PlayerStats
             {
                 HP = 1;
             }
-            if (skilltree1[0] == true && skilltree1[2] == false)
-            {
-                bonuses[4] = 10;
-            }
-            else if (skilltree1[2] == true)
-            {
-                bonuses[4] = 25;
-            }
-            if (skilltree1[1] == true && skilltree1[5] == false)
-            {
-                bonuses[2] = 10;
-            }
-            else if (skilltree1[5] == true)
-            {
-                bonuses[2] = 35;
-            }
             if (skilltree1[3] == true)
             {
                 if (Form == 1)
@@ -115,77 +99,21 @@ public class JohannaStats : PlayerStats
 
                 }
             }
-            if (skilltree1[4] == true)
-            {
-                bonuses[0] = 50;
-            }
-            if (skilltree1[6] == true)
-            {
-                bonuses[7] = 30;
-            }
             if (skilltree1[7] == true && Form == 1)
             {
 
-            }
-            if (skilltree2[0] == true && skilltree2[2] == false)
-            {
-                bonuses[3] = 10;
-            }
-            else if (skilltree2[2] == true)
-            {
-                bonuses[3] = 25;
-            }
-            if (skilltree2[1] == true && skilltree2[5] == false)
-            {
-                bonuses[6] = 10;
-            }
-            else if (skilltree2[5] == true)
-            {
-                bonuses[6] = 35;
             }
             if (skilltree2[3] == true && Form == 2)
             {
 
             }
-            if (skilltree2[4] == true)
-            {
-                bonuses[0] = 50;
-            }
-            if (skilltree2[6] == true)
-            {
-                bonuses[1] = 30;
-            }
             if (skilltree2[7] == true && Form == 2)
             {
 
             }
-            if (skilltree3[0] == true && skilltree3[2] == false)
-            {
-                bonuses[7] = 10;
-            }
-            else if (skilltree3[2] == true)
-            {
-                bonuses[7] = 25;
-            }
-            if (skilltree3[1] == true && skilltree3[5] == false)
-            {
-                bonuses[2] = 10;
-            }
-            else if (skilltree3[5] == true)
-            {
-                bonuses[2] = 35;
-            }
             if (skilltree3[3] == true)
             {
 
-            }
-            if (skilltree3[4] == true)
-            {
-                bonuses[0] = 50;
-            }
-            if (skilltree3[6] == true)
-            {
-                Crit += 10;
             }
             if (skilltree3[7] == true)
             {

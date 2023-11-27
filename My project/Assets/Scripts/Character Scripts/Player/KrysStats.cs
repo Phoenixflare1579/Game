@@ -119,22 +119,6 @@ public class KrysStats : PlayerStats
         {
             t = 0;
         }
-        if (skilltree1[0] == true && skilltree1[2] == false)
-        {
-            bonuses[4] = 10;
-        }
-        else if (skilltree1[2] == true)
-        {
-            bonuses[4] = 25;
-        }
-        if (skilltree1[1] == true && skilltree1[5] == false)
-        {
-            bonuses[2] = 10;
-        }
-        else if (skilltree1[5] == true)
-        {
-            bonuses[2] = 35;
-        }
         if (skilltree1[3] == true)
         {
             if (Form == 1 && HP < current)
@@ -142,54 +126,6 @@ public class KrysStats : PlayerStats
                 DamageDone(Flick);
             }
             current = HP;
-        }
-        if (skilltree1[4] == true)
-        {
-            bonuses[1] = 20;
-        }
-        if (skilltree1[6] == true)
-        {
-            bonuses[8] = 30;
-        }
-        if (skilltree2[0] == true && skilltree2[2] == false)
-        {
-            bonuses[5] = 10;
-        }
-        else if (skilltree2[2] == true)
-        {
-            bonuses[5] = 25;
-        }
-        if (skilltree2[1] == true && skilltree2[5] == false)
-        {
-            bonuses[7] = 10;
-        }
-        else if (skilltree2[5] == true)
-        {
-            bonuses[7] = 20;
-        }
-        if (skilltree2[4] == true)
-        {
-            bonuses[1] = 20;
-        }
-        if (skilltree2[6] == true)
-        {
-            bonuses[7] = 30;
-        }
-        if (skilltree3[0] == true && skilltree3[2] == false)
-        {
-            bonuses[0] = 50;
-        }
-        else if (skilltree3[2] == true)
-        {
-            bonuses[0] = 200;
-        }
-        if (skilltree3[1] == true && skilltree3[5] == false)
-        {
-            bonuses[2] = 15;
-        }
-        else if (skilltree3[5] == true)
-        {
-            bonuses[2] = 35;
         }
         if (skilltree3[3] == true)
         {
@@ -200,14 +136,6 @@ public class KrysStats : PlayerStats
                 l++;
             }
             current = HP;
-        }
-        if (skilltree3[4] == true)
-        {
-            bonuses[1] = 20;
-        }
-        if (skilltree3[6] == true)
-        {
-            bonuses[8] = 30;
         }
         if (skilltree3[7] == true)
         {
