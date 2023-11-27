@@ -105,6 +105,6 @@ public class ExampleClass : MonoBehaviour
                     Destroy(p.gameObject);
                     i--;
                 }
-        }
+            }
     }
 }

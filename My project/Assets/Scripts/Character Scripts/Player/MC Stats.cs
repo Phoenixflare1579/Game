@@ -27,7 +27,7 @@ public class MCStats : PlayerStats
         healthperlvl = 8;
         CritDmg = 25;
         Crit = 100;
-        bonuses = new int[9];
+        bonuses = new int[10];
         skilltree1 = new bool[9];
         skilltree2 = new bool[9];
         skilltree3 = new bool[9];
@@ -62,6 +62,7 @@ public class MCStats : PlayerStats
         if (Evasion > Max) Evasion = Max;
         Accuracy = 85 + (5 * Level) + bonuses[8];
         if (Accuracy > Max) Accuracy = Max;
+        Crit = Crit + bonuses[9];
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
         if (LvlUP == 0)
@@ -147,8 +148,8 @@ public class MCStats : PlayerStats
         }
         if (skilltree2[3] == true && Form == 2)
         {
-            bonuses[4] += Level * 2;
-            bonuses[5] += Level * 2;
+            bonuses[4] = (5+Level) * 2;
+            bonuses[5] = (5+Level) * 2;
         }
         //if (skilltree2[7] == true) learn SpellBlade
         if (skilltree3[3] == true)
@@ -158,11 +159,9 @@ public class MCStats : PlayerStats
         }
         if (skilltree3[7] == true)
         {
-            Crit += 10;
-            CritDmg += 15;
             if (target.GetComponent<CharStats>().HP < target.GetComponent<CharStats>().MaxHP/2)
             {
-                Crit += 35;
+                bonuses[9] = 25;
             }
             else if (target.GetComponent<CharStats>().HP < target.GetComponent<CharStats>().MaxHP /10)
             {
