@@ -35,8 +35,8 @@ public class CharStats : MonoBehaviour
     public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
-    public Dictionary<Consumable, bool> Consumables = new Dictionary<Consumable, bool>();
-    public Equipment[] Equipped;
+    public Dictionary<Consumable, int> Consumables = new Dictionary<Consumable, int>();
+    public List<Equipment> Equipped = new List<Equipment>();
     public GameObject damageindicatorP;
     public GameObject[] animations; 
     GameObject holder;
