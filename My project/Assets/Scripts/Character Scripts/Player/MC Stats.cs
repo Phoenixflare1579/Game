@@ -208,6 +208,8 @@ public class MCStats : PlayerStats
     }
     public void C()
     {
-
+        DamageDone(Cleave);
+        logic.GetComponent<BattleStartup>().Increase();
     }
+
 }
