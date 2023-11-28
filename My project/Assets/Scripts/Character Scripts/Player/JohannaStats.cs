@@ -206,4 +206,9 @@ public class JohannaStats : PlayerStats
         }
         logic.GetComponent<BattleStartup>().Increase();
     }
+    public void SOS()
+    {
+        DamageDone(SacramentofSacrifice);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
 }

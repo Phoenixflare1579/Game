@@ -171,7 +171,6 @@ public class MCStats : PlayerStats
         if (skilltree3[3] == true)
         {
             bonuses[1] = 20;
-            //learn Experimentation
         }
         if (skilltree3[7] == true)
         {

@@ -19,12 +19,15 @@ public class Party : MonoBehaviour
         if (position != -1 && position < 4)
         {
             Char.SetActive(true);
-            Char.GetComponent<CharStats>().position=position;
+            Char.GetComponent<CharStats>().position = position;
         }
         else if (position != -1 && position > 4)
         {
-            Char.SetActive(false);
-            Char.GetComponent<CharStats>().position = 3;
+            if (Char.name != "MC")
+            {
+                Char.SetActive(false);
+                Char.GetComponent<CharStats>().position = 3;
+            }
         }
     }
     public void SetPosition(int value)

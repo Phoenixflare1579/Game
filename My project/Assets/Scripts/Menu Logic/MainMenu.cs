@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0;i< GameObject.FindGameObjectsWithTag("Player").Length;i++)
+        for (int i = 0; i< GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
             Destroy(GameObject.FindGameObjectsWithTag("Player")[i]);
         }
@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour
         rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename = Instantiate(Krys);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
+        rename = Instantiate(Johanna);
+        rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rename = Instantiate(Cam);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
@@ -39,9 +41,5 @@ public class MainMenu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-    }
-    private void Update()
-    {
-
     }
 }

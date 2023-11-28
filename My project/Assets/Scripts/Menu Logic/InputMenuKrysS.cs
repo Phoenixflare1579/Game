@@ -7,7 +7,6 @@ public class InputMenuKrysS : MonoBehaviour
 {
     public GameObject logic;
     public GameObject Krys;
-    public Button Button;
     int i=0;
     private void Start()
     {

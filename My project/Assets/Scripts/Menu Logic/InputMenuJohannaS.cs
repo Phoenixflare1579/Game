@@ -66,4 +66,8 @@ public class InputMenuJohannaS : MonoBehaviour
     {
         Johanna.GetComponent<JohannaStats>().L1();
     }
+    public void SacramentofSacrifice()
+    {
+        Johanna.GetComponent<JohannaStats>().SOS();
+    }
 }
