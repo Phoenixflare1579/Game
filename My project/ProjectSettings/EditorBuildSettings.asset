@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/The Forbidden Forest.unity
     guid: be960393ec18ca44f8535300fd65b19d
   - enabled: 1
+    path: Assets/Scenes/Outskirts of Standing Hope.unity
+    guid: 9cf4a88b0f488654aa2be987c2ef7293
+  - enabled: 1
     path: Assets/Scenes/Combat.unity
     guid: 4dc764f47fc520d408613aba653e2743
   - enabled: 1

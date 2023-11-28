@@ -111,12 +111,12 @@ public class CharStats : MonoBehaviour
     public Attacks ThousandCuts = new Attacks(3, 0.1, 0.02, 0, 0, 0, 0, false, "Knife", true, false, "Thousand Cuts");
     public Attacks Double = new Attacks(0, 0.25, 0.025, 0, 0, 0, 0, false, "Spear", true, false, "Attack");
     public Attacks GodSpeed = new Attacks(0, 0.7, 0.05, 0, 30, 0, 0, false, "Spear", false, false, "God Speed");
-    public Attacks Cleave = new Attacks(10, 0.4, 0.03, 0, 15, 0, 0, true, "Axe", true, false, "Cleave");
+    public Attacks Cleave = new Attacks(10, 0.4, 0.05, 0, 15, 0, 0, true, "Axe", true, false, "Cleave");
     public Attacks CrossStrike = new Attacks(5, 0.4, 0.04, 0, 15, 0, 0, false, "Sword", true, false, "Cross Strike");
-    public Attacks PiercingStrike = new Attacks(10, 0.5, 0.05, 0, 10, 0, 0, false, "Spear", true, false, "Piercing Strike");
+    public Attacks PiercingStrike = new Attacks(10, 0.6, 0.05, 0, 10, 0, 0, false, "Spear", true, false, "Piercing Strike");
     public Attacks Backstab = new Attacks(20, 0.6, 0.05, 0, 20, 0, 0, false, "Knife", true, false, "Backstab");
     public Attacks Bladewhirl = new Attacks(5, 0.25, 0.025, 0, 15, 0, 0, true, "Sword", true, false, "Bladewhirl");
-    public Attacks Sweep = new Attacks(10, 0.25, 0.025, 0, 15, 0, 0, true, "Spear", true, false, "Sweep");
+    public Attacks Sweep = new Attacks(10, 0.35, 0.04, 0, 15, 0, 0, true, "Spear", true, false, "Sweep");
     public Attacks GuillotineStrike = new Attacks(20, 0.7, 0.08, 0, 30, 0, 0, false, "Axe", true, false, "Guillotine Strike");
     public Attacks SpellBlade = new Attacks(0, 0.1, 0.02, 0, 0, 0, 0, true, "Sword", false, true, "Spell Blade");
     public Attacks Experimentation = new Attacks(5, 0.3, 0.05, 0, 30, 0, 0, false, " ", false, true, "Experimentation");
