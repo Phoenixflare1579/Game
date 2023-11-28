@@ -94,6 +94,11 @@ public class BasicAngelStats : EnemyStats
         }
         else if (Action > 2)
         {
+            if (Mana < 10)
+            {
+                FixedUpdate();
+            }
+            else
             DamageDone(EHeal);
         }
     }

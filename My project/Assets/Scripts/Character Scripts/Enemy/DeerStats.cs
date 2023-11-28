@@ -93,7 +93,12 @@ public class DeerStats : EnemyStats
         }
         else if (Action > 2)
         {    
-         DamageDone(Eat);
+            if (Mana < 50)
+            {
+                FixedUpdate();
+            }
+            else
+            DamageDone(Eat);
         }
     }
 }

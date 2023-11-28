@@ -42,12 +42,4 @@ public class EnemyStats : CharStats
         Evasion = Random.Range(min[7], max[7]) + (growth[6] * Level);
         Accuracy = Random.Range(min[8], max[8] ) + (growth[7] * Level);
     }
-    public void GetAttacks(string attacks) 
-    {
-
-    }
-    public void GetConsumables(Consumable[] consumables) 
-    {
-    
-    }
 }

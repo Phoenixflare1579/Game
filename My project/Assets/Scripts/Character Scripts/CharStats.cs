@@ -87,22 +87,22 @@ public class CharStats : MonoBehaviour
     public Attacks WildRush = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, false, "Staff", true, false, "Wild Rush");
     public Attacks ClawSwipe = new Attacks(0, 0.6, 0.05, 0, 0, 0, 0, false, "Sword", true, false, "Claw Swipe");
     public Attacks HornSlam = new Attacks(0, 0.3, 0.05, 0, 0, 0, 0, true, "Staff", true, false, "Horn Slam");
-    public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Sword", true, false, "Eat");
+    public Attacks Eat = new Attacks(0, 0, 0, 0.25, 50, 0, 0, false, "Heal", true, false, "Eat");
     public Attacks Crunch = new Attacks(10, 0.3, 0.03, 0, 50, 0, 0, false, "Knife", false, false, "Crunch");
     public Attacks SkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Fire", false, true, "Skeirna Fiernie");
     public Attacks SolneIcante = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Ice", false, true, "Solne Icante");
     public Attacks EctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Lightning", false, true, "Ectiene Zrakan");
     public Attacks HolyLight = new Attacks(20, 0.6, 0.08, 0, 15, 0, 0, false, "Light", false, true, "Holy Light");
     public Attacks Darkness = new Attacks(20, 0.6, 0.08, 0, 10, 0.1, 0, false, "Darkness", false, true, "Darkness");
-    public Attacks ESkeirnaFiernie = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Fire", false, true, "Skeirna Fiernie");
-    public Attacks ESolneIcante = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Ice", false, true, "Solne Icante");
-    public Attacks EEctieneZrakan = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Ectiene Zrakan");
-    public Attacks EHolyLight = new Attacks(20, 0.6, 0.08, 0, 0, 0, 0, false, "Light", false, true, "Holy Light");
-    public Attacks EDarkness = new Attacks(20, 0.6, 0.08, 0, 0, 0.1, 0, false, "Darkness", false, true, "Darkness");
-    public Attacks EBeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Beyond the Veil");
+    public Attacks ESkeirnaFiernie = new Attacks(0, 0.6, 0.08, 0, 0, 0, 0, false, "Fire", false, true, "Skeirna Fiernie");
+    public Attacks ESolneIcante = new Attacks(0, 0.6, 0.08, 0, 0, 0, 0, false, "Ice", false, true, "Solne Icante");
+    public Attacks EEctieneZrakan = new Attacks(0, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Ectiene Zrakan");
+    public Attacks EHolyLight = new Attacks(0, 0.6, 0.08, 0, 0, 0, 0, false, "Light", false, true, "Holy Light");
+    public Attacks EDarkness = new Attacks(0, 0.6, 0.08, 0, 0, 0.1, 0, false, "Darkness", false, true, "Darkness");
+    public Attacks EBeyondTheVeil = new Attacks(15, 0.6, 0.08, 0, 0, 0, 0, false, "Lightning", false, true, "Beyond the Veil");
     public Attacks BeyondTheVeil = new Attacks(30, 0.6, 0.08, 0, 30, 0, 0, false, "Lightning", false, true, "Beyond the Veil");
-    public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Light", false, true, "Heal");
-    public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 10, 0, 0, false, "Light", false, true, "Heal");
+    public Attacks Heal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Heal", false, true, "Heal");
+    public Attacks EHeal = new Attacks(0, 0, 0, 0.15, 15, 0, 0, false, "Heal", false, true, "Heal");
     public Attacks Execution = new Attacks(9999, 0, 0, 0, 0, 0, 0, false, "Death", false, false, "Execution");
     public Attacks Flick = new Attacks(10, 0.3, 0.02, 0, 0, 0, 0, false, "Knife", true, false, "Flick");
     public Attacks BladeStorm = new Attacks(10, 0.4, 0.02, 0, 0, 0, 0, true, "Knife", true, false, "Blade Storm");
@@ -194,6 +194,10 @@ public class CharStats : MonoBehaviour
                     attack.DamageType = "Ice";
                 else if (w == 5)
                     attack.DamageType = "Light";
+            }
+            if (attack == Eat)
+            {
+                target = this.gameObject;
             }
             double normDmg = attack.BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (attack.BaseDmgScale + (attack.LevelDmgAmount * Level)) - DefStat * 0.25));
             if (Random.Range((float)0.0, (float)1.0) <= (float)(Crit / 100.0) && attack.isPhysAtk)
