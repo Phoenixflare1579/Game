@@ -38,7 +38,8 @@ public class CharStats : MonoBehaviour
     public Dictionary<Consumable, int> Consumables = new Dictionary<Consumable, int>();
     public List<Equipment> Equipped = new List<Equipment>();
     public GameObject damageindicatorP;
-    public GameObject[] animations; 
+    public GameObject[] animations;
+    public AudioSource[] audios;
     GameObject holder;
     GameObject hold;
     public int Dead = 0;
@@ -223,26 +224,31 @@ public class CharStats : MonoBehaviour
         {
             hold = Instantiate(animations[0]);
             hold.transform.position=target.transform.position;
+            audios[0].Play();
         }
         else if (Wtype == "Knife")
         {
             hold = Instantiate(animations[1]);
             hold.transform.position = target.transform.position;
+            audios[1].Play();
         }
         else if (Wtype == "Spear")
         {
             hold = Instantiate(animations[2]);
             hold.transform.position = target.transform.position;
+            audios[2].Play();
         }
         else if (Wtype == "Axe")
         {
             hold = Instantiate(animations[3]);
             hold.transform.position = target.transform.position;
+            audios[3].Play();
         }
         else if (Wtype == "Staff")
         {
             hold = Instantiate(animations[4]);
             hold.transform.position = target.transform.position;
+            audios[4].Play();
         }
         else if (Wtype == "Fire")
         {
@@ -250,6 +256,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            audios[5].Play();
 
         }
         else if (Wtype == "Ice")
@@ -258,6 +265,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            audios[6].Play();
         }
         else if (Wtype == "Lightning")
         {
@@ -265,6 +273,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            audios[7].Play();
         }
         else if (Wtype == "Light")
         {
@@ -272,6 +281,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = this.gameObject.transform.position + new Vector3 (0,100,0);
             Rigidbody rb = hold.GetComponent<Rigidbody>();
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            audios[8].Play();
         }
         else if (Wtype == "Dark")
         {
@@ -279,6 +289,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = target.transform.position + new Vector3(0, -20, 0);
             Rigidbody rb = hold.GetComponent<Rigidbody>(); 
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 500f * Time.deltaTime);
+            audios[9].Play();
         }
     }
     public void OnMouseDown()
