@@ -134,16 +134,18 @@ public class MCStats : PlayerStats
         {
             if (skilltree1[7] == true && Form == 1)
             {
+                int o = 0;
                 if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 0)
                     if (Random.Range(0f, 1f) >= 0.8f)
                     {
                         target.GetComponent<CharStats>().Def /= 2;
                     }
                 c = 1;
-            }
-            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 1)
-            {
-                c = 0;
+                if (o + 1 == logic.GetComponent<BattleStartup>().order && c == 1)
+                {
+                    c = 0;
+                }
+                o = logic.GetComponent<BattleStartup>().order;
             }
         }
         if (skilltree2[3] == true && Form == 2)
@@ -151,7 +153,21 @@ public class MCStats : PlayerStats
             bonuses[4] = (5+Level) * 2;
             bonuses[5] = (5+Level) * 2;
         }
-        //if (skilltree2[7] == true) learn SpellBlade
+        if (skilltree2[7] == true && Form == 2)
+        {
+            int o = 0;
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name && c == 0)
+                if (Random.Range(0f, 1f) >= 0.5f)
+                {
+                    DamageDone(SpellBlade);
+                }
+            c = 1;
+            if (o+1==logic.GetComponent<BattleStartup>().order && c == 1)
+            {
+                c = 0;
+            }
+            o = logic.GetComponent<BattleStartup>().order;
+        }
         if (skilltree3[3] == true)
         {
             bonuses[1] = 20;
@@ -211,5 +227,42 @@ public class MCStats : PlayerStats
         DamageDone(Cleave);
         logic.GetComponent<BattleStartup>().Increase();
     }
-
+    public void EX()
+    {
+        DamageDone(Experimentation);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void PS()
+    {
+        DamageDone(PiercingStrike);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void CS()
+    {
+        DamageDone(CrossStrike);
+        DamageDone(CrossStrike);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void BS()
+    {
+        DamageDone(Backstab);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void S() 
+    {
+        DamageDone(Sweep);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void BW()
+    {
+        DamageDone(Bladewhirl);
+        DamageDone(Bladewhirl);
+        DamageDone(Bladewhirl);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+    public void GS()
+    {
+        DamageDone(GuillotineStrike);
+        logic.GetComponent<BattleStartup>().Increase();
+    }
 }

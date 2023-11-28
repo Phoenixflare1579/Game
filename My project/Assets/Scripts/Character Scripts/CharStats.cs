@@ -120,7 +120,9 @@ public class CharStats : MonoBehaviour
     public Attacks GuillotineStrike = new Attacks(20, 0.7, 0.08, 0, 30, 0, 0, false, "Axe", true, false, "Guillotine Strike");
     public Attacks SpellBlade = new Attacks(0, 0.1, 0.02, 0, 0, 0, 0, true, "Sword", false, true, "Spell Blade");
     public Attacks Experimentation = new Attacks(5, 0.3, 0.05, 0, 10, 0, 0, false, " ", false, true, "Experimentation");
-    
+    public Attacks GentleLight = new Attacks(0, 0, 0, 0.05, 0, 0, 0, true, "Heal", false, true, "Gentle Light");
+    public Attacks SacramentofSacrifice = new Attacks(0, 0, 0, 0.5, 30, 0.5, 0, true, "Heal", false, true, "SOS");
+
     // Attacks//
     public void DamageDone(Attacks attack)
     {
@@ -199,7 +201,7 @@ public class CharStats : MonoBehaviour
             {
                 target = this.gameObject;
             }
-            double normDmg = attack.BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (attack.BaseDmgScale + (attack.LevelDmgAmount * Level)) - DefStat * 0.25));
+                double normDmg = attack.BaseDmg + (Random.Range(0.98f, 1.02f) * (DmgStat * (attack.BaseDmgScale + (attack.LevelDmgAmount * Level)) - DefStat * 0.25));
             if (Random.Range((float)0.0, (float)1.0) <= (float)(Crit / 100.0) && attack.isPhysAtk)
             {
                 normDmg += normDmg * CritDmg / 100;

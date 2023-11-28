@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class JohannaStats : PlayerStats
 {
     public Sprite Die;
+    int r = 0;
+    int m = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -91,33 +93,47 @@ public class JohannaStats : PlayerStats
             if (SceneManager.GetActiveScene().name != "Combat")
             {
                 HP = 1;
-            }
-            if (skilltree1[3] == true)
-            {
-                if (Form == 1)
-                {
-
-                }
-            }
-            if (skilltree1[7] == true && Form == 1)
-            {
-
+                r = 0;
+                m = 0;
             }
             if (skilltree2[3] == true && Form == 2)
             {
-
-            }
-            if (skilltree2[7] == true && Form == 2)
-            {
-
+                if (HP == 0 && r==0)
+                {
+                    HP = 1;
+                    r = 1;
+                }
             }
             if (skilltree3[3] == true)
             {
-
+                if (GameObject.FindGameObjectsWithTag("Player").Length == 1)
+                {
+                    bonuses[2] = 35;
+                    bonuses[4] = 50;
+                    bonuses[5] = 50;
+                }
             }
             if (skilltree3[7] == true)
             {
-
+                if (logic != null)
+                {
+                    int l = 0;
+                    if (GameObject.FindGameObjectsWithTag("Enemy") != null && m == 0)
+                    {
+                        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+                        {
+                            l += GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<CharStats>().Level;
+                        }
+                        if ((l + 3) / GameObject.FindGameObjectsWithTag("Enemy").Length < Level - 10)
+                        {
+                            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+                            {
+                                DamageDone(Execution);
+                            }
+                        }
+                    }
+                    m = 1;
+                }
             }
         }
         else if (HP > 0)
@@ -131,6 +147,14 @@ public class JohannaStats : PlayerStats
         if (Form == 1)
         {
             DamageDone(BasicSpear);
+            if (skilltree1[3] == true && target.GetComponent<CharStats>().Speed < Speed)
+            {
+                DamageDone(BasicSpear);
+            }
+            if (skilltree1[7] == true)
+            {
+                DamageDone(GentleLight);
+            }
         }
         else if (Form == 2)
         {
@@ -158,5 +182,28 @@ public class JohannaStats : PlayerStats
         DamageDone(Heal);
         logic.GetComponent<BattleStartup>().Increase();
     }
-
+    public void S()
+    {
+        DamageDone(Sweep);
+        logic.GetComponent<BattleStartup>().Increase();
+        if (skilltree1[3] == true)
+        {
+            if (Form == 1 && target.GetComponent<CharStats>().Speed < Speed)
+            {
+                DamageDone(BasicSpear);
+            }
+        }
+    }
+    public void PS()
+    {
+        DamageDone(PiercingStrike);
+        if (skilltree1[3] == true)
+        {
+            if (Form == 1 && target.GetComponent<CharStats>().Speed < Speed)
+            {
+                DamageDone(BasicSpear);
+            }
+        }
+        logic.GetComponent<BattleStartup>().Increase();
+    }
 }

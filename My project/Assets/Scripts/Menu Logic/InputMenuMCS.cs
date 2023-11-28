@@ -9,7 +9,6 @@ public class InputMenuMCS : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("InputMenuMCs");
         MC = GameObject.Find("MC");
     }
     public void Update()
@@ -38,5 +37,49 @@ public class InputMenuMCS : MonoBehaviour
     public void WeaponSwap()
     {
         MC.GetComponent<MCStats>().WeaponSwap();
+    }
+    public void BladesUnbound()
+    {
+        MC.GetComponent<PlayerStats>().ChangeForm(3);
+    }
+    public void Dog()
+    {
+        MC.GetComponent<PlayerStats>().ChangeForm(2);
+    }
+    public void Martial()
+    {
+        MC.GetComponent<PlayerStats>().ChangeForm(1);
+    }
+    public void Sweep()
+    {
+        MC.GetComponent<MCStats>().S();
+    }
+    public void Experiment()
+    {
+        MC.GetComponent<MCStats>().EX();
+    }
+    public void PiercingStrike()
+    {
+        MC.GetComponent<MCStats>().PS();
+    }
+    public void CrossStrike()
+    {
+        MC.GetComponent<MCStats>().CS();
+    }
+    public void Cleave()
+    {
+        MC.GetComponent<MCStats>().C();
+    }
+    public void Backstab()
+    {
+        MC.GetComponent<MCStats>().BS();
+    }
+    public void Bladewhirl()
+    {
+        MC.GetComponent<MCStats>().BW();
+    }
+    public void GuillotineStrike()
+    {
+        MC.GetComponent<MCStats>().GS();
     }
 }

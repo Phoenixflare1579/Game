@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Judgement
 
     2 SP'
   m_isRightToLeft: 0
@@ -13344,7 +13344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Sacrament
 
     2 SP'
   m_isRightToLeft: 0
@@ -28488,7 +28488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Dance of Steel
 
     1 SP'
   m_isRightToLeft: 0
@@ -28760,7 +28760,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Fallen Angel
 
     1 SP'
   m_isRightToLeft: 0
@@ -29048,7 +29048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Golden Knight
 
     2 SP'
   m_isRightToLeft: 0
@@ -29516,7 +29516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placeholder
+  m_text: 'Lonely Dance
 
     1 SP'
   m_isRightToLeft: 0
