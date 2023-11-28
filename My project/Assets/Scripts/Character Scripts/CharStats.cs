@@ -291,6 +291,12 @@ public class CharStats : MonoBehaviour
             rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 500f * Time.deltaTime);
             audios[9].Play();
         }
+        else if (Wtype == "Heal")
+        {
+            hold = Instantiate(animations[10]);
+            hold.transform.position = target.transform.position;
+            audios[10].Play();
+        }
     }
     public void OnMouseDown()
     {
