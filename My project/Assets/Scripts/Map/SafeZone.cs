@@ -16,7 +16,7 @@ public class SafeZone : MonoBehaviour
             B = GameObject.FindGameObjectWithTag("Counter");
         }
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         B.GetComponent<Battle>().Safe();
@@ -24,6 +24,6 @@ public class SafeZone : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-            B.GetComponent<Battle>().UnSafe();
+        B.GetComponent<Battle>().UnSafe();
     }
 }
