@@ -11,6 +11,7 @@ TagManager:
   - Damage
   - Counter
   - Area
+  - Chest
   layers:
   - Default
   - TransparentFX
