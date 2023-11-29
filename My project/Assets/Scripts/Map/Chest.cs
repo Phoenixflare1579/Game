@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     GameObject MC;
-    int i = 0;
+    public bool i = false;
     public Consumable consumable;
     public Equipment equipment;
     public Sprite open;
@@ -96,7 +96,7 @@ public class Chest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(MC.transform.position, this.gameObject.transform.position) <= 50.0f && i==0)
+        if (Vector3.Distance(MC.transform.position, this.gameObject.transform.position) <= 50.0f && i==false)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
@@ -110,7 +110,7 @@ public class Chest : MonoBehaviour
                 {
                     MC.GetComponent<CharStats>().Equipped.Add(equipment);
                 }
-                i++;
+                i=true;
                 GetComponent<SpriteRenderer>().sprite = open;
             }
         }
