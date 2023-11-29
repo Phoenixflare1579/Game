@@ -261,16 +261,15 @@ public class CharStats : MonoBehaviour
             hold = Instantiate(animations[5]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            rb.velocity = target.transform.position - hold.transform.position;
             audios[5].Play();
-
         }
         else if (Wtype == "Ice")
         {
             hold = Instantiate(animations[6]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            rb.velocity = target.transform.position - hold.transform.position;
             audios[6].Play();
         }
         else if (Wtype == "Lightning")
@@ -278,7 +277,7 @@ public class CharStats : MonoBehaviour
             hold = Instantiate(animations[7]);
             hold.transform.position = this.gameObject.transform.position;
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            rb.velocity = target.transform.position - hold.transform.position;
             audios[7].Play();
         }
         else if (Wtype == "Light")
@@ -286,15 +285,15 @@ public class CharStats : MonoBehaviour
             hold = Instantiate(animations[8]);
             hold.transform.position = this.gameObject.transform.position + new Vector3 (0,100,0);
             Rigidbody rb = hold.GetComponent<Rigidbody>();
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 1000f * Time.deltaTime);
+            rb.velocity = target.transform.position - hold.transform.position;
             audios[8].Play();
         }
         else if (Wtype == "Dark")
         {
             hold = Instantiate(animations[9]);
             hold.transform.position = target.transform.position + new Vector3(0, -20, 0);
-            Rigidbody rb = hold.GetComponent<Rigidbody>(); 
-            rb.position = Vector3.MoveTowards(rb.position, target.transform.position, 500f * Time.deltaTime);
+            Rigidbody rb = hold.GetComponent<Rigidbody>();
+            rb.velocity = target.transform.position - hold.transform.position;
             audios[9].Play();
         }
         else if (Wtype == "Heal")
@@ -303,6 +302,7 @@ public class CharStats : MonoBehaviour
             hold.transform.position = target.transform.position;
             audios[10].Play();
         }
+        
     }
     public void OnMouseDown()
     {
