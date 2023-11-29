@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 9211772109014788083, guid: e3ad88e85ca140a4689d8fababe43782, type: 3}
   Krys: {fileID: 7646072654479239843, guid: 61a63d6042b1d8d4fbd02f9c18023bc8, type: 3}
-  Johanna: {fileID: 0}
+  Johanna: {fileID: 8722422821722014591, guid: 928c942d4821942439e94c3cb506e5aa, type: 3}
   Cam: {fileID: 2051542908711627379, guid: d5c8f211d90620f439111eb13336ae59, type: 3}
   Battle: {fileID: 362022663148800756, guid: 25467bfef3aef7d47a9e469436b08f20, type: 3}
 --- !u!114 &887615038
@@ -1513,6 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 7206234117706668810, guid: e3ad88e85ca140a4689d8fababe43782, type: 3}
   Krys: {fileID: 3854558718292076483, guid: 61a63d6042b1d8d4fbd02f9c18023bc8, type: 3}
+  Johanna: {fileID: 0}
 --- !u!1 &895082941
 GameObject:
   m_ObjectHideFlags: 0
