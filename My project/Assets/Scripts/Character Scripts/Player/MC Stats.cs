@@ -28,7 +28,7 @@ public class MCStats : PlayerStats
         EXP = 0;
         healthperlvl = 8;
         CritDmg = 25;
-        Crit = 100;
+        Crit = 15;
         bonuses = new int[10];
         skilltree1 = new bool[9];
         skilltree2 = new bool[9];
@@ -39,6 +39,23 @@ public class MCStats : PlayerStats
             skilltree2[i] = false;
             skilltree3[i] = false;
         }
+        MaxHP = 120;
+        MaxMana = 50;
+        Speed = 90;
+        if (Speed > Max) Speed = Max;
+        Def = 65;
+        if (Def > Max) Def = Max;
+        PhysAtk = 120 + bonuses[4];
+        if (PhysAtk > Max) PhysAtk = Max;
+        MagicAtk = 85 + bonuses[5];
+        if (MagicAtk > Max) MagicAtk = Max;
+        MagicDef = 60;
+        if (MagicDef > Max) MagicDef = Max;
+        Evasion = 60;
+        if (Evasion > Max) Evasion = Max;
+        Accuracy = 85;
+        if (Accuracy > Max) Accuracy = Max;
+        if (Crit > CritMax) Crit = CritMax;
     }
     // Update is called once per frame
     void Update()
@@ -48,27 +65,18 @@ public class MCStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
-        MaxHP = 120 + (healthperlvl * Level) + bonuses[0];
-        MaxMana = 50 + (5 * Level) + bonuses[1];
-        Speed = 90 + (5 * Level) + bonuses[2];
-        if (Speed > Max) Speed = Max;
-        Def = 65 + (3 * Level) + bonuses[3];
-        if (Def > Max) Def = Max;
-        PhysAtk = 120 + (4 * Level) + bonuses[4];
-        if (PhysAtk > Max) PhysAtk = Max;
-        MagicAtk = 85 + (6 * Level) + bonuses[5];
-        if (MagicAtk > Max) MagicAtk = Max;
-        MagicDef = 60 + (5 * Level) + bonuses[6];
-        if (MagicDef > Max) MagicDef = Max;
-        Evasion = 60 + (5 * Level) + bonuses[7];
-        if (Evasion > Max) Evasion = Max;
-        Accuracy = 85 + (5 * Level) + bonuses[8];
-        if (Accuracy > Max) Accuracy = Max;
-        Crit = Crit + bonuses[9];
-        if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
         if (LvlUP == 0)
         {
+            MaxHP += healthperlvl;
+            MaxMana += 5;
+            Speed += 5;
+            Def += 3;
+            PhysAtk += 4;
+            MagicAtk += 6;
+            MagicDef += 5;
+            Evasion += 5;
+            Accuracy += 5;
             HP = MaxHP;
             Mana = MaxMana;
             LvlUP++;

@@ -29,7 +29,6 @@ public class KrysStats : PlayerStats
         anim.SetInteger("Form", Form);
         CritDmg = 25;
         Crit = 15;
-        bonuses = new int[9];
         skilltree1 = new bool[9];
         skilltree2 = new bool[9];
         skilltree3 = new bool[9];
@@ -39,6 +38,22 @@ public class KrysStats : PlayerStats
             skilltree2[i] = false;
             skilltree3[i] = false;
         }
+        MaxHP = 120;
+        MaxMana = 80;
+        Speed = 120;
+        if (Speed > Max) Speed = Max;
+        Def = 55;
+        if (Def > Max) Def = Max;
+        PhysAtk = 100;
+        if (PhysAtk > Max) PhysAtk = Max;
+        MagicAtk =  130;
+        if (MagicAtk > Max) MagicAtk = Max;
+        MagicDef = 95;
+        if (MagicDef > Max) MagicDef = Max;
+        Evasion = 75;
+        if (Evasion > Max) Evasion = Max;
+        Accuracy = 85;
+        if (Accuracy > Max) Accuracy = Max;
     }
     // Update is called once per frame
     void Update()
@@ -48,22 +63,6 @@ public class KrysStats : PlayerStats
         if (GameObject.FindGameObjectWithTag("Enemy") != null)
             target = generateTarget();
         else ChangeState();
-        MaxHP = ((120 + (healthperlvl * Level) + bonuses[0]));
-        MaxMana = 80 + (15 * Level) + bonuses[1];
-        Speed = 120 + (5 * Level) + bonuses[2];
-        if (Speed > Max) Speed = Max;
-        Def = 55 + (3 * Level) + bonuses[3];
-        if (Def > Max) Def = Max;
-        PhysAtk = 100 + (4 * Level) + bonuses[4];
-        if (PhysAtk > Max) PhysAtk = Max;
-        MagicAtk = 130 + (6 * Level) + bonuses[5];
-        if (MagicAtk > Max) MagicAtk = Max;
-        MagicDef = 95 + (5 * Level) + bonuses[6];
-        if (MagicDef > Max) MagicDef = Max;
-        Evasion = 75 + (5 * Level) + bonuses[7];
-        if (Evasion > Max) Evasion = Max;
-        Accuracy = 85 + (5 * Level) + bonuses[8];
-        if (Accuracy > Max) Accuracy = Max;
         if (Crit > CritMax) Crit = CritMax;
         EXPMax = 10 + (20 * Level * curve);
         if (Form == 3 && c == 0)
@@ -77,6 +76,15 @@ public class KrysStats : PlayerStats
         }
         if (LvlUP == 0)
         {
+            MaxHP += healthperlvl;
+            MaxMana += 15;
+            Speed += 5;
+            Def += 3;
+            PhysAtk += 4;
+            MagicAtk += 7;
+            MagicDef += 5;
+            Evasion += 5;
+            Accuracy += 5;
             HP = MaxHP;
             Mana = MaxMana;
             LvlUP++;

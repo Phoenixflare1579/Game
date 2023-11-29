@@ -22,30 +22,37 @@ public class Skills : MonoBehaviour
         if (Form == 1 && Char.skilltree1[Branch] == true)
         {
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
         else if (Form == 2 && Char.skilltree2[Branch] == true)
         {
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
         else if (Form == 3 && Char.skilltree3[Branch] == true)
         {
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
         else if (Char.skillpoints < SP)
         {
             gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
         else if (Form == 3 && ((Branch != 0 && Char.skilltree3[Branch - 1] != true) || (Branch == 3 && Char.skilltree3[Branch - 1] != true && Char.skilltree3[Branch - 2] != true) || (Branch == 6 && Char.skilltree3[Branch - 1] != true && Char.skilltree3[Branch - 2] != true)))
                 {
             gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
-                }
+            gameObject.GetComponent<Button>().interactable = false;
+        }
         else if (Form == 1 && ((Branch != 0 && Char.skilltree1[Branch - 1] != true) || (Branch == 3 && Char.skilltree1[Branch - 1] != true && Char.skilltree1[Branch - 2] != true) || (Branch == 6 && Char.skilltree1[Branch - 1] != true && Char.skilltree1[Branch - 2] != true)))
         {
             gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
         else if (Form == 2 && ((Branch != 0 && Char.skilltree2[Branch - 1] != true) || (Branch == 3 && Char.skilltree2[Branch - 1] != true && Char.skilltree2[Branch - 2] != true) || (Branch == 6 && Char.skilltree2[Branch - 1] != true && Char.skilltree2[Branch - 2] != true)))
         {
             gameObject.GetComponent<Image>().color = new Color32(84, 84, 84, 255);
+            gameObject.GetComponent<Button>().interactable = false;
         }
     }
     public void Unlock()
