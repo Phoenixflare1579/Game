@@ -29,12 +29,9 @@ public class MainMenu : MonoBehaviour
         rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename = Instantiate(Krys);
         rename.name = rename.name.Replace("(Clone)", "").Trim();
-        if(Johanna != null)
-        {
-            rename = Instantiate(Johanna);
-            rename.name = rename.name.Replace("(Clone)", "").Trim();
-        }
-
+        rename.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        rename = Instantiate(Johanna);
+        rename.name = rename.name.Replace("(Clone)", "").Trim();
         rename.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rename = Instantiate(Cam);
         rename.name = rename.name.Replace("(Clone)", "").Trim();

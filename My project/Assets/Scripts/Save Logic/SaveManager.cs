@@ -19,7 +19,7 @@ public class SaveManager : MonoBehaviour
         if (Krys == null)
         Krys = GameObject.Find("Krys").GetComponent<PlayerStats>();
         if (Johanna == null)
-        Krys = GameObject.Find("Johanna").GetComponent<PlayerStats>();
+        Johanna = GameObject.Find("Johanna").GetComponent<PlayerStats>();
     }
 
     public void Save()

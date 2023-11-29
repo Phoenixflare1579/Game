@@ -51,27 +51,30 @@ public class WolfStats : EnemyStats
             }
             GetComponent<SpriteRenderer>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
-            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+            if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
                 logic.GetComponent<BattleStartup>().Increase();
         }
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length)
         {
-            GetTarget();
-            Action = UnityEngine.Random.Range(0, 5);
-            if (Action == 0)
+            if (Dead == 0 && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
             {
-                Attack();
-                logic.GetComponent<BattleStartup>().Increase();
-                TurnsPassed++;
-            }
-            else if (Action >= 1)
-            {
-                Ability();
-                logic.GetComponent<BattleStartup>().Increase();
-                TurnsPassed++;
+                GetTarget();
+                Action = UnityEngine.Random.Range(0, 5);
+                if (Action == 0)
+                {
+                    Attack();
+                    logic.GetComponent<BattleStartup>().Increase();
+                    TurnsPassed++;
+                }
+                else if (Action >= 1)
+                {
+                    Ability();
+                    logic.GetComponent<BattleStartup>().Increase();
+                    TurnsPassed++;
+                }
             }
         }
     }

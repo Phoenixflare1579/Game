@@ -48,13 +48,13 @@ public class DemonDeer : EnemyStats
             }
             GetComponent<SpriteRenderer>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
-            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+            if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
                 logic.GetComponent<BattleStartup>().Increase();
         }
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
+        if (Dead == 0 && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
         {
             GetTarget();
             Action = UnityEngine.Random.Range(0, 5);

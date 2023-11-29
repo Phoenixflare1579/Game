@@ -22,10 +22,7 @@ public class Return : MonoBehaviour
         MC.GetComponent<PlayerInput>().ActivateInput();
         MC.GetComponent<Rigidbody>().isKinematic = false;
         Krys.GetComponent<SpriteRenderer>().enabled = false;
-        if(Johanna != null)
-        {
-            Johanna.GetComponent<SpriteRenderer>().enabled = false;
-        }
+        Johanna.GetComponent<SpriteRenderer>().enabled = false;
         GameObject.FindGameObjectWithTag("Counter").GetComponent<Battle>().UnSafe();
         GameObject.FindGameObjectWithTag("Counter").GetComponent<Battle>().Restart();
     }

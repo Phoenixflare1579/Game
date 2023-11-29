@@ -96,7 +96,8 @@ public class JohannaStats : PlayerStats
             GetComponent<SpriteRenderer>().sprite = Die;
             anim.enabled = false;
             if (logic != null)
-                if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
+                if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length)
+                    if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name)
                     logic.GetComponent<BattleStartup>().Increase();
             if (SceneManager.GetActiveScene().name != "Combat")
             {

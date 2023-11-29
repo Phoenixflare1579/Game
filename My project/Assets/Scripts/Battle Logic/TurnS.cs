@@ -9,6 +9,7 @@ public class TurnS : MonoBehaviour
 
     void Update()
     {
-        this.GetComponent<TextMeshProUGUI>().text = GameObject.Find(logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order]).GetComponent<CharStats>().CharName;
+        if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length)
+            this.GetComponent<TextMeshProUGUI>().text = GameObject.Find(logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order]).GetComponent<CharStats>().CharName;
     }
 }

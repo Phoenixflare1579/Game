@@ -13,7 +13,8 @@ public class InputMenuJohannaS : MonoBehaviour
     }
     public void Update()
     {
-        if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == "Johanna")
+        if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length)
+            if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == "Johanna")
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
