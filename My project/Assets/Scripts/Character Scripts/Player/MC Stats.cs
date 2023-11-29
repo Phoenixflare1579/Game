@@ -13,6 +13,8 @@ public class MCStats : PlayerStats
     bool followup = false;
     int c = 0;
     int f = 0;
+    public int b = 0;
+    public int dd = 0;
     // Start is called before the first frame update
     void Start()
     {

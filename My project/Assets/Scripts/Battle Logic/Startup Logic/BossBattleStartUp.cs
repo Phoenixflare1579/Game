@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 public class BossBattleStartUp : StartUp
 {
     // Start is called before the first frame update
+    public string boss;
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-       
+            if (boss == "b")
             E = Instantiate(enemyP[0]);
+            else if (boss == "dd")
+            E = Instantiate(enemyP[1]);
             E.GetComponent<CharStats>().position = 2;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
 
@@ -71,6 +74,10 @@ public class BossBattleStartUp : StartUp
                 for (int i = 0; i < players.Length; i++)
                 {
                     players[i].GetComponent<CharStats>().EXP += xp;
+                    if (boss == "b")
+                        GameObject.Find("MC").GetComponent<MCStats>().b = 1;
+                    else if (boss == "dd")
+                        GameObject.Find("MC").GetComponent<MCStats>().dd = 1;
                 }
             }
             j = 1;
