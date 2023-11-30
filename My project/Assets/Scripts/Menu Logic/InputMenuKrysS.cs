@@ -10,8 +10,8 @@ public class InputMenuKrysS : MonoBehaviour
     int i=0;
     private void Start()
     {
-        Debug.Log("InputMenuKrys");
         Krys = GameObject.Find("Krys");
+
     }
     public void Update()
     {
@@ -94,5 +94,4 @@ public class InputMenuKrysS : MonoBehaviour
     {
         Krys.GetComponent<KrysStats>().TC();
     }
-
 }

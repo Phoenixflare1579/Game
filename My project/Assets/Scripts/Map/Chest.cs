@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     GameObject MC;
-    public bool i = false;
+    public static bool i = false;
     public Consumable consumable;
     public Equipment equipment;
     public Sprite open;
@@ -85,11 +85,6 @@ public class Chest : MonoBehaviour
     void Start()
     {
         RandomConsumable();
-
-        RandomEquipment();
-
-        Debug.Log(consumable.Name);
-        Debug.Log(equipment.Name);
         MC = GameObject.Find("MC");
     }
 
@@ -111,12 +106,15 @@ public class Chest : MonoBehaviour
                     MC.GetComponent<CharStats>().Equipped.Add(equipment);
                 }
                 i=true;
-                GetComponent<SpriteRenderer>().sprite = open;
             }
         }
         else
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (i==true)
+        {
+            GetComponent<SpriteRenderer>().sprite = open;
         }
     }
 
