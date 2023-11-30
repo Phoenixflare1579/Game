@@ -19,15 +19,29 @@ public class PlayerStats : CharStats
     public bool[] skilltree2;
     public bool[] skilltree3;
     public int[] bonuses;
+    bool defend = false;
+    int magdef;
+    int def;
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
+    public void FixedUpdate()
+    {
+        if (defend && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name) 
+        {
+            Def -= def;
+            MagicDef -= magdef;
+        }
+    }
     public void Defend()
     {
-        Def *= (int)(Def * 1.5);
-        MagicDef *= (int)(MagicDef * 1.5);
+        def = (int)(Def * 1.5);
+        magdef = (int)(MagicDef * 1.5);
+        Def += def;
+        MagicDef += magdef;
         logic.GetComponent<BattleStartup>().Increase();
+        defend = true;
     }
     public void Flee()
     {

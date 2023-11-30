@@ -7,7 +7,7 @@ public class Data
 {
     public int levelM;
     public int expM;
-    public int[] statsM;
+    public int[] M;
     public bool[] skillsM1;
     public bool[] skillsM2;
     public bool[] skillsM3;
@@ -47,17 +47,17 @@ public class Data
         //MC Save
         levelM = statsMC.Level;
         expM = statsMC.EXP;
-        statsM[0] = statsMC.MaxHP;
-        statsM[1] = statsMC.MaxMana;
-        statsM[2] = statsMC.Speed;
-        statsM[3] = statsMC.Def;
-        statsM[4] = statsMC.PhysAtk;
-        statsM[5] = statsMC.MagicAtk;
-        statsM[6] = statsMC.MagicDef;
-        statsM[7] = statsMC.Evasion;
-        statsM[8] = statsMC.Accuracy;
-        statsM[9] = statsMC.Crit;
-        statsM[10] = statsMC.CritDmg;
+        M[0] = statsMC.MaxHP;
+        M[1] = statsMC.MaxMana;
+        M[2] = statsMC.Speed;
+        M[3] = statsMC.Def;
+        M[4] = statsMC.PhysAtk;
+        M[5] = statsMC.MagicAtk;
+        M[6] = statsMC.MagicDef;
+        M[7] = statsMC.Evasion;
+        M[8] = statsMC.Accuracy;
+        M[9] = statsMC.Crit;
+        M[10] = statsMC.CritDmg;
         skillsM1 = statsMC.skilltree1;
         skillsM2 = statsMC.skilltree2;
         skillsM3 = statsMC.skilltree3;

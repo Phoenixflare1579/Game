@@ -19,7 +19,6 @@ public class JohannaStats : PlayerStats
         EXP = 0;
         WType = "Spear";
         healthperlvl = 8;
-        anim.SetInteger("Phase", 1);
         Form = 1;
         anim.SetInteger("Form", Form);
         CritDmg = 25;

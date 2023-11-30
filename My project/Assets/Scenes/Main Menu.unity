@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC: {fileID: 7206234117706668810, guid: e3ad88e85ca140a4689d8fababe43782, type: 3}
   Krys: {fileID: 3854558718292076483, guid: 61a63d6042b1d8d4fbd02f9c18023bc8, type: 3}
-  Johanna: {fileID: 0}
+  Johanna: {fileID: 4218715938750926588, guid: 928c942d4821942439e94c3cb506e5aa, type: 3}
 --- !u!1 &895082941
 GameObject:
   m_ObjectHideFlags: 0
