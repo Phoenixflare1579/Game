@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     GameObject MC;
-    public static bool i = false;
+    public bool i = false;
     public Consumable consumable;
     public Equipment equipment;
     public Sprite open;
