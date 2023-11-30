@@ -47,17 +47,6 @@ public class Data
         //MC Save
         levelM = statsMC.Level;
         expM = statsMC.EXP;
-        M[0] = statsMC.MaxHP;
-        M[1] = statsMC.MaxMana;
-        M[2] = statsMC.Speed;
-        M[3] = statsMC.Def;
-        M[4] = statsMC.PhysAtk;
-        M[5] = statsMC.MagicAtk;
-        M[6] = statsMC.MagicDef;
-        M[7] = statsMC.Evasion;
-        M[8] = statsMC.Accuracy;
-        M[9] = statsMC.Crit;
-        M[10] = statsMC.CritDmg;
         skillsM1 = statsMC.skilltree1;
         skillsM2 = statsMC.skilltree2;
         skillsM3 = statsMC.skilltree3;
@@ -75,6 +64,36 @@ public class Data
         //Krys Save
         levelK = statsK.Level;
         expK = statsK.EXP;
+        skillpointsK = statsK.skillpoints;
+        healthK = statsK.HP;
+        manaK = statsK.Mana;
+        skillsK1 = statsK.skilltree1;
+        skillsK2 = statsK.skilltree2;
+        skillsK3 = statsK.skilltree3;
+        posK = statsK.position;
+        //Johanna Save
+        levelJ = statsJ.Level;
+        expJ = statsJ.EXP;
+        skillpointsJ = statsJ.skillpoints;
+        healthJ = statsJ.HP;
+        manaJ = statsJ.Mana;
+        skillsJ1 = statsJ.skilltree1;
+        skillsJ2 = statsJ.skilltree2;
+        skillsJ3 = statsJ.skilltree3;
+        posJ = statsJ.position;
+        //World Save
+        scene = SceneManager.GetActiveScene().name;
+        M[0] = statsMC.MaxHP;
+        M[1] = statsMC.MaxMana;
+        M[2] = statsMC.Speed;
+        M[3] = statsMC.Def;
+        M[4] = statsMC.PhysAtk;
+        M[5] = statsMC.MagicAtk;
+        M[6] = statsMC.MagicDef;
+        M[7] = statsMC.Evasion;
+        M[8] = statsMC.Accuracy;
+        M[9] = statsMC.Crit;
+        M[10] = statsMC.CritDmg;
         statK[0] = statsK.MaxHP;
         statK[1] = statsK.MaxMana;
         statK[2] = statsK.Speed;
@@ -86,16 +105,6 @@ public class Data
         statK[8] = statsK.Accuracy;
         statK[9] = statsK.Crit;
         statK[10] = statsK.CritDmg;
-        skillpointsK = statsK.skillpoints;
-        healthK = statsK.HP;
-        manaK = statsK.Mana;
-        skillsK1 = statsK.skilltree1;
-        skillsK2 = statsK.skilltree2;
-        skillsK3 = statsK.skilltree3;
-        posK = statsK.position;
-        //Johanna Save
-        levelJ = statsJ.Level;
-        expJ = statsJ.EXP;
         statJ[0] = statsJ.MaxHP;
         statJ[1] = statsJ.MaxMana;
         statJ[2] = statsJ.Speed;
@@ -107,14 +116,5 @@ public class Data
         statJ[8] = statsJ.Accuracy;
         statJ[9] = statsJ.Crit;
         statJ[10] = statsJ.CritDmg;
-        skillpointsJ = statsJ.skillpoints;
-        healthJ = statsJ.HP;
-        manaJ = statsJ.Mana;
-        skillsJ1 = statsJ.skilltree1;
-        skillsJ2 = statsJ.skilltree2;
-        skillsJ3 = statsJ.skilltree3;
-        posJ = statsJ.position;
-        //World Save
-        scene = SceneManager.GetActiveScene().name;
     }
 }
