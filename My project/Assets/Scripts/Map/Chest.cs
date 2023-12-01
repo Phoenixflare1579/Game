@@ -7,18 +7,19 @@ public class Chest : MonoBehaviour
 {
     GameObject MC;
     public bool i = false;
-    public Consumable consumable;
+    public string consumable;
     public Equipment equipment;
     public Sprite open;
     public int multiple;
 
     //consumable//
-    public Consumable Bomb = new Consumable("Bomb", "Small bomb that can be thrown for minor damage to the full party.", 70, 0, 0, true);
+/*    public Consumable Bomb = new Consumable("Bomb", "Small bomb that can be thrown for minor damage to the full party.", 70, 0, 0, true);
     public Consumable Potion = new Consumable("Potion", "Basic potion. Heals target for a small amount.", 0, 50, 0, false);
     public Consumable ThrowingKnife = new Consumable("Throwing Knife", "Knife that can be thrown for minor damage to a target.", 100, 0, 0, false);
-    public Consumable VialofPureMind = new Consumable("Vial of Pure Mind", "Vial of mysterious origins that restores parties Mana for a small amount.", 0, 0, 75, true);
-    public Consumable TearsofDivine = new Consumable("Tears of Time", "Tears of a diety lost to Time. Restores targets Mana for a small amount.", 0, 0, 50, false);
     public Consumable MultiPotion = new Consumable("Multi-Potion", "Large potion that Heals party for a small amount.", 0, 35, 0, true);
+
+    public Consumable VialofPureMind = new Consumable("Vial of Pure Mind", "Vial of mysterious origins that restores parties Mana for a small amount.", 0, 0, 75, true);
+    public Consumable TearsofDivine = new Consumable("Tears of Time", "Tears of a diety lost to Time. Restores targets Mana for a small amount.", 0, 0, 50, false);*/
     //consumable//
 
     //equipment//
@@ -37,22 +38,22 @@ public class Chest : MonoBehaviour
             default:
                 break;
             case 0:
-                consumable = Bomb;
+                consumable = "Bomb";
                 break;
             case 1:
-                consumable = Potion;
+                consumable = "Potion";
                 break;
             case 2:
-                consumable = ThrowingKnife;
+                consumable = "ThrowingKnife";
                 break;
             case 3:
-                consumable = VialofPureMind;
+                consumable = "VialofPureMind";
                 break;
             case 4:
-                consumable = TearsofDivine;
+                consumable = "TearsofDivine";
                 break;
             case 5:
-                consumable = MultiPotion;
+                consumable = "MultiPotion";
                 break;
         }
     }
@@ -98,12 +99,18 @@ public class Chest : MonoBehaviour
             {
                 if (consumable != null) 
                 {
-                    for (int j = 0; j < multiple; j++)
-                    MC.GetComponent<PlayerStats>().Consumables.Add(consumable, 1);
-                }
-                if (equipment != null)
-                {
-                    MC.GetComponent<CharStats>().Equipped.Add(equipment);
+                    for (int j = 0; j < (int)Random.Range(1, 3); j++)
+                    {
+                        if (MC.GetComponent<PlayerStats>().Consumables.ContainsKey(consumable))
+                        {
+                            MC.GetComponent<PlayerStats>().Consumables[consumable]++;
+                        }
+                        else
+                        {
+                            MC.GetComponent<PlayerStats>().Consumables.Add(consumable, 1);
+                        }
+                    }
+                    
                 }
                 i=true;
             }

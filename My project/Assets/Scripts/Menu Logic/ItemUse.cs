@@ -14,7 +14,7 @@ public class ItemUse : CharStats
     }
     private void Update()
     {
-        target = user.target;
+        target = MC.target;
     }
 
     public void Use()
@@ -22,22 +22,22 @@ public class ItemUse : CharStats
         if (item == "B")
         {
             DamageDone(Bomb);
-            //MC.Consumables.Remove();
+            MC.Consumables["Bomb"]--;
         }
         else if (item == "P") 
         {
             DamageDone(Potion);
-            //MC.Consumables.Remove(Potion);
+            MC.Consumables["Potion"]--;
         }
         else if (item == "MP")
         {
             DamageDone(Multipotion);
-            //MC.Consumables.Remove(Multipotion);
+            MC.Consumables["Multipotion"]--;
         }
         else if (item == "TK")
         {
             DamageDone(ThrowingKnife);
-            //MC.Consumables.Remove(ThrowingKnife);
+            MC.Consumables["ThrowingKnife"]--;
         }
     }
 }
