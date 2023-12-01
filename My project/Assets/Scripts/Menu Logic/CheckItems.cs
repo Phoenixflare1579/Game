@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class CheckItems : MonoBehaviour
 {
@@ -17,43 +19,7 @@ public class CheckItems : MonoBehaviour
     {
         MC = GameObject.Find("MC").GetComponent<PlayerStats>();
 
-        if (ItemMenu.activeSelf)
-        {
-            if (MC.Consumables.ContainsKey("Bomb") && MC.Consumables["Bomb"] > 0)
-            {
-                BombButton.SetActive(true);
-            }
-            else
-            {
-                BombButton.SetActive(false);
-            }
-            if (MC.Consumables.ContainsKey("Potion") && MC.Consumables["Potion"] > 0)
-            {
-                PotionButton.SetActive(true);
-            }
-            else
-            {
-                PotionButton.SetActive(false);
-
-            }
-
-            if (MC.Consumables.ContainsKey("MultiPotion") && MC.Consumables["MultiPotion"] > 0)
-            {
-                MultiPotionButton.SetActive(true);
-            }
-            else
-            {
-                MultiPotionButton.SetActive(false);
-            }
-            if (MC.Consumables.ContainsKey("ThrowingKnife") && MC.Consumables["ThrowingKnife"] > 0)
-            {
-                KinfeButton.SetActive(true);
-            }
-            else
-            {
-                KinfeButton.SetActive(false);
-            }
-        }
+       
     }
 
     public void onClick()
@@ -62,6 +28,7 @@ public class CheckItems : MonoBehaviour
         if (MC.Consumables.ContainsKey("Bomb") && MC.Consumables["Bomb"] > 0)
         {
             BombButton.SetActive(true);
+            BombButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("Bomb: " + MC.Consumables["Bomb"]);
         }
         else
         {
@@ -70,16 +37,18 @@ public class CheckItems : MonoBehaviour
         if (MC.Consumables.ContainsKey("Potion") && MC.Consumables["Potion"] > 0)
         {
             PotionButton.SetActive(true);
+            PotionButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("Potion: " + MC.Consumables["Potion"]);
         }
         else
         {
             PotionButton.SetActive(false);
-
         }
 
         if (MC.Consumables.ContainsKey("MultiPotion") && MC.Consumables["MultiPotion"] > 0)
         {
             MultiPotionButton.SetActive(true);
+            MultiPotionButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("MultiPotion: " + MC.Consumables["MultiPotion"]);
+
         }
         else
         {
@@ -88,6 +57,7 @@ public class CheckItems : MonoBehaviour
         if (MC.Consumables.ContainsKey("ThrowingKnife") && MC.Consumables["ThrowingKnife"] > 0)
         {
             KinfeButton.SetActive(true);
+            KinfeButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("ThrowingKnife: " + MC.Consumables["ThrowingKnife"]);
         }
         else
         {
@@ -98,6 +68,46 @@ public class CheckItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (ItemMenu.activeSelf)
+        {
+            if (MC.Consumables.ContainsKey("Bomb") && MC.Consumables["Bomb"] > 0)
+            {
+                BombButton.SetActive(true);
+                BombButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("Bomb: " + MC.Consumables["Bomb"]);
+            }
+            else
+            {
+                BombButton.SetActive(false);
+            }
+            if (MC.Consumables.ContainsKey("Potion") && MC.Consumables["Potion"] > 0)
+            {
+                PotionButton.SetActive(true);
+                PotionButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("Potion: " + MC.Consumables["Potion"]);
+            }
+            else
+            {
+                PotionButton.SetActive(false);
+            }
+
+            if (MC.Consumables.ContainsKey("MultiPotion") && MC.Consumables["MultiPotion"] > 0)
+            {
+                MultiPotionButton.SetActive(true);
+                MultiPotionButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("MultiPotion: " + MC.Consumables["MultiPotion"]);
+
+            }
+            else
+            {
+                MultiPotionButton.SetActive(false);
+            }
+            if (MC.Consumables.ContainsKey("ThrowingKnife") && MC.Consumables["ThrowingKnife"] > 0)
+            {
+                KinfeButton.SetActive(true);
+                KinfeButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("Knife: " + MC.Consumables["ThrowingKnife"]);
+            }
+            else
+            {
+                KinfeButton.SetActive(false);
+            }
+        }
     }
 }

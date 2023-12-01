@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < MC.GetComponent<PlayerStats>().Consumables.Keys.ToArray().Length; i++) 
         {
             holder = Instantiate(items, Canvas.transform);
-            holder.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = MC.GetComponent<PlayerStats>().Consumables.Keys.ToArray()[i];
+            holder.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = MC.GetComponent<PlayerStats>().Consumables.Keys.ToArray()[i] + ": " + MC.GetComponent<PlayerStats>().Consumables[MC.GetComponent<PlayerStats>().Consumables.Keys.ToArray()[i]];
         }
         gameObject.transform.parent.transform.GetChild(0).gameObject.GetComponent<Image>().color = Color.black;
     }
