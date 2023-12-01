@@ -13,6 +13,11 @@ public class InputMenuMCS : MonoBehaviour
     }
     public void Update()
     {
+        if (logic.GetComponent<BattleStartup>().inOrder.Length <= logic.GetComponent<BattleStartup>().order)
+        {
+            logic.GetComponent<BattleStartup>().order = 0;
+        }
+
         if (logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == "MC")
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
