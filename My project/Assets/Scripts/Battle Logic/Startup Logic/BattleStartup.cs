@@ -33,6 +33,7 @@ public class BattleStartup : StartUp
 
         for (int i = 0; i < players.Length; i++)
         {
+            Debug.Log(players.Length);
             players[i].GetComponent<SpriteRenderer>().enabled = true;
             if (players[i].GetComponent<KrysStats>()!=null) 
             {
@@ -47,9 +48,9 @@ public class BattleStartup : StartUp
 
             }
             Holder = Instantiate(manabar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<ManaBarS>().p = players[i];
+            Holder.GetComponent<ManaBarS>().p = players[2-i];
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<HealthBarS>().p = players[i];
+            Holder.GetComponent<HealthBarS>().p = players[2-i];
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
         Order();
