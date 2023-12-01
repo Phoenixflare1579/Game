@@ -10,6 +10,7 @@ public class PlayerStats : CharStats
 
     public int Weapon = 1;
     public int Form = 0;
+    public Dictionary<Consumable, int> Consumables = new Dictionary<Consumable, int>();
     public Animator anim;
     public string WType = string.Empty;
     public int healthperlvl;

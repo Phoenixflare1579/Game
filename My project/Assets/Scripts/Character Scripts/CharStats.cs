@@ -35,7 +35,6 @@ public class CharStats : MonoBehaviour
     public int skillperlvl=1;
     public GameObject logic;
     public Dictionary<string, bool> weaknesses = new Dictionary<string, bool>();
-    public Dictionary<Consumable, int> Consumables = new Dictionary<Consumable, int>();
     public List<Equipment> Equipped = new List<Equipment>();
     public GameObject damageindicatorP;
     public GameObject[] animations;
@@ -122,6 +121,10 @@ public class CharStats : MonoBehaviour
     public Attacks Experimentation = new Attacks(5, 0.3, 0.05, 0, 30, 0, 0, false, " ", false, true, "Experimentation");
     public Attacks GentleLight = new Attacks(0, 0, 0, 0.05, 0, 0, 0, true, "Heal", false, true, "Gentle Light");
     public Attacks SacramentofSacrifice = new Attacks(0, 0, 0, 0.5, 30, 0.5, 0, true, "Heal", false, true, "SOS");
+    public Attacks Bomb = new Attacks(70, 0, 0, 0, 0, 0, 0, true, " ", false, false, "Bomb");
+    public Attacks Potion = new Attacks(0, 0, 0, 0.20, 0, 0, 0, false, " ", false, false, "Potion");
+    public Attacks ThrowingKnife = new Attacks(100, 0, 0, 0, 0, 0, 0, false, " ", false, false, "Throwing Knife");
+    public Attacks Multipotion = new Attacks(0, 0, 0, 0.15, 0, 0, 0, true, " ", false, false, "MultiPotion");
 
     // Attacks//
     public void DamageDone(Attacks attack)

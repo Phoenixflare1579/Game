@@ -99,7 +99,7 @@ public class Chest : MonoBehaviour
                 if (consumable != null) 
                 {
                     for (int j = 0; j < multiple; j++)
-                    MC.GetComponent<CharStats>().Consumables.Add(consumable, 1);
+                    MC.GetComponent<PlayerStats>().Consumables.Add(consumable, 1);
                 }
                 if (equipment != null)
                 {
