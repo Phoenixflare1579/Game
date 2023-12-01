@@ -53,11 +53,12 @@ public class BattleStartup : StartUp
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
         Order();
+        GameObject.Find("MC").GetComponent<PlayerStats>().ChangeForm(1);
         GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
     }
     private void Update()
     {
-        if (order==inOrder.Length)
+        if (order>=inOrder.Length)
         {
             ReSort();
             order = 0;
