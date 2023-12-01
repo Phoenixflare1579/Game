@@ -83,4 +83,7 @@ public class PlayerStats : CharStats
         Form = F;
         anim.SetInteger("Form", Form);
     }
+
+    
+
 }

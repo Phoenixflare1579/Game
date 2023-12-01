@@ -242,4 +242,33 @@ public class KrysStats : PlayerStats
         }
         logic.GetComponent<BattleStartup>().Increase();
     }
+
+    public void UseBomb()
+    {
+        DamageDone(Bomb);
+        GameObject.Find("MC").GetComponent<PlayerStats>().Consumables["Bomb"]--;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+
+    public void UsePotion()
+    {
+        DamageDone(Potion);
+        GameObject.Find("MC").GetComponent<PlayerStats>().Consumables["Potion"]--;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+
+    public void UseMultipotion()
+    {
+        DamageDone(Multipotion);
+        GameObject.Find("MC").GetComponent<PlayerStats>().Consumables["Multipotion"]--;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+
+    public void UseThrowingKnife()
+    {
+        DamageDone(ThrowingKnife);
+        GameObject.Find("MC").GetComponent<PlayerStats>().Consumables["ThrowingKnife"]--;
+        logic.GetComponent<BattleStartup>().Increase();
+    }
+
 }

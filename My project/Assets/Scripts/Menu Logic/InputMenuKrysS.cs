@@ -98,4 +98,25 @@ public class InputMenuKrysS : MonoBehaviour
     {
         Krys.GetComponent<KrysStats>().TC();
     }
+
+    public void UB()
+    {
+        Krys.GetComponent<KrysStats>().UseBomb();
+    }
+
+    public void UM()
+    {
+        Krys.GetComponent<KrysStats>().UseMultipotion();
+    }
+
+    public void UP()
+    {
+        Krys.GetComponent<KrysStats>().UsePotion();
+    }
+
+    public void UTK()
+    {
+        Krys.GetComponent<KrysStats>().UseThrowingKnife();
+    }
+
 }

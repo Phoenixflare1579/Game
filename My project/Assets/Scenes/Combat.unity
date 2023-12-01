@@ -12798,7 +12798,6 @@ GameObject:
   - component: {fileID: 1283257047}
   - component: {fileID: 1283257046}
   - component: {fileID: 1283257045}
-  - component: {fileID: 1283257044}
   m_Layer: 5
   m_Name: Kinfe
   m_TagString: Untagged
@@ -12827,47 +12826,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -40}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1283257044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283257042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f438d8838ea2cc84aa9b2c120ee9d1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  MaxHP: 0
-  Speed: 0
-  Def: 0
-  PhysAtk: 0
-  MagicAtk: 0
-  MagicDef: 0
-  MaxMana: 0
-  Mana: 0
-  Evasion: 0
-  Accuracy: 0
-  Crit: 100
-  CritDmg: 25
-  Level: 0
-  EXP: 0
-  EXPMax: 0
-  CharName: 
-  position: 0
-  isTarget: 0
-  skillpoints: 0
-  skillperlvl: 1
-  logic: {fileID: 0}
-  damageindicatorP: {fileID: 0}
-  animations: []
-  audios: []
-  Dead: 0
-  item: TK
-  user: {fileID: 0}
 --- !u!114 &1283257045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12912,9 +12870,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1283257044}
-        m_TargetAssemblyTypeName: ItemUse, Assembly-CSharp
-        m_MethodName: Use
+      - m_Target: {fileID: 2025568167}
+        m_TargetAssemblyTypeName: InputMenuKrysS, Assembly-CSharp
+        m_MethodName: UTK
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16992,6 +16950,7 @@ MonoBehaviour:
   PotionButton: {fileID: 1806287722}
   MultiPotionButton: {fileID: 2032990468}
   KinfeButton: {fileID: 1283257042}
+  ItemMenu: {fileID: 292683821}
 --- !u!1 &1787143482
 GameObject:
   m_ObjectHideFlags: 0
@@ -17275,7 +17234,6 @@ GameObject:
   - component: {fileID: 1806287727}
   - component: {fileID: 1806287726}
   - component: {fileID: 1806287725}
-  - component: {fileID: 1806287724}
   m_Layer: 5
   m_Name: Potion
   m_TagString: Untagged
@@ -17304,47 +17262,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -40}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1806287724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806287722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f438d8838ea2cc84aa9b2c120ee9d1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  MaxHP: 0
-  Speed: 0
-  Def: 0
-  PhysAtk: 0
-  MagicAtk: 0
-  MagicDef: 0
-  MaxMana: 0
-  Mana: 0
-  Evasion: 0
-  Accuracy: 0
-  Crit: 100
-  CritDmg: 25
-  Level: 0
-  EXP: 0
-  EXPMax: 0
-  CharName: 
-  position: 0
-  isTarget: 0
-  skillpoints: 0
-  skillperlvl: 1
-  logic: {fileID: 0}
-  damageindicatorP: {fileID: 0}
-  animations: []
-  audios: []
-  Dead: 0
-  item: P
-  user: {fileID: 0}
 --- !u!114 &1806287725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17389,9 +17306,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1806287724}
-        m_TargetAssemblyTypeName: ItemUse, Assembly-CSharp
-        m_MethodName: Use
+      - m_Target: {fileID: 2025568167}
+        m_TargetAssemblyTypeName: InputMenuKrysS, Assembly-CSharp
+        m_MethodName: UP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19524,7 +19441,6 @@ GameObject:
   - component: {fileID: 2032990473}
   - component: {fileID: 2032990472}
   - component: {fileID: 2032990471}
-  - component: {fileID: 2032990470}
   m_Layer: 5
   m_Name: MultiPotion
   m_TagString: Untagged
@@ -19553,47 +19469,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -40}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2032990470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032990468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f438d8838ea2cc84aa9b2c120ee9d1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  MaxHP: 0
-  Speed: 0
-  Def: 0
-  PhysAtk: 0
-  MagicAtk: 0
-  MagicDef: 0
-  MaxMana: 0
-  Mana: 0
-  Evasion: 0
-  Accuracy: 0
-  Crit: 100
-  CritDmg: 25
-  Level: 0
-  EXP: 0
-  EXPMax: 0
-  CharName: 
-  position: 0
-  isTarget: 0
-  skillpoints: 0
-  skillperlvl: 1
-  logic: {fileID: 0}
-  damageindicatorP: {fileID: 0}
-  animations: []
-  audios: []
-  Dead: 0
-  item: MP
-  user: {fileID: 0}
 --- !u!114 &2032990471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19638,9 +19513,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2032990470}
-        m_TargetAssemblyTypeName: ItemUse, Assembly-CSharp
-        m_MethodName: Use
+      - m_Target: {fileID: 2025568167}
+        m_TargetAssemblyTypeName: InputMenuKrysS, Assembly-CSharp
+        m_MethodName: UM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19835,7 +19710,6 @@ GameObject:
   - component: {fileID: 2058388110}
   - component: {fileID: 2058388109}
   - component: {fileID: 2058388108}
-  - component: {fileID: 2058388111}
   m_Layer: 5
   m_Name: Bomb
   m_TagString: Untagged
@@ -19908,9 +19782,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2058388111}
-        m_TargetAssemblyTypeName: ItemUse, Assembly-CSharp
-        m_MethodName: Use
+      - m_Target: {fileID: 2025568167}
+        m_TargetAssemblyTypeName: InputMenuKrysS, Assembly-CSharp
+        m_MethodName: UB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19958,47 +19832,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058388106}
   m_CullTransparentMesh: 1
---- !u!114 &2058388111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058388106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f438d8838ea2cc84aa9b2c120ee9d1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  HP: 0
-  MaxHP: 0
-  Speed: 0
-  Def: 0
-  PhysAtk: 0
-  MagicAtk: 0
-  MagicDef: 0
-  MaxMana: 0
-  Mana: 0
-  Evasion: 0
-  Accuracy: 0
-  Crit: 100
-  CritDmg: 25
-  Level: 0
-  EXP: 0
-  EXPMax: 0
-  CharName: 
-  position: 0
-  isTarget: 0
-  skillpoints: 0
-  skillperlvl: 1
-  logic: {fileID: 0}
-  damageindicatorP: {fileID: 0}
-  animations: []
-  audios: []
-  Dead: 0
-  item: B
-  user: {fileID: 0}
 --- !u!1 &2115192417
 GameObject:
   m_ObjectHideFlags: 0

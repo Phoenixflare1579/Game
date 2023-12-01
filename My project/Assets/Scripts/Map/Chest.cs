@@ -33,7 +33,7 @@ public class Chest : MonoBehaviour
 
     void RandomConsumable()
     {
-        switch ((int)Random.Range(0, 5))
+        switch ((int)Random.Range(0, 3))
         {
             default:
                 break;
@@ -47,13 +47,13 @@ public class Chest : MonoBehaviour
                 consumable = "ThrowingKnife";
                 break;
             case 3:
-                consumable = "VialofPureMind";
+                consumable = "MultiPotion";
                 break;
             case 4:
-                consumable = "TearsofDivine";
+                consumable = "VialofPureMind";
                 break;
             case 5:
-                consumable = "MultiPotion";
+                consumable = "TearsofDivine";
                 break;
         }
     }
