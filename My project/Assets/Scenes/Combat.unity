@@ -11866,9 +11866,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1008285111}
+  - {fileID: 429373882}
   - {fileID: 481505606}
   - {fileID: 1992820709}
-  - {fileID: 429373882}
   - {fileID: 921497400}
   m_Father: {fileID: 828255602}
   m_RootOrder: -1
@@ -18945,10 +18945,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 456379512}
+  - {fileID: 1142804425}
   - {fileID: 1848007491}
   - {fileID: 1647666264}
   - {fileID: 1782080910}
-  - {fileID: 1142804425}
   - {fileID: 1510161270}
   m_Father: {fileID: 2025568168}
   m_RootOrder: -1
