@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class Data 
 {
+    public Dictionary<string, int> Items = new Dictionary<string, int>();
     public int levelM;
     public int expM;
     public int[] M;
@@ -58,9 +59,10 @@ public class Data
         bear = statsMC.b;
         demondeer = statsMC.dd;
         position = new float[3];
-        position[0] = statsMC.transform.position.x;
-        position[1] = statsMC.transform.position.y;
-        position[2] = statsMC.transform.position.z;
+        Debug.Log(statsMC.Location);
+        position[0] = statsMC.Location.x;
+        position[1] = statsMC.Location.y;
+        position[2] = statsMC.Location.z;
         //Krys Save
         levelK = statsK.Level;
         expK = statsK.EXP;
@@ -82,39 +84,17 @@ public class Data
         skillsJ3 = statsJ.skilltree3;
         posJ = statsJ.position;
         //World Save
+        Debug.Log(SceneManager.GetActiveScene().name);
         scene = SceneManager.GetActiveScene().name;
-        //M[0] = statsMC.MaxHP;
-        //M[1] = statsMC.MaxMana;
-        //M[2] = statsMC.Speed;
-        //M[3] = statsMC.Def;
-        //M[4] = statsMC.PhysAtk;
-        //M[5] = statsMC.MagicAtk;
-        //M[6] = statsMC.MagicDef;
-        //M[7] = statsMC.Evasion;
-        //M[8] = statsMC.Accuracy;
-        //M[9] = statsMC.Crit;
-        //M[10] = statsMC.CritDmg;
-        //statK[0] = statsK.MaxHP;
-        //statK[1] = statsK.MaxMana;
-        //statK[2] = statsK.Speed;
-        //statK[3] = statsK.Def;
-        //statK[4] = statsK.PhysAtk;
-        //statK[5] = statsK.MagicAtk;
-        //statK[6] = statsK.MagicDef;
-        //statK[7] = statsK.Evasion;
-        //statK[8] = statsK.Accuracy;
-        //statK[9] = statsK.Crit;
-        //statK[10] = statsK.CritDmg;
-        //statJ[0] = statsJ.MaxHP;
-        //statJ[1] = statsJ.MaxMana;
-        //statJ[2] = statsJ.Speed;
-        //statJ[3] = statsJ.Def;
-        //statJ[4] = statsJ.PhysAtk;
-        //statJ[5] = statsJ.MagicAtk;
-        //statJ[6] = statsJ.MagicDef;
-        //statJ[7] = statsJ.Evasion;
-        //statJ[8] = statsJ.Accuracy;
-        //statJ[9] = statsJ.Crit;
-        //statJ[10] = statsJ.CritDmg;
+        int[] Mstat = { statsMC.MaxHP, statsMC.MaxMana, statsMC.Speed, statsMC.Def, statsMC.PhysAtk, statsMC.MagicAtk, statsMC.MagicDef, statsMC.Evasion, statsMC.Accuracy, statsMC.Crit, statsMC.CritDmg };
+        M = Mstat;
+
+        int[] Kstat = { statsK.MaxHP, statsK.MaxMana, statsK.Speed, statsK.Def, statsK.PhysAtk, statsK.MagicAtk, statsK.MagicDef, statsK.Evasion, statsK.Accuracy, statsK.Crit, statsK.CritDmg};
+        statK = Kstat;
+
+        int[] Jstat = { statsJ.MaxHP, statsJ.MaxMana, statsJ.Speed, statsJ.Def, statsJ.PhysAtk, statsJ.MagicAtk, statsJ.MagicDef, statsJ.Evasion, statsJ.Accuracy, statsJ.Crit, statsJ.CritDmg };
+        statJ = Jstat;
+
+        Items = statsMC.Consumables;
     }
 }

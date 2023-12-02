@@ -155,7 +155,7 @@ MonoBehaviour:
   skillpoints: 0
   skillperlvl: 1
   logic: {fileID: 0}
-  damageindicatorP: {fileID: 0}
+  damageindicatorP: {fileID: 719356124934872132, guid: c6858d73b9989614cb3b94eaa53ae1fa, type: 3}
   animations:
   - {fileID: 885164656192517445, guid: bf7c490cc671a0a4aa0f8918fa0da625, type: 3}
   - {fileID: 7185234532430884914, guid: ea3d2051a5cc071419e6add0767f8411, type: 3}

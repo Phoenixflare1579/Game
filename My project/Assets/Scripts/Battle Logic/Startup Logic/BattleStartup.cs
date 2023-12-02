@@ -11,26 +11,38 @@ public class BattleStartup : StartUp
 {
     void Start()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length > 1)
+        if (GameObject.Find("MC").GetComponent<MCStats>().b == -1 || GameObject.Find("MC").GetComponent<MCStats>().dd == -1)
         {
-            for (int i = 0; i < Random.Range(1, 4); i++)
-            {
-                E = Instantiate(enemyP[Random.Range(0, enemyP.Length)]);
-                E.GetComponent<CharStats>().position = i;
-                E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
-            }
+            players = GameObject.FindGameObjectsWithTag("Player");
+            if (GameObject.Find("MC").GetComponent<MCStats>().b == -1)
+                E = Instantiate(enemyP[5]);
+            else if (GameObject.Find("MC").GetComponent<MCStats>().dd == -1)
+                E = Instantiate(enemyP[6]);
+            E.GetComponent<CharStats>().position = 1;
+            E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
         }
         else
         {
-            for (int i = 0; i < Random.Range(1, 2); i++)
+            players = GameObject.FindGameObjectsWithTag("Player");
+            if (players.Length > 1)
             {
-                E = Instantiate(enemyP[Random.Range(0, enemyP.Length)]);
-                E.GetComponent<CharStats>().position = i;
-                E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+                for (int i = 0; i < Random.Range(1, 4); i++)
+                {
+                    E = Instantiate(enemyP[Random.Range(0, 4)]);
+                    E.GetComponent<CharStats>().position = i;
+                    E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Random.Range(1, 2); i++)
+                {
+                    E = Instantiate(enemyP[Random.Range(0, 4)]);
+                    E.GetComponent<CharStats>().position = i;
+                    E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
+                }
             }
         }
-
         for (int i = 0; i < players.Length; i++)
         {
             Debug.Log(players.Length);
@@ -87,6 +99,10 @@ public class BattleStartup : StartUp
                 for (int i = 0; i < players.Length; i++)
                 {
                     players[i].GetComponent<CharStats>().EXP += xp;
+                    if (GameObject.Find("MC").GetComponent<MCStats>().b == -1)
+                        GameObject.Find("MC").GetComponent<MCStats>().b = 1;
+                    else if (GameObject.Find("MC").GetComponent<MCStats>().dd == -1)
+                        GameObject.Find("MC").GetComponent<MCStats>().dd = 1;
                 }
             }
             j = 1;

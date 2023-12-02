@@ -12,6 +12,7 @@ public class SaveManager : MonoBehaviour
     public MCStats MC;
     public PlayerStats Krys;
     public PlayerStats Johanna;
+
     private void Update()
     {
         if (MC == null)
@@ -29,8 +30,9 @@ public class SaveManager : MonoBehaviour
 
     public void Load()
     {
+        Debug.Log("test");
         Data data = SaveS.LoadData();
-        SceneManager.LoadScene(data.scene);
+        
         MC.Level = data.levelM;
         MC.EXP = data.expM;
         MC.MaxHP = data.M[0];
@@ -54,7 +56,10 @@ public class SaveManager : MonoBehaviour
         MC.HP = data.healthM;
         MC.Mana = data.manaM;
         MC.CharName = data.nameM;
-        MC.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        Debug.Log(data.position);
+        MC.Location.x = data.position[0];
+        MC.Location.y = data.position[1];
+        MC.Location.z = data.position[2];
         Krys.Level = data.levelK;
         Krys.EXP = data.expK;
         Krys.MaxHP = data.statK[0];
@@ -95,5 +100,6 @@ public class SaveManager : MonoBehaviour
         Johanna.position = data.posJ;
         Johanna.HP = data.healthJ;
         Johanna.Mana = data.manaJ;
+        SceneManager.LoadScene(data.scene);
     }
 }

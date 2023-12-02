@@ -8,19 +8,19 @@ using UnityEngine.SceneManagement;
 public class BossBattleStartUp : StartUp
 {
     // Start is called before the first frame update
-    public string boss;
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-            if (boss == "b")
+            if (GameObject.Find("MC").GetComponent<MCStats>().b == -1)
             E = Instantiate(enemyP[0]);
-            else if (boss == "dd")
+            else if (GameObject.Find("MC").GetComponent<MCStats>().dd == -1)
             E = Instantiate(enemyP[1]);
             E.GetComponent<CharStats>().position = 2;
             E.GetComponent<Transform>().position = enemyPos[E.GetComponent<CharStats>().position].transform.position;
 
         for (int i = 0; i < players.Length; i++)
         {
+            Debug.Log(players.Length);
             players[i].GetComponent<SpriteRenderer>().enabled = true;
             if (players[i].GetComponent<KrysStats>() != null)
             {
@@ -31,15 +31,17 @@ public class BossBattleStartUp : StartUp
             {
                 players[i].GetComponent<MCStats>().WeaponSwap();
                 players[i].GetComponent<SpriteRenderer>().flipX = true;
-                players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                players[i].GetComponent<Rigidbody>().isKinematic = true;
+
             }
             Holder = Instantiate(manabar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<ManaBarS>().p = players[i];
+            Holder.GetComponent<ManaBarS>().p = players[2 - i];
             Holder = Instantiate(healthbar, GameObject.FindGameObjectWithTag("HP").transform);
-            Holder.GetComponent<HealthBarS>().p = players[i];
+            Holder.GetComponent<HealthBarS>().p = players[2 - i];
             players[i].GetComponent<Transform>().position = playerPos[players[i].GetComponent<CharStats>().position].transform.position;
         }
         Order();
+        GameObject.Find("MC").GetComponent<PlayerStats>().ChangeForm(1);
         GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<CharStats>().isTarget = true;
     }
 
@@ -74,9 +76,9 @@ public class BossBattleStartUp : StartUp
                 for (int i = 0; i < players.Length; i++)
                 {
                     players[i].GetComponent<CharStats>().EXP += xp;
-                    if (boss == "b")
+                    if (GameObject.Find("MC").GetComponent<MCStats>().b == -1)
                         GameObject.Find("MC").GetComponent<MCStats>().b = 1;
-                    else if (boss == "dd")
+                    else if (GameObject.Find("MC").GetComponent<MCStats>().dd == -1)
                         GameObject.Find("MC").GetComponent<MCStats>().dd = 1;
                 }
             }

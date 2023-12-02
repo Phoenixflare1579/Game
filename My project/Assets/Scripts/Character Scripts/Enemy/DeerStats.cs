@@ -57,8 +57,6 @@ public class DeerStats : EnemyStats
     }
     private void FixedUpdate()
     {
-        if (logic.GetComponent<BattleStartup>().order < logic.GetComponent<BattleStartup>().inOrder.Length)
-        {
             if (Dead == 0 && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == gameObject.name)
             {
                 GetTarget();
@@ -76,7 +74,7 @@ public class DeerStats : EnemyStats
                     TurnsPassed++;
                 }
             }
-        }
+        
     }
     public void Attack()
     {
