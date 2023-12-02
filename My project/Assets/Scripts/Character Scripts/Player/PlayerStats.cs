@@ -29,11 +29,11 @@ public class PlayerStats : CharStats
     }
     public void FixedUpdate()
     {
-        if (defend && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name) 
+/*        if (defend && logic.GetComponent<BattleStartup>().inOrder[logic.GetComponent<BattleStartup>().order] == this.gameObject.name) 
         {
             Def -= def;
             MagicDef -= magdef;
-        }
+        }*/
     }
     public void Defend()
     {

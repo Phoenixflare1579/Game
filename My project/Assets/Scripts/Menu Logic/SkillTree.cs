@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillTree : MonoBehaviour
 {
-
+    void Update()
+    {
+        SkillTreeSpawn();
+        Remove();
+    }
     public void SkillTreeSpawn()
     {
         gameObject.transform.parent.transform.GetChild(0).gameObject.GetComponent<Image>().color = Color.black;

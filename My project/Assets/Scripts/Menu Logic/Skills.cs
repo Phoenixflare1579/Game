@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Skills : MonoBehaviour
 {
     public int Form = 1;
-    public int Branch;
+    public int Branch=1;
     public int SP = 1;
     public PlayerStats Char;
     string C;
@@ -19,6 +19,7 @@ public class Skills : MonoBehaviour
     }
     public void Update() 
     {
+
         if (Form == 1 && Char.skilltree1[Branch] == true)
         {
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
@@ -61,8 +62,9 @@ public class Skills : MonoBehaviour
         {
             if (Char.skillpoints >= SP && Char.skilltree1[Branch] != true)
             {
-                if ((Branch != 0 && Char.skilltree1[Branch - 1] == true) || (Branch == 3 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true) || (Branch == 6 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true))
-                {
+                Debug.Log(Branch);
+                /*if ((Branch != 0 && Char.skilltree1[Branch - 1] == true) || (Branch == 3 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true) || (Branch == 6 && Char.skilltree1[Branch - 1] == true || Char.skilltree1[Branch - 2] == true))
+                {*/
                     Char.skilltree1[Branch] = true;
                     Char.skillpoints -= SP;
                     if (Char.gameObject.name == "MC")
@@ -146,15 +148,15 @@ public class Skills : MonoBehaviour
                             Char.Accuracy += 30;
                         }
                     }
-                }
+                
             }
         }
         else if (Form == 2) 
         {
             if (Char.skillpoints >= SP && Char.skilltree2[Branch] != true)
             {
-                if ((Branch != 0 && Char.skilltree2[Branch - 1] == true) || (Branch == 3 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true) || (Branch == 6 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true))
-                {
+                /*if ((Branch != 0 && Char.skilltree2[Branch - 1] == true) || (Branch == 3 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true) || (Branch == 6 && Char.skilltree2[Branch - 1] == true || Char.skilltree2[Branch - 2] == true))
+                {*/
                     Char.skilltree2[Branch] = true;
                     Char.skillpoints -= SP;
                     if (Char.gameObject.name == "MC")
@@ -237,7 +239,7 @@ public class Skills : MonoBehaviour
                         {
                             Char.MaxMana += 30;
                         }
-                    }
+                    
                 }
             }
         }
@@ -245,8 +247,8 @@ public class Skills : MonoBehaviour
         {
             if (Char.skillpoints >= SP && Char.skilltree3[Branch] != true)
             {
-                if ((Branch != 0 && Char.skilltree3[Branch - 1] == true) || (Branch == 3 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true) || (Branch == 6 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true))
-                {
+                /*if ((Branch != 0 && Char.skilltree3[Branch - 1] == true) || (Branch == 3 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true) || (Branch == 6 && Char.skilltree3[Branch - 1] == true || Char.skilltree3[Branch - 2] == true))
+                {*/
                     Char.skilltree3[Branch] = true;
                     Char.skillpoints -= SP;
                     if (Char.gameObject.name == "MC")
@@ -335,7 +337,7 @@ public class Skills : MonoBehaviour
                             Char.Crit += 10;
                         }
                     }
-                }
+                
             }
         }
     }

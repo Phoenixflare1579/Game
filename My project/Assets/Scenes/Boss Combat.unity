@@ -1703,6 +1703,7 @@ MonoBehaviour:
   logic: {fileID: 537914406}
   MC: {fileID: 0}
   Krys: {fileID: 0}
+  Johanna: {fileID: 0}
 --- !u!1 &265683547
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,6 +4768,7 @@ MonoBehaviour:
   - {fileID: 828255600}
   xp: 0
   j: 0
+  boss: 
 --- !u!1 &548433663
 GameObject:
   m_ObjectHideFlags: 0
@@ -12894,8 +12896,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376536345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003893, y: -1.9867, z: -6.6861}
-  m_LocalScale: {x: 1054.7197, y: 472.57623, z: 27.408241}
+  m_LocalPosition: {x: 0.0038759, y: -1.9867, z: -6.6861}
+  m_LocalScale: {x: 2416.4685, y: 1082.7194, z: 62.79502}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
