@@ -3905,6 +3905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Save Station
       objectReference: {fileID: 0}
+    - target: {fileID: 2504564738543668389, guid: 43264531bae6d89429d105df619ca489, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
